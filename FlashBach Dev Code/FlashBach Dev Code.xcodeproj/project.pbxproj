@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5101A80E18C0F79700C7B01A /* Main.storyboard */; };
 		93758B8B18B3EDD4002CB514 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8A18B3EDD4002CB514 /* Foundation.framework */; };
 		93758B8D18B3EDD4002CB514 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8C18B3EDD4002CB514 /* CoreGraphics.framework */; };
 		93758B8F18B3EDD4002CB514 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8E18B3EDD4002CB514 /* UIKit.framework */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5101A80E18C0F79700C7B01A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93758B8718B3EDD4002CB514 /* FlashBach Dev Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashBach Dev Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93758B8A18B3EDD4002CB514 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93758B8C18B3EDD4002CB514 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -43,7 +45,7 @@
 		93758B9918B3EDD4002CB514 /* FLBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLBAppDelegate.h; sourceTree = "<group>"; };
 		93758B9A18B3EDD4002CB514 /* FLBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLBAppDelegate.m; sourceTree = "<group>"; };
 		93758B9C18B3EDD4002CB514 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images.xcassets; sourceTree = "<group>"; };
-		93758BA218B3EDD5002CB514 /* FlashBach Dev CodeTests */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "FlashBach Dev CodeTests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93758BA218B3EDD5002CB514 /* FlashBach Dev CodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlashBach Dev CodeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93758BA318B3EDD5002CB514 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		93758BAB18B3EDD5002CB514 /* FlashBach Dev CodeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlashBach Dev CodeTests-Info.plist"; sourceTree = "<group>"; };
 		93758BAD18B3EDD5002CB514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -88,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				93758B8718B3EDD4002CB514 /* FlashBach Dev Code.app */,
-				93758BA218B3EDD5002CB514 /* FlashBach Dev CodeTests */,
+				93758BA218B3EDD5002CB514 /* FlashBach Dev CodeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +113,7 @@
 				93758B9A18B3EDD4002CB514 /* FLBAppDelegate.m */,
 				93758B9C18B3EDD4002CB514 /* Images.xcassets */,
 				93758B9118B3EDD4002CB514 /* Supporting Files */,
+				5101A80E18C0F79700C7B01A /* Main.storyboard */,
 			);
 			path = "FlashBach Dev Code";
 			sourceTree = "<group>";
@@ -179,7 +182,7 @@
 			);
 			name = "FlashBach Dev CodeTests";
 			productName = "FlashBach Dev CodeTests";
-			productReference = 93758BA218B3EDD5002CB514 /* FlashBach Dev CodeTests */;
+			productReference = 93758BA218B3EDD5002CB514 /* FlashBach Dev CodeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -220,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */,
 				93758B9518B3EDD4002CB514 /* InfoPlist.strings in Resources */,
 				93758B9D18B3EDD4002CB514 /* Images.xcassets in Resources */,
 			);
