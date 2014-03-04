@@ -42,4 +42,21 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// Called when a button is clicked. The view will be automatically dismissed after this call returns
+/*
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+ {
+    switch (buttonIndex) 
+    {
+        case x:
+            //Chose option x
+            break;
+            ...
+        default:
+            //Default action
+            break;
+    }
+}
+*/
+
 @end

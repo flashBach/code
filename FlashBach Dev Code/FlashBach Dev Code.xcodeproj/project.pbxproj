@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5101A80E18C0F79700C7B01A /* Main.storyboard */; };
+		519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 519C142018C58EBA00A85273 /* FLBAddCardViewController.m */; };
 		93758B8B18B3EDD4002CB514 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8A18B3EDD4002CB514 /* Foundation.framework */; };
 		93758B8D18B3EDD4002CB514 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8C18B3EDD4002CB514 /* CoreGraphics.framework */; };
 		93758B8F18B3EDD4002CB514 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8E18B3EDD4002CB514 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		5101A80E18C0F79700C7B01A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		519C141F18C58EBA00A85273 /* FLBAddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBAddCardViewController.h; sourceTree = "<group>"; };
+		519C142018C58EBA00A85273 /* FLBAddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBAddCardViewController.m; sourceTree = "<group>"; };
 		93758B8718B3EDD4002CB514 /* FlashBach Dev Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashBach Dev Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93758B8A18B3EDD4002CB514 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93758B8C18B3EDD4002CB514 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,6 +117,8 @@
 				93758B9C18B3EDD4002CB514 /* Images.xcassets */,
 				93758B9118B3EDD4002CB514 /* Supporting Files */,
 				5101A80E18C0F79700C7B01A /* Main.storyboard */,
+				519C141F18C58EBA00A85273 /* FLBAddCardViewController.h */,
+				519C142018C58EBA00A85273 /* FLBAddCardViewController.m */,
 			);
 			path = "FlashBach Dev Code";
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */,
 				93758B9718B3EDD4002CB514 /* main.m in Sources */,
 				93758B9B18B3EDD4002CB514 /* FLBAppDelegate.m in Sources */,
 			);
