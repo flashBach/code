@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="1007" y="-21"/>
         </scene>
-        <!--View Controller-->
+        <!--Card View Controller-->
         <scene sceneID="O9n-Tc-xEz">
             <objects>
-                <viewController id="hWF-xk-chh" sceneMemberID="viewController">
+                <viewController id="hWF-xk-chh" customClass="FLBCardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZzG-Ba-ZbK"/>
                         <viewControllerLayoutGuide type="bottom" id="WOC-4n-JwE"/>
@@ -126,15 +126,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iSj-wR-ecq"/>
+                    <connections>
+                        <outlet property="buttonFlip" destination="TU0-sf-RpF" id="NSl-KR-XOI"/>
+                        <outlet property="buttonSkip" destination="IGq-dp-Nri" id="N8z-5N-CSb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hcl-mQ-Aya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="985" y="-708"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Result View Controller-->
         <scene sceneID="nCz-sf-H5m">
             <objects>
-                <viewController id="rC6-1C-KCN" sceneMemberID="viewController">
+                <viewController id="rC6-1C-KCN" customClass="FLBCardResultViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pFK-mz-DOj"/>
                         <viewControllerLayoutGuide type="bottom" id="qdm-EF-nDG"/>
@@ -160,9 +164,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-jN-mad">
-                                <rect key="frame" x="233" y="416" width="33" height="30"/>
+                                <rect key="frame" x="233" y="416" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Easy">
+                                <state key="normal" title=" Easy ">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -171,9 +175,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Baj-ry-sYD">
-                                <rect key="frame" x="124" y="416" width="50" height="30"/>
+                                <rect key="frame" x="124" y="416" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Normal">
+                                <state key="normal" title=" Normal ">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -181,9 +185,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKq-T0-ZXI">
-                                <rect key="frame" x="30" y="416" width="34" height="30"/>
+                                <rect key="frame" x="30" y="416" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Hard">
+                                <state key="normal" title=" Hard ">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -195,6 +199,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="a6u-PO-XJ3"/>
+                    <connections>
+                        <outlet property="buttonEasy" destination="bqM-jN-mad" id="a23-lY-c8A"/>
+                        <outlet property="buttonHard" destination="DKq-T0-ZXI" id="41w-4b-jEU"/>
+                        <outlet property="buttonNormal" destination="Baj-ry-sYD" id="W5f-s9-vOC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaT-o8-3N2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

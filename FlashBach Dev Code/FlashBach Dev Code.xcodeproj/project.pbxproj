@@ -21,6 +21,8 @@
 		93758BA618B3EDD5002CB514 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8E18B3EDD4002CB514 /* UIKit.framework */; };
 		93758BAE18B3EDD5002CB514 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93758BAC18B3EDD5002CB514 /* InfoPlist.strings */; };
 		93758BB018B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93758BAF18B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m */; };
+		93802F7118C928F4003DC73E /* FLBCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7018C928F4003DC73E /* FLBCardViewController.m */; };
+		93802F7418C92A61003DC73E /* FLBCardResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7318C92A61003DC73E /* FLBCardResultViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		93758BAB18B3EDD5002CB514 /* FlashBach Dev CodeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlashBach Dev CodeTests-Info.plist"; sourceTree = "<group>"; };
 		93758BAD18B3EDD5002CB514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93758BAF18B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashBach_Dev_CodeTests.m; sourceTree = "<group>"; };
+		93802F6F18C928F4003DC73E /* FLBCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBCardViewController.h; sourceTree = "<group>"; };
+		93802F7018C928F4003DC73E /* FLBCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBCardViewController.m; sourceTree = "<group>"; };
+		93802F7218C92A61003DC73E /* FLBCardResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBCardResultViewController.h; sourceTree = "<group>"; };
+		93802F7318C92A61003DC73E /* FLBCardResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBCardResultViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,10 @@
 				93758B9C18B3EDD4002CB514 /* Images.xcassets */,
 				93758B9118B3EDD4002CB514 /* Supporting Files */,
 				5101A80E18C0F79700C7B01A /* Main.storyboard */,
+				93802F7218C92A61003DC73E /* FLBCardResultViewController.h */,
+				93802F7318C92A61003DC73E /* FLBCardResultViewController.m */,
+				93802F6F18C928F4003DC73E /* FLBCardViewController.h */,
+				93802F7018C928F4003DC73E /* FLBCardViewController.m */,
 				519C141F18C58EBA00A85273 /* FLBAddCardViewController.h */,
 				519C142018C58EBA00A85273 /* FLBAddCardViewController.m */,
 			);
@@ -250,8 +260,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */,
+				93802F7418C92A61003DC73E /* FLBCardResultViewController.m in Sources */,
 				93758B9718B3EDD4002CB514 /* main.m in Sources */,
 				93758B9B18B3EDD4002CB514 /* FLBAppDelegate.m in Sources */,
+				93802F7118C928F4003DC73E /* FLBCardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
