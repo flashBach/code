@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 CS121. All rights reserved.
 //
 
-#import "FLBCardViewController.h"
+#import "FLBReviewFrontViewController.h"
 
-@interface FLBCardViewController ()
+@interface FLBReviewFrontViewController ()
 
 @end
 
-@implementation FLBCardViewController
+@implementation FLBReviewFrontViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

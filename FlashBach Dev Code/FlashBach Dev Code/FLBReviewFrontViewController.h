@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBCardViewController : UIViewController
+@interface FLBReviewFrontViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonFlip;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSkip;

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5101A80E18C0F79700C7B01A /* Main.storyboard */; };
 		519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 519C142018C58EBA00A85273 /* FLBAddCardViewController.m */; };
+		9353155F18C935EF00AA45A1 /* FLBDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9353155E18C935EF00AA45A1 /* FLBDeckViewController.m */; };
+		9353156218C9361300AA45A1 /* FLBCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9353156118C9361300AA45A1 /* FLBCategoryViewController.m */; };
 		93758B8B18B3EDD4002CB514 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8A18B3EDD4002CB514 /* Foundation.framework */; };
 		93758B8D18B3EDD4002CB514 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8C18B3EDD4002CB514 /* CoreGraphics.framework */; };
 		93758B8F18B3EDD4002CB514 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8E18B3EDD4002CB514 /* UIKit.framework */; };
@@ -21,8 +23,8 @@
 		93758BA618B3EDD5002CB514 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93758B8E18B3EDD4002CB514 /* UIKit.framework */; };
 		93758BAE18B3EDD5002CB514 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93758BAC18B3EDD5002CB514 /* InfoPlist.strings */; };
 		93758BB018B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93758BAF18B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m */; };
-		93802F7118C928F4003DC73E /* FLBCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7018C928F4003DC73E /* FLBCardViewController.m */; };
-		93802F7418C92A61003DC73E /* FLBCardResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7318C92A61003DC73E /* FLBCardResultViewController.m */; };
+		93802F7118C928F4003DC73E /* FLBReviewFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */; };
+		93802F7418C92A61003DC73E /* FLBReviewBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,10 @@
 		5101A80E18C0F79700C7B01A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		519C141F18C58EBA00A85273 /* FLBAddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBAddCardViewController.h; sourceTree = "<group>"; };
 		519C142018C58EBA00A85273 /* FLBAddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBAddCardViewController.m; sourceTree = "<group>"; };
+		9353155D18C935EF00AA45A1 /* FLBDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBDeckViewController.h; sourceTree = "<group>"; };
+		9353155E18C935EF00AA45A1 /* FLBDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBDeckViewController.m; sourceTree = "<group>"; };
+		9353156018C9361300AA45A1 /* FLBCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBCategoryViewController.h; sourceTree = "<group>"; };
+		9353156118C9361300AA45A1 /* FLBCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBCategoryViewController.m; sourceTree = "<group>"; };
 		93758B8718B3EDD4002CB514 /* FlashBach Dev Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashBach Dev Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93758B8A18B3EDD4002CB514 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93758B8C18B3EDD4002CB514 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,10 +61,10 @@
 		93758BAB18B3EDD5002CB514 /* FlashBach Dev CodeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlashBach Dev CodeTests-Info.plist"; sourceTree = "<group>"; };
 		93758BAD18B3EDD5002CB514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93758BAF18B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashBach_Dev_CodeTests.m; sourceTree = "<group>"; };
-		93802F6F18C928F4003DC73E /* FLBCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBCardViewController.h; sourceTree = "<group>"; };
-		93802F7018C928F4003DC73E /* FLBCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBCardViewController.m; sourceTree = "<group>"; };
-		93802F7218C92A61003DC73E /* FLBCardResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBCardResultViewController.h; sourceTree = "<group>"; };
-		93802F7318C92A61003DC73E /* FLBCardResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBCardResultViewController.m; sourceTree = "<group>"; };
+		93802F6F18C928F4003DC73E /* FLBReviewFrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBReviewFrontViewController.h; sourceTree = "<group>"; };
+		93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBReviewFrontViewController.m; sourceTree = "<group>"; };
+		93802F7218C92A61003DC73E /* FLBReviewBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBReviewBackViewController.h; sourceTree = "<group>"; };
+		93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBReviewBackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +129,14 @@
 				93758B9C18B3EDD4002CB514 /* Images.xcassets */,
 				93758B9118B3EDD4002CB514 /* Supporting Files */,
 				5101A80E18C0F79700C7B01A /* Main.storyboard */,
-				93802F7218C92A61003DC73E /* FLBCardResultViewController.h */,
-				93802F7318C92A61003DC73E /* FLBCardResultViewController.m */,
-				93802F6F18C928F4003DC73E /* FLBCardViewController.h */,
-				93802F7018C928F4003DC73E /* FLBCardViewController.m */,
+				9353156018C9361300AA45A1 /* FLBCategoryViewController.h */,
+				9353156118C9361300AA45A1 /* FLBCategoryViewController.m */,
+				9353155D18C935EF00AA45A1 /* FLBDeckViewController.h */,
+				9353155E18C935EF00AA45A1 /* FLBDeckViewController.m */,
+				93802F7218C92A61003DC73E /* FLBReviewBackViewController.h */,
+				93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */,
+				93802F6F18C928F4003DC73E /* FLBReviewFrontViewController.h */,
+				93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */,
 				519C141F18C58EBA00A85273 /* FLBAddCardViewController.h */,
 				519C142018C58EBA00A85273 /* FLBAddCardViewController.m */,
 			);
@@ -259,11 +269,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9353155F18C935EF00AA45A1 /* FLBDeckViewController.m in Sources */,
 				519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */,
-				93802F7418C92A61003DC73E /* FLBCardResultViewController.m in Sources */,
+				9353156218C9361300AA45A1 /* FLBCategoryViewController.m in Sources */,
+				93802F7418C92A61003DC73E /* FLBReviewBackViewController.m in Sources */,
 				93758B9718B3EDD4002CB514 /* main.m in Sources */,
 				93758B9B18B3EDD4002CB514 /* FLBAppDelegate.m in Sources */,
-				93802F7118C928F4003DC73E /* FLBCardViewController.m in Sources */,
+				93802F7118C928F4003DC73E /* FLBReviewFrontViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

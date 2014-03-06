@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBCardResultViewController : UIViewController
+@interface FLBReviewBackViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *buttonHard;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNormal;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEasy;
