@@ -14,6 +14,10 @@
 @property (nonatomic, strong) IBOutlet UITextField *categoryChoice;
 @property (nonatomic, strong) NSMutableArray *myDecks;
 
+@property (weak, nonatomic) IBOutlet UIButton *buttonDeck;
+
+@property (weak, nonatomic) IBOutlet UIButton *buttonCategory;
+
 - (IBAction) deckButtonTapped:(id)sender;
 - (IBAction) categoryButtonTapped:(id)sender;
 

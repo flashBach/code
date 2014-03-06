@@ -27,6 +27,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
+    // Add border to button
+    _buttonDeck.layer.borderWidth = 0.7f;
+    _buttonDeck.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonDeck.layer.cornerRadius = 7;
+   
+    // Add border to button
+    _buttonCategory.layer.borderWidth = 0.7f;
+    _buttonCategory.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonCategory.layer.cornerRadius = 7;
+
 }
 
 - (void)didReceiveMemoryWarning
