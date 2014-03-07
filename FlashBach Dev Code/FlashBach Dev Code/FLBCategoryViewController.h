@@ -11,6 +11,7 @@
 @interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
 
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+
 @end

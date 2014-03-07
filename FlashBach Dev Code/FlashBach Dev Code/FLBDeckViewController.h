@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBDeckViewController : UITableViewController <UITextFieldDelegate>
+@interface FLBDeckViewController : UITableViewController <UITextFieldDelegate> 
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 @end

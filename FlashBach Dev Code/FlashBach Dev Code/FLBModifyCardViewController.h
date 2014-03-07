@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end

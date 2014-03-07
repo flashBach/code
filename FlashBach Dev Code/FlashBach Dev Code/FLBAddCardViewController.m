@@ -77,9 +77,22 @@
     [action  showInView:self.view];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_textCardFront resignFirstResponder];
+    [_textCardBack resignFirstResponder];
+    [_textChooseCategory resignFirstResponder];
+    [_textChooseDeck resignFirstResponder];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField) {
+        [textField resignFirstResponder];
+    }
+    
+    return NO;
 }
 
 @end
