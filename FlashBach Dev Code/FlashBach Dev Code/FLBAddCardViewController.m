@@ -152,7 +152,7 @@ CGRect keyboardBounds;
 		self.entryFields = [[NSMutableArray alloc] init];
 		NSInteger tag = 1;
 		UIView *aView;
-		while (aView = [self.view viewWithTag:tag]) {
+		while ((aView = [self.view viewWithTag:tag])) {
 			if (aView && [[aView class] isSubclassOfClass:[UIResponder class]]) {
 				[entryFields addObject:aView];
 			}
