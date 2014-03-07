@@ -44,6 +44,8 @@
 {
     [_textNewCategory resignFirstResponder];
     [_textNewDeck resignFirstResponder];
+    [_textFront resignFirstResponder];
+    [_textBack resignFirstResponder];
 }
 
 // Is called on textField when Return/Done is pressed to dismiss keyboard

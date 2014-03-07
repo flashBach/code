@@ -313,6 +313,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="5Kj-gn-a62"/>
                     <connections>
+                        <outlet property="textBack" destination="DaP-PX-5TU" id="BmD-0u-qig"/>
+                        <outlet property="textFront" destination="T1f-4x-JiO" id="8jD-ce-4yO"/>
                         <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
                         <outlet property="textNewDeck" destination="A9W-ex-SQ3" id="CBf-Ew-PTn"/>
                     </connections>
