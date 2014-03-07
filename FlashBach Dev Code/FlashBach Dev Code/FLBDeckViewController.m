@@ -33,7 +33,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    // Let keyboard disappear on return
+    // Allow dismissing keyboard
     _textNewDeck.delegate = self;
     
     // Change return key to "done"
@@ -123,9 +123,20 @@
 
  */
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+// Is called when a background touch occurs, dismisses any open keyboard
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_textNewDeck resignFirstResponder];
+}
+
+// Is called on textField when Return/Done is pressed to dismiss keyboard
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField) {
+        [textField resignFirstResponder];
+    }
+    
+    return NO;
 }
 
 @end

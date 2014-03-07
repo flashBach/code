@@ -43,9 +43,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+// Is called when a background touch occurs, dismisses any open keyboard
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_textNewCategory resignFirstResponder];
+    [_textNewDeck resignFirstResponder];
+}
+
+// Is called on textField when Return/Done is pressed to dismiss keyboard
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField) {
+        [textField resignFirstResponder];
+    }
+    
+    return NO;
 }
 
 @end
