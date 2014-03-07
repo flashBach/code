@@ -147,7 +147,13 @@
                             <outlet property="delegate" destination="PB9-v1-sxJ" id="fEZ-UI-k4a"/>
                         </connections>
                     </tableView>
+<<<<<<< HEAD
                     <navigationItem key="navigationItem" id="WnQ-8M-uQl"/>
+=======
+                    <connections>
+                        <outlet property="textNewCategory" destination="KPj-yV-cB3" id="zbA-El-I7g"/>
+                    </connections>
+>>>>>>> 1847181eeac9ac55d91420ffcaeb1a99a283d0ef
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlX-Ib-Au7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,7 +314,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+<<<<<<< HEAD
                     <navigationItem key="navigationItem" id="5Kj-gn-a62"/>
+=======
+                    <connections>
+                        <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
+                        <outlet property="textNewDeck" destination="A9W-ex-SQ3" id="CBf-Ew-PTn"/>
+                    </connections>
+>>>>>>> 1847181eeac9ac55d91420ffcaeb1a99a283d0ef
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Qn-d2-vzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,6 +466,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textNewDeck" destination="Run-Vh-F2T" id="fZU-my-6pk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIQ-o6-sdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,7 +499,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="aiy-Xr-Q6p"/>
         <segue reference="dDV-hF-2dc"/>
+=======
+        <segue reference="dDV-hF-2dc"/>
+        <segue reference="z7u-EO-kEz"/>
+>>>>>>> 1847181eeac9ac55d91420ffcaeb1a99a283d0ef
     </inferredMetricsTieBreakers>
 </document>

@@ -27,12 +27,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // Allow keyboard to disappear upon return press.
+    _textNewCategory.delegate = self;
+    _textNewDeck.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

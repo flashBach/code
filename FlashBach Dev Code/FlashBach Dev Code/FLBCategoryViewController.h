@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBCategoryViewController : UITableViewController
+@interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 @end

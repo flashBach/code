@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>{}
+@interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textCardFront;
 @property (weak, nonatomic) IBOutlet UITextField *textCardBack;
 

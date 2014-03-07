@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBModifyCardViewController : UIViewController
+@interface FLBModifyCardViewController : UIViewController <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
+@property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end
