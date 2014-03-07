@@ -32,6 +32,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // Let keyboard disappear on return
+    _textNewDeck.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,5 +119,10 @@
 }
 
  */
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end

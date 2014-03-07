@@ -39,9 +39,11 @@
     _buttonCategory.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonCategory.layer.cornerRadius = 7;
     
-    // Set textField delegate to let keyboard disappear
+    // Set textField delegate to let keyboard disappear on hitting Return
     _textCardFront.delegate = self;
-
+    _textCardBack.delegate = self;
+    _textChooseCategory.delegate = self;
+    _textChooseDeck.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
