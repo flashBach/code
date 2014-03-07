@@ -163,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="905" y="-613"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Card View Controller-->
         <scene sceneID="Vkr-Fr-yLx">
             <objects>
-                <tableViewController id="DqL-vL-xUU" sceneMemberID="viewController">
+                <tableViewController id="DqL-vL-xUU" customClass="FLBCardViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4Kw-ww-6ms">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,10 +191,10 @@
             </objects>
             <point key="canvasLocation" x="429" y="72"/>
         </scene>
-        <!--View Controller-->
+        <!--Modify Card View Controller-->
         <scene sceneID="Kcr-0v-yMJ">
             <objects>
-                <viewController id="tgg-68-oOB" sceneMemberID="viewController">
+                <viewController id="tgg-68-oOB" customClass="FLBModifyCardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c05-zd-aHf"/>
                         <viewControllerLayoutGuide type="bottom" id="uMR-mP-WMh"/>
@@ -394,7 +394,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="epd-iS-Jjg"/>
         <segue reference="z7u-EO-kEz"/>
+        <segue reference="dDV-hF-2dc"/>
     </inferredMetricsTieBreakers>
 </document>

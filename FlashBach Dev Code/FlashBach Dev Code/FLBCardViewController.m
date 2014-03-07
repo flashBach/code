@@ -1,18 +1,18 @@
 //
-//  FLBCardsViewController.m
+//  FLBCardViewController.m
 //  FlashBach Dev Code
 //
 //  Created by CS121 on 3/6/14.
 //  Copyright (c) 2014 CS121. All rights reserved.
 //
 
-#import "FLBCardsViewController.h"
+#import "FLBCardViewController.h"
 
-@interface FLBCardsViewController ()
+@interface FLBCardViewController ()
 
 @end
 
-@implementation FLBCardsViewController
+@implementation FLBCardViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

@@ -1,5 +1,5 @@
 //
-//  FLBCardsViewController.h
+//  FLBCardViewController.h
 //  FlashBach Dev Code
 //
 //  Created by CS121 on 3/6/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBCardsViewController : UITableViewController
+@interface FLBCardViewController : UITableViewController
 
 @end
