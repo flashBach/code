@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBAddCardViewController : UIViewController
+@interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>{}
+@property (weak, nonatomic) IBOutlet UITextField *textCardFront;
+@property (weak, nonatomic) IBOutlet UITextField *textCardBack;
 
-@property (nonatomic, strong) IBOutlet UITextField *deckChoice;
-@property (nonatomic, strong) IBOutlet UITextField *categoryChoice;
+@property (nonatomic, strong) IBOutlet UITextField *textChooseDeck;
+@property (nonatomic, strong) IBOutlet UITextField *textChooseCategory;
 @property (nonatomic, strong) NSMutableArray *myDecks;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonDeck;
@@ -20,5 +22,7 @@
 
 - (IBAction) deckButtonTapped:(id)sender;
 - (IBAction) categoryButtonTapped:(id)sender;
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end
