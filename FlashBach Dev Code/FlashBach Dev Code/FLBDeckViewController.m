@@ -35,6 +35,9 @@
     
     // Let keyboard disappear on return
     _textNewDeck.delegate = self;
+    
+    // Change return key to "done"
+    [_textNewDeck setReturnKeyType:UIReturnKeyDone];
 }
 
 - (void)didReceiveMemoryWarning

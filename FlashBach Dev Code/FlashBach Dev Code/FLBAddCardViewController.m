@@ -44,6 +44,13 @@
     _textCardBack.delegate = self;
     _textChooseCategory.delegate = self;
     _textChooseDeck.delegate = self;
+    
+    // Change return key to be a done
+    [_textCardFront setReturnKeyType:UIReturnKeyDone];
+    [_textCardBack setReturnKeyType:UIReturnKeyDone];
+    [_textChooseCategory setReturnKeyType:UIReturnKeyDone];
+    [_textChooseDeck setReturnKeyType:UIReturnKeyDone];
+
 }
 
 - (void)didReceiveMemoryWarning

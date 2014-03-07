@@ -35,6 +35,10 @@
     
     // Allow keyboard to disappear on return press
     _textNewCategory.delegate = self;
+    
+    // Change return key to be "done"
+    [_textNewCategory setReturnKeyType:UIReturnKeyDone];
+
 }
 
 - (void)didReceiveMemoryWarning
