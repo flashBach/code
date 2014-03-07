@@ -39,6 +39,11 @@
     _buttonCategory.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonCategory.layer.cornerRadius = 7;
     
+    // Add border to button
+    _buttonAddCard.layer.borderWidth = 0.7f;
+    _buttonAddCard.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonAddCard.layer.cornerRadius = 7;
+    
     // Set textField delegate to let keyboard disappear on hitting Return
     _textCardFront.delegate = self;
     _textCardBack.delegate = self;
