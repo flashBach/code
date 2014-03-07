@@ -38,6 +38,9 @@
     _buttonCategory.layer.borderWidth = 0.7f;
     _buttonCategory.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonCategory.layer.cornerRadius = 7;
+    
+    // Set textField delegate to let keyboard disappear
+    _textCardFront.delegate = self;
 
 }
 
@@ -64,4 +67,10 @@
     
     [action  showInView:self.view];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end
