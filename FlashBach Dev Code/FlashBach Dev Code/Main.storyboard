@@ -70,8 +70,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="IGd-2A-YGj">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="mck-Ec-2ed"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Psa-pS-5QU"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="mck-Ec-2ed">
+                            <connections>
+                                <segue destination="dc5-54-X1D" kind="push" id="Ds4-1c-pgX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Psa-pS-5QU">
+                            <connections>
+                                <segue destination="dc5-54-X1D" kind="push" id="g2v-mz-ZMx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonCategory" destination="few-5d-uC8" id="EbM-WK-RYx"/>
@@ -216,7 +224,7 @@
                             <tableViewSection id="5Dh-Pt-Bb4">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dof-oK-bQE" style="IBUITableViewCellStyleDefault" id="sHC-n1-bul">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHC-n1-bul" id="zEj-4X-ulc">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -495,5 +503,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="dDV-hF-2dc"/>
+        <segue reference="g2v-mz-ZMx"/>
     </inferredMetricsTieBreakers>
 </document>
