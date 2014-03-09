@@ -134,6 +134,9 @@ CGRect keyboardBounds;
 			[view becomeFirstResponder];
 			break;
 		}
+        else{
+            [view resignFirstResponder];
+        }
 	}
     
 	return NO;
