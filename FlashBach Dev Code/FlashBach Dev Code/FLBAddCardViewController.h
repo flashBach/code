@@ -20,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonDeck;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonCategory;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
 
-@property (weak, nonatomic) IBOutlet UIButton *buttonAddCard;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *entryFields;
 
