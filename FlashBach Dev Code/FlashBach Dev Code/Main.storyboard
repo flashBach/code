@@ -202,7 +202,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Review - Front" id="iSj-wR-ecq"/>
+                    <navigationItem key="navigationItem" title="Review - Front" id="iSj-wR-ecq">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="FB5-Th-uMo">
+                            <connections>
+                                <segue destination="dc5-54-X1D" kind="push" id="RHT-kT-hrr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonFlip" destination="TU0-sf-RpF" id="NSl-KR-XOI"/>
                         <outlet property="buttonSkip" destination="IGq-dp-Nri" id="N8z-5N-CSb"/>
@@ -224,7 +230,7 @@
                             <tableViewSection id="5Dh-Pt-Bb4">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dof-oK-bQE" style="IBUITableViewCellStyleDefault" id="sHC-n1-bul">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHC-n1-bul" id="zEj-4X-ulc">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -410,7 +416,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Review - Back" id="a6u-PO-XJ3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C69-cd-I7T"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="KMV-yg-pUF">
+                            <connections>
+                                <segue destination="dc5-54-X1D" kind="push" id="zXJ-dE-LdV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonEasy" destination="bqM-jN-mad" id="a23-lY-c8A"/>
@@ -524,8 +534,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dDV-hF-2dc"/>
-        <segue reference="eaF-wb-I3O"/>
+        <segue reference="epd-iS-Jjg"/>
         <segue reference="9Vy-MT-X6L"/>
+        <segue reference="zXJ-dE-LdV"/>
+        <segue reference="eaF-wb-I3O"/>
     </inferredMetricsTieBreakers>
 </document>
