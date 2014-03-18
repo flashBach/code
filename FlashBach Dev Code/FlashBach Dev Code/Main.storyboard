@@ -7,13 +7,13 @@
         <!--Add Card View Controller-->
         <scene sceneID="ZVf-vl-rZ3">
             <objects>
-                <viewController id="wLx-Ia-nYi" customClass="FLBAddCardViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wLx-Ia-nYi" customClass="FLBAddCardViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oF2-gZ-ix5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" id="FQA-cP-b4B">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="412"/>
+                                <rect key="frame" x="0.0" y="68" width="320" height="412"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Front" minimumFontSize="17" id="ZrN-VO-Wh8">
@@ -84,11 +84,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="buttonAdd" destination="gFh-JH-1UK" id="pBt-VI-llA"/>
                         <outlet property="buttonCategory" destination="few-5d-uC8" id="EbM-WK-RYx"/>
@@ -104,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="-50" y="-593"/>
         </scene>
-        <!--Category View Controller-->
+        <!--Category View Controller - Categories-->
         <scene sceneID="EMy-Yw-Ehe">
             <objects>
                 <tableViewController id="PB9-v1-sxJ" customClass="FLBCategoryViewController" sceneMemberID="viewController">
@@ -116,7 +111,7 @@
                             <tableViewSection id="bGe-oO-cAj">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3hY-Kl-8CO">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3hY-Kl-8CO" id="wVs-kj-h4a">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -132,7 +127,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fU4-NL-514" style="IBUITableViewCellStyleDefault" id="pbg-ex-h3s">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbg-ex-h3s" id="sKI-mV-bTy">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -159,7 +154,9 @@
                             <outlet property="delegate" destination="PB9-v1-sxJ" id="fEZ-UI-k4a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WnQ-8M-uQl"/>
+                    <navigationItem key="navigationItem" title="Categories" id="WnQ-8M-uQl">
+                        <barButtonItem key="backBarButtonItem" title="Categories" id="orU-5s-XXq"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="textNewCategory" destination="KPj-yV-cB3" id="zbA-El-I7g"/>
                     </connections>
@@ -212,8 +209,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iSj-wR-ecq"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="buttonFlip" destination="TU0-sf-RpF" id="NSl-KR-XOI"/>
                         <outlet property="buttonSkip" destination="IGq-dp-Nri" id="N8z-5N-CSb"/>
@@ -326,8 +321,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Kj-gn-a62"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="textBack" destination="DaP-PX-5TU" id="BmD-0u-qig"/>
                         <outlet property="textFront" destination="T1f-4x-JiO" id="8jD-ce-4yO"/>
@@ -415,9 +408,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="a6u-PO-XJ3"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationItem key="navigationItem" id="a6u-PO-XJ3">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C69-cd-I7T">
+                            <connections>
+                                <segue destination="PB9-v1-sxJ" kind="modal" id="Su5-mn-dqD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonEasy" destination="bqM-jN-mad" id="a23-lY-c8A"/>
                         <outlet property="buttonHard" destination="DKq-T0-ZXI" id="41w-4b-jEU"/>
@@ -428,7 +426,7 @@
             </objects>
             <point key="canvasLocation" x="905" y="72"/>
         </scene>
-        <!--Deck View Controller-->
+        <!--Deck View Controller - Decks-->
         <scene sceneID="VsL-Ex-TMU">
             <objects>
                 <tableViewController id="dc5-54-X1D" customClass="FLBDeckViewController" sceneMemberID="viewController">
@@ -440,7 +438,7 @@
                             <tableViewSection id="JFj-c4-GDe">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ryG-kT-Eae">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryG-kT-Eae" id="3jK-od-ftU">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -456,7 +454,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="8fK-y5-CHa" style="IBUITableViewCellStyleDefault" id="uSc-51-HCr">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uSc-51-HCr" id="zdU-nA-fmc">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -483,7 +481,8 @@
                             <outlet property="delegate" destination="dc5-54-X1D" id="8Ya-LC-QLz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Mcs-dt-5xL">
+                    <navigationItem key="navigationItem" title="Decks" id="Mcs-dt-5xL">
+                        <barButtonItem key="backBarButtonItem" title="Decks" id="lN6-Ar-x7H"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
                             <connections>
                                 <segue destination="wLx-Ia-nYi" kind="push" id="eaF-wb-I3O"/>
@@ -528,8 +527,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Bk6-71-aQb"/>
+        <segue reference="epd-iS-Jjg"/>
         <segue reference="vcg-PT-fda"/>
-        <segue reference="g2v-mz-ZMx"/>
+        <segue reference="Su5-mn-dqD"/>
+        <segue reference="Ds4-1c-pgX"/>
     </inferredMetricsTieBreakers>
 </document>
