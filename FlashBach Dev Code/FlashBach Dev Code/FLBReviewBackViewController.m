@@ -42,6 +42,11 @@
     _buttonHard.layer.borderWidth = 0.7f;
     _buttonHard.layer.borderColor = [[UIColor redColor]CGColor];
     _buttonHard.layer.cornerRadius = 7;
+    
+    // Add border to button
+    _buttonEditCard.layer.borderWidth = 0.7f;
+    _buttonEditCard.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonEditCard.layer.cornerRadius = 7;
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonHard;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNormal;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEasy;
+@property (weak, nonatomic) IBOutlet UIButton *buttonEditCard;
 
 @end
