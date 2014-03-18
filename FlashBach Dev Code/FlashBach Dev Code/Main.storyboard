@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Add Card View Controller-->
+        <!--Add Card View Controller - Add Card-->
         <scene sceneID="ZVf-vl-rZ3">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="wLx-Ia-nYi" customClass="FLBAddCardViewController" sceneMemberID="viewController">
@@ -72,7 +72,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IGd-2A-YGj">
+                    <navigationItem key="navigationItem" title="Add Card" id="IGd-2A-YGj">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="mck-Ec-2ed">
                             <connections>
                                 <segue destination="dc5-54-X1D" kind="push" id="Ds4-1c-pgX"/>
@@ -165,7 +165,7 @@
             </objects>
             <point key="canvasLocation" x="429" y="-613"/>
         </scene>
-        <!--Review Front View Controller-->
+        <!--Review Front View Controller - Review - Front-->
         <scene sceneID="O9n-Tc-xEz">
             <objects>
                 <viewController id="hWF-xk-chh" customClass="FLBReviewFrontViewController" sceneMemberID="viewController">
@@ -208,7 +208,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iSj-wR-ecq"/>
+                    <navigationItem key="navigationItem" title="Review - Front" id="iSj-wR-ecq"/>
                     <connections>
                         <outlet property="buttonFlip" destination="TU0-sf-RpF" id="NSl-KR-XOI"/>
                         <outlet property="buttonSkip" destination="IGq-dp-Nri" id="N8z-5N-CSb"/>
@@ -218,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="905" y="-613"/>
         </scene>
-        <!--Card View Controller-->
+        <!--Card View Controller - Cards-->
         <scene sceneID="Vkr-Fr-yLx">
             <objects>
                 <tableViewController id="DqL-vL-xUU" customClass="FLBCardViewController" sceneMemberID="viewController">
@@ -257,7 +257,9 @@
                             <outlet property="delegate" destination="DqL-vL-xUU" id="v8f-x3-9GX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xkL-3N-qdX"/>
+                    <navigationItem key="navigationItem" title="Cards" id="xkL-3N-qdX">
+                        <barButtonItem key="backBarButtonItem" title="Cards" id="jvc-bM-6gX"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFs-d8-5sv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,9 +332,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Qn-d2-vzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="429" y="785"/>
+            <point key="canvasLocation" x="429" y="712"/>
         </scene>
-        <!--Review Back View Controller-->
+        <!--Review Back View Controller - Review - Back-->
         <scene sceneID="nCz-sf-H5m">
             <objects>
                 <viewController id="rC6-1C-KCN" customClass="FLBReviewBackViewController" sceneMemberID="viewController">
@@ -402,19 +404,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wLx-Ia-nYi" kind="push" id="vcg-PT-fda"/>
+                                    <segue destination="tgg-68-oOB" kind="push" id="9Vy-MT-X6L"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="a6u-PO-XJ3">
-                        <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C69-cd-I7T">
-                            <connections>
-                                <segue destination="PB9-v1-sxJ" kind="modal" id="Su5-mn-dqD"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Review - Back" id="a6u-PO-XJ3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="C69-cd-I7T"/>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonEasy" destination="bqM-jN-mad" id="a23-lY-c8A"/>
@@ -528,8 +525,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="epd-iS-Jjg"/>
-        <segue reference="vcg-PT-fda"/>
-        <segue reference="Su5-mn-dqD"/>
-        <segue reference="Ds4-1c-pgX"/>
+        <segue reference="9Vy-MT-X6L"/>
+        <segue reference="g2v-mz-ZMx"/>
     </inferredMetricsTieBreakers>
 </document>
