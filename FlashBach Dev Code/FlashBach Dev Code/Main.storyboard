@@ -203,7 +203,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Review - Front" id="iSj-wR-ecq">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="FB5-Th-uMo">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="FB5-Th-uMo">
                             <connections>
                                 <segue destination="dc5-54-X1D" kind="push" id="RHT-kT-hrr"/>
                             </connections>
@@ -270,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="429" y="72"/>
         </scene>
-        <!--Modify Card View Controller-->
+        <!--Modify Card View Controller - Edit Card-->
         <scene sceneID="Kcr-0v-yMJ">
             <objects>
                 <viewController id="tgg-68-oOB" customClass="FLBModifyCardViewController" sceneMemberID="viewController">
@@ -278,20 +278,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="How do you compare algorithms?" id="T1f-4x-JiO">
-                                <rect key="frame" x="40" y="67" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="We can measure time and space in various situations (best case/worst case/average case/amortized)." id="DaP-PX-5TU">
-                                <rect key="frame" x="40" y="172" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Deck" minimumFontSize="17" id="A9W-ex-SQ3">
                                 <rect key="frame" x="40" y="335" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -324,13 +310,23 @@
                                     <action selector="categoryButtonTapped:" destination="wLx-Ia-nYi" eventType="touchUpInside" id="2sz-0R-Khn"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="How do you compare algorithms?" borderStyle="roundedRect" minimumFontSize="17" id="qhX-KZ-ZmW">
+                                <rect key="frame" x="41" y="134" width="239" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="We can measure time and space." borderStyle="roundedRect" minimumFontSize="17" id="Sqj-pf-rbd">
+                                <rect key="frame" x="41" y="216" width="239" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5Kj-gn-a62"/>
+                    <navigationItem key="navigationItem" title="Edit Card" id="5Kj-gn-a62"/>
                     <connections>
-                        <outlet property="textBack" destination="DaP-PX-5TU" id="BmD-0u-qig"/>
-                        <outlet property="textFront" destination="T1f-4x-JiO" id="8jD-ce-4yO"/>
                         <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
                         <outlet property="textNewDeck" destination="A9W-ex-SQ3" id="CBf-Ew-PTn"/>
                     </connections>
@@ -416,6 +412,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Review - Back" id="a6u-PO-XJ3">
+                        <barButtonItem key="backBarButtonItem" title="Review - Back" id="Cp1-Nu-8w4"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="KMV-yg-pUF">
                             <connections>
                                 <segue destination="dc5-54-X1D" kind="push" id="zXJ-dE-LdV"/>
