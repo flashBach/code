@@ -27,6 +27,25 @@
 {
     [super viewDidLoad];
 
+    // Attempt to add border to add button on deck view
+    UIButton* buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    // Add "+" label to button
+    [buttonAdd setTitle:@"+" forState:UIControlStateNormal];
+    [buttonAdd.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+    [buttonAdd.titleLabel setTextColor:[UIColor blueColor]];
+    
+    
+    // Add frame to button
+    buttonAdd.frame = CGRectMake(0, 0, 30.0, 30.0); // make frame be 30x30
+    buttonAdd.layer.borderWidth = 1.2f;
+    buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
+    buttonAdd.layer.cornerRadius = 7;
+    
+    // Make bar button out of this button
+    UIBarButtonItem* barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
+    self.navigationItem.rightBarButtonItem = barButtonAdd;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -40,6 +59,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    
     // Dispose of any resources that can be recreated.
 }
 
