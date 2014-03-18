@@ -72,18 +72,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Card" id="IGd-2A-YGj">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="mck-Ec-2ed">
-                            <connections>
-                                <segue destination="dc5-54-X1D" kind="push" id="Ds4-1c-pgX"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Psa-pS-5QU">
-                            <connections>
-                                <segue destination="dc5-54-X1D" kind="push" id="g2v-mz-ZMx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add Card" id="IGd-2A-YGj"/>
                     <connections>
                         <outlet property="buttonAdd" destination="gFh-JH-1UK" id="pBt-VI-llA"/>
                         <outlet property="buttonCategory" destination="few-5d-uC8" id="EbM-WK-RYx"/>
@@ -156,6 +145,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="WnQ-8M-uQl">
                         <barButtonItem key="backBarButtonItem" title="Categories" id="orU-5s-XXq"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ww6-9E-jJA">
+                            <connections>
+                                <segue destination="wLx-Ia-nYi" kind="push" id="1M1-j7-0yq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="textNewCategory" destination="KPj-yV-cB3" id="zbA-El-I7g"/>
@@ -478,16 +472,17 @@
                             <outlet property="delegate" destination="dc5-54-X1D" id="8Ya-LC-QLz"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Decks" id="Mcs-dt-5xL">
                         <barButtonItem key="backBarButtonItem" title="Decks" id="lN6-Ar-x7H"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
-                            <connections>
-                                <segue destination="wLx-Ia-nYi" kind="push" id="eaF-wb-I3O"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Review" id="X7O-Mz-7DB">
+                        <barButtonItem key="leftBarButtonItem" title="Review" id="X7O-Mz-7DB">
                             <connections>
                                 <segue destination="hWF-xk-chh" kind="push" id="dDV-hF-2dc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
+                            <connections>
+                                <segue destination="wLx-Ia-nYi" kind="push" id="eaF-wb-I3O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -524,8 +519,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="epd-iS-Jjg"/>
+        <segue reference="dDV-hF-2dc"/>
+        <segue reference="eaF-wb-I3O"/>
         <segue reference="9Vy-MT-X6L"/>
-        <segue reference="g2v-mz-ZMx"/>
     </inferredMetricsTieBreakers>
 </document>
