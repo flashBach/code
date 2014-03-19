@@ -520,7 +520,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
                             <connections>
-                                <segue destination="wLx-Ia-nYi" kind="push" id="eaF-wb-I3O"/>
+                                <segue destination="wLx-Ia-nYi" kind="push" identifier="addCardFromDeckView" id="eaF-wb-I3O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -558,8 +558,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="aiy-Xr-Q6p"/>
-        <segue reference="gSS-wj-yWZ"/>
-        <segue reference="epd-iS-Jjg"/>
+        <segue reference="eaF-wb-I3O"/>
+        <segue reference="dDV-hF-2dc"/>
         <segue reference="9Vy-MT-X6L"/>
     </inferredMetricsTieBreakers>
 </document>

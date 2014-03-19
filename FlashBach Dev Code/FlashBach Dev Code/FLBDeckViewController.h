@@ -11,4 +11,6 @@
 @interface FLBDeckViewController : UITableViewController <UITextFieldDelegate> 
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 
+- (void) addButtonPressed:(id)sender;
+
 @end

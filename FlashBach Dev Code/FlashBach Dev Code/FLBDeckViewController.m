@@ -23,28 +23,42 @@
     return self;
 }
 
+- (void) addButtonPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"addCardFromDeckView" sender:sender];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    ///////////////////// Modify add card button //////////////////////////////////////////////////////
+    
     // Attempt to add border to add button on deck view
     UIButton* buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
     
     // Add "+" label to button
-    [buttonAdd setTitle:@"+" forState:UIControlStateNormal];
     [buttonAdd.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
-    [buttonAdd.titleLabel setTextColor:[UIColor blueColor]];
-    
+    [buttonAdd setTitle:@"New Card" forState:UIControlStateNormal];
+    [buttonAdd setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     
     // Add frame to button
-    buttonAdd.frame = CGRectMake(0, 0, 30.0, 30.0); // make frame be 30x30
+    buttonAdd.frame = CGRectMake(0, 0, 80.0, 30.0); // make frame
     buttonAdd.layer.borderWidth = 1.2f;
     buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
     buttonAdd.layer.cornerRadius = 7;
     
+    // Add action to button
+    [buttonAdd addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     // Make bar button out of this button
     UIBarButtonItem* barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
     self.navigationItem.rightBarButtonItem = barButtonAdd;
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
