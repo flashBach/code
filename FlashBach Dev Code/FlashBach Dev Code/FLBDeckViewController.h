@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FLBDeckViewController : UITableViewController <UITextFieldDelegate> 
+@interface FLBDeckViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 
+@property (nonatomic, retain) UITableView *autocompleteTableView;
+@property (nonatomic, retain) NSMutableArray *autocompleteValuesArray;
+@property (nonatomic, retain) NSMutableArray *autocompleteValuesDisplay;
+
+- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 - (void) addButtonPressed:(id)sender;
 
 @end

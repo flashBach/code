@@ -13,6 +13,9 @@
 @end
 
 @implementation FLBDeckViewController
+@synthesize autocompleteValuesDisplay;
+@synthesize autocompleteTableView;
+@synthesize autocompleteValuesArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -68,7 +71,39 @@
     
     // Allow dismissing keyboard
     _textNewDeck.delegate = self;
+    
+    // Auto complete custom values
+//    autocompleteTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,80,320,120) style:UITableViewStylePlain];
+//    autocompleteTableView.delegate = self;
+//    autocompleteTableView.dataSource = self;
+//    autocompleteTableView.scrollEnabled = YES;
+//    autocompleteTableView.hidden = YES;
+//    [self.view addSubview:autocompleteTableView];
 }
+
+//- (BOOL)textField:(UITextField*)textField
+//    shouldChangeCharactersInRange:(NSRange)range
+//    replacementString:(NSString*)string{
+//    autocompleteTableView.hidden = NO;
+//    
+//    NSString *substring = [NSString stringWithString:textField.text];
+//    substring = [substring stringByReplacingCharactersInRange:range withString:string];
+//    [self searchAutocompleteEntriesWithSubstring:substring];
+//    return YES;
+//}
+//
+//- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
+//    // Put anything that starts with this substring into the autocmplete array
+//    // The items in this array is what will show up in the table view
+//    [autocompleteValuesDisplay removeAllObjects];
+//    for (NSString *curString in autocompleteValuesArray) {
+//        NSRange substringRange = [curString rangeOfString:substring];
+//        if (substringRange.location == 0) {
+//            [autocompleteValuesDisplay addObject:curString];
+//        }
+//    }
+//    [autocompleteTableView reloadData];
+//}
 
 - (void)didReceiveMemoryWarning
 {
