@@ -27,6 +27,12 @@
 		93758BB018B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93758BAF18B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m */; };
 		93802F7118C928F4003DC73E /* FLBReviewFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */; };
 		93802F7418C92A61003DC73E /* FLBReviewBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */; };
+		93F8A29918EA874100899AC1 /* Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29218EA874100899AC1 /* Checkbox.m */; };
+		93F8A29A18EA874100899AC1 /* CustomAccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29418EA874100899AC1 /* CustomAccessoryViewController.m */; };
+		93F8A29B18EA874100899AC1 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29618EA874100899AC1 /* CustomCell.m */; };
+		93F8A29C18EA874100899AC1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29818EA874100899AC1 /* DetailViewController.m */; };
+		93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93F8A2A718EA8E5B00899AC1 /* TableData.plist */; };
+		93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,16 @@
 		93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBReviewFrontViewController.m; sourceTree = "<group>"; };
 		93802F7218C92A61003DC73E /* FLBReviewBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBReviewBackViewController.h; sourceTree = "<group>"; };
 		93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBReviewBackViewController.m; sourceTree = "<group>"; };
+		93F8A29118EA874100899AC1 /* Checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkbox.h; sourceTree = "<group>"; };
+		93F8A29218EA874100899AC1 /* Checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkbox.m; sourceTree = "<group>"; };
+		93F8A29318EA874100899AC1 /* CustomAccessoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAccessoryViewController.h; sourceTree = "<group>"; };
+		93F8A29418EA874100899AC1 /* CustomAccessoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAccessoryViewController.m; sourceTree = "<group>"; };
+		93F8A29518EA874100899AC1 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		93F8A29618EA874100899AC1 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		93F8A29718EA874100899AC1 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		93F8A29818EA874100899AC1 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		93F8A2A718EA8E5B00899AC1 /* TableData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TableData.plist; sourceTree = "<group>"; };
+		93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Accessory-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +116,8 @@
 		93758B7E18B3EDD4002CB514 = {
 			isa = PBXGroup;
 			children = (
+				93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */,
+				93F8A2A718EA8E5B00899AC1 /* TableData.plist */,
 				93758B9018B3EDD4002CB514 /* FlashBach Dev Code */,
 				93758BA918B3EDD5002CB514 /* FlashBach Dev CodeTests */,
 				93758B8918B3EDD4002CB514 /* Frameworks */,
@@ -130,6 +148,14 @@
 		93758B9018B3EDD4002CB514 /* FlashBach Dev Code */ = {
 			isa = PBXGroup;
 			children = (
+				93F8A29118EA874100899AC1 /* Checkbox.h */,
+				93F8A29218EA874100899AC1 /* Checkbox.m */,
+				93F8A29318EA874100899AC1 /* CustomAccessoryViewController.h */,
+				93F8A29418EA874100899AC1 /* CustomAccessoryViewController.m */,
+				93F8A29518EA874100899AC1 /* CustomCell.h */,
+				93F8A29618EA874100899AC1 /* CustomCell.m */,
+				93F8A29718EA874100899AC1 /* DetailViewController.h */,
+				93F8A29818EA874100899AC1 /* DetailViewController.m */,
 				93758B9918B3EDD4002CB514 /* FLBAppDelegate.h */,
 				93758B9A18B3EDD4002CB514 /* FLBAppDelegate.m */,
 				93758B9C18B3EDD4002CB514 /* Images.xcassets */,
@@ -260,7 +286,9 @@
 			files = (
 				5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */,
 				93758B9518B3EDD4002CB514 /* InfoPlist.strings in Resources */,
+				93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */,
 				93758B9D18B3EDD4002CB514 /* Images.xcassets in Resources */,
+				93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,12 +309,16 @@
 			files = (
 				9353155F18C935EF00AA45A1 /* FLBDeckViewController.m in Sources */,
 				519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */,
+				93F8A29B18EA874100899AC1 /* CustomCell.m in Sources */,
 				9353156218C9361300AA45A1 /* FLBCategoryViewController.m in Sources */,
 				93802F7418C92A61003DC73E /* FLBReviewBackViewController.m in Sources */,
 				9353157118C9393000AA45A1 /* FLBCardViewController.m in Sources */,
 				93758B9718B3EDD4002CB514 /* main.m in Sources */,
 				9353156E18C9391200AA45A1 /* FLBModifyCardViewController.m in Sources */,
 				93758B9B18B3EDD4002CB514 /* FLBAppDelegate.m in Sources */,
+				93F8A29C18EA874100899AC1 /* DetailViewController.m in Sources */,
+				93F8A29918EA874100899AC1 /* Checkbox.m in Sources */,
+				93F8A29A18EA874100899AC1 /* CustomAccessoryViewController.m in Sources */,
 				93802F7118C928F4003DC73E /* FLBReviewFrontViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

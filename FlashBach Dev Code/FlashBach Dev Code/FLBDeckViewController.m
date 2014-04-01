@@ -34,27 +34,27 @@
     [super viewDidLoad];
 
     ///////////////////// Modify add card button //////////////////////////////////////////////////////
-    
-    // Attempt to add border to add button on deck view
-    UIButton* buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    // Add "+" label to button
-    [buttonAdd.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
-    [buttonAdd setTitle:@"New Card" forState:UIControlStateNormal];
-    [buttonAdd setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    
-    // Add frame to button
-    buttonAdd.frame = CGRectMake(0, 0, 80.0, 30.0); // make frame
-    buttonAdd.layer.borderWidth = 1.2f;
-    buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
-    buttonAdd.layer.cornerRadius = 7;
-    
-    // Add action to button
-    [buttonAdd addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    // Make bar button out of this button
-    UIBarButtonItem* barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
-    self.navigationItem.rightBarButtonItem = barButtonAdd;
+//    
+//    // Attempt to add border to add button on deck view
+//    UIButton* buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+//    
+//    // Add "+" label to button
+//    [buttonAdd.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+//    [buttonAdd setTitle:@"New Card" forState:UIControlStateNormal];
+//    [buttonAdd setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//    
+//    // Add frame to button
+//    buttonAdd.frame = CGRectMake(0, 0, 80.0, 30.0); // make frame
+//    buttonAdd.layer.borderWidth = 1.2f;
+//    buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
+//    buttonAdd.layer.cornerRadius = 7;
+//    
+//    // Add action to button
+//    [buttonAdd addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    // Make bar button out of this button
+//    UIBarButtonItem* barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
+//    self.navigationItem.rightBarButtonItem = barButtonAdd;
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 

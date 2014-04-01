@@ -29,6 +29,8 @@
 	// Do any additional setup after loading the view.
     
     // Allow keyboard to disappear upon return press.
+    _textBack.delegate = self;
+    _textFront.delegate = self;
     _textNewCategory.delegate = self;
     _textNewDeck.delegate = self;
 }
@@ -48,14 +50,42 @@
     [_textBack resignFirstResponder];
 }
 
-// Is called on textField when Return/Done is pressed to dismiss keyboard
-- (BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField) {
-        [textField resignFirstResponder];
-    }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	// Find the next entry field
+	for (UIView *view in [self entryFields]) {
+		if (view.tag == (textField.tag + 1)) {
+			[view becomeFirstResponder];
+			break;
+		}
+        else{
+            [view resignFirstResponder];
+        }
+	}
     
-    return NO;
+	return NO;
+}
+
+@synthesize entryFields;
+
+/*
+ Returns an array of all data entry fields in the view.
+ Fields are ordered by tag, and only fields with tag > 0 are included.
+ Returned fields are guaranteed to be a subclass of UIResponder.
+ Note: The tags are set for priority in the stroyboard view.
+ */
+- (NSMutableArray *)entryFields {
+	if (!entryFields || [entryFields count] == 0) {
+		self.entryFields = [[NSMutableArray alloc] init];
+		NSInteger tag = 1;
+		UIView *aView;
+		while ((aView = [self.view viewWithTag:tag])) {
+			if (aView && [[aView class] isSubclassOfClass:[UIResponder class]]) {
+				[entryFields addObject:aView];
+			}
+			tag++;
+		}
+	}
+	return entryFields;
 }
 
 

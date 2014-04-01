@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>text</key>
+		<string>ENGR 59</string>
+		<key>checked</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>CS 5</string>
+		<key>checked</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>CS 60</string>
+		<key>checked</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>CS 70</string>
+		<key>checked</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>Misc</string>
+		<key>checked</key>
+		<false/>
+	</dict>
+</array>
+</plist>

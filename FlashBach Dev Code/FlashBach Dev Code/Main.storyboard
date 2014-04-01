@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbS-Z5-8s0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbS-Z5-8s0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -100,7 +100,7 @@
                             <tableViewSection id="bGe-oO-cAj">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3hY-Kl-8CO">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3hY-Kl-8CO" id="wVs-kj-h4a">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -116,7 +116,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fU4-NL-514" style="IBUITableViewCellStyleDefault" id="pbg-ex-h3s">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbg-ex-h3s" id="sKI-mV-bTy">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -236,7 +236,7 @@
                             <tableViewSection id="5Dh-Pt-Bb4">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dof-oK-bQE" style="IBUITableViewCellStyleDefault" id="sHC-n1-bul">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHC-n1-bul" id="zEj-4X-ulc">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -288,13 +288,13 @@
                                 <rect key="frame" x="-20" y="0.0" width="340" height="488"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="How do you compare algorithms?" borderStyle="roundedRect" minimumFontSize="17" id="qhX-KZ-ZmW">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="How do you compare algorithms?" borderStyle="roundedRect" minimumFontSize="17" id="qhX-KZ-ZmW">
                                         <rect key="frame" x="51" y="111" width="239" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="We can measure time and space." borderStyle="roundedRect" minimumFontSize="17" id="Sqj-pf-rbd">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="We can measure time and space." borderStyle="roundedRect" minimumFontSize="17" id="Sqj-pf-rbd">
                                         <rect key="frame" x="51" y="174" width="239" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -320,13 +320,13 @@
                                             <action selector="categoryButtonTapped:" destination="wLx-Ia-nYi" eventType="touchUpInside" id="2sz-0R-Khn"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Deck" minimumFontSize="17" id="A9W-ex-SQ3">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Deck" minimumFontSize="17" id="A9W-ex-SQ3">
                                         <rect key="frame" x="51" y="284" width="142" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Category" minimumFontSize="17" id="8lr-xA-dAE">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Category" minimumFontSize="17" id="8lr-xA-dAE">
                                         <rect key="frame" x="51" y="367" width="142" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -339,6 +339,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Card" id="5Kj-gn-a62"/>
                     <connections>
+                        <outlet property="textBack" destination="Sqj-pf-rbd" id="GFK-nx-hdv"/>
+                        <outlet property="textFront" destination="qhX-KZ-ZmW" id="jn7-wZ-CPO"/>
                         <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
                         <outlet property="textNewDeck" destination="A9W-ex-SQ3" id="CBf-Ew-PTn"/>
                     </connections>
@@ -378,7 +380,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DKq-T0-ZXI">
-                                        <rect key="frame" x="46" y="367" width="42" height="30"/>
+                                        <rect key="frame" x="243" y="367" width="42" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title=" Hard ">
                                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -399,7 +401,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bqM-jN-mad">
-                                        <rect key="frame" x="243" y="367" width="42" height="30"/>
+                                        <rect key="frame" x="46" y="367" width="42" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title=" Easy ">
                                             <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -520,7 +522,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
                             <connections>
-                                <segue destination="wLx-Ia-nYi" kind="push" identifier="addCardFromDeckView" id="eaF-wb-I3O"/>
+                                <segue destination="2Sl-BA-vnx" kind="push" id="j6B-eg-igr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -531,6 +533,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIQ-o6-sdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="429" y="-1312"/>
+        </scene>
+        <!--Custom Accessory View Controller-->
+        <scene sceneID="UTq-RY-xZG">
+            <objects>
+                <tableViewController id="2Sl-BA-vnx" customClass="CustomAccessoryViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BFV-jc-ynt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomCell" id="9rR-je-8oN" customClass="CustomCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9rR-je-8oN" id="IWQ-7j-rWN">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tuj-oe-eqF">
+                                            <rect key="frame" x="72" y="11" width="164" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="tuj-oe-eqF" id="ZoB-mW-ZZn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Sl-BA-vnx" id="vhH-r3-dZo"/>
+                            <outlet property="delegate" destination="2Sl-BA-vnx" id="ePu-Co-kJe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="819-pP-U7y"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gwr-Ui-cMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="-1312"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="PkM-af-YIa">
+            <objects>
+                <viewController id="im2-T6-FsS" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jDQ-ya-maW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="YYE-Um-1W9">
+                                <rect key="frame" x="0.0" y="26" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="SIV-kC-fe3"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="McM-yR-Mj5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S9p-4P-gqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="-1312"/>
         </scene>
         <!--Navigation Controller - FlashBach-->
         <scene sceneID="ZQy-HY-OVt">
@@ -557,9 +624,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aiy-Xr-Q6p"/>
-        <segue reference="eaF-wb-I3O"/>
-        <segue reference="dDV-hF-2dc"/>
         <segue reference="9Vy-MT-X6L"/>
+        <segue reference="dDV-hF-2dc"/>
+        <segue reference="aiy-Xr-Q6p"/>
+        <segue reference="1M1-j7-0yq"/>
     </inferredMetricsTieBreakers>
 </document>
