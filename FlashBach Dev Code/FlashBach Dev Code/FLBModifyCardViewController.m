@@ -28,6 +28,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // Add border to Add Button
+    // Add border to button
+    _buttonDone.layer.borderWidth = 0.7f;
+    _buttonDone.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonDone.layer.cornerRadius = 7;
+    
     // Allow keyboard to disappear upon return press.
     _textBack.delegate = self;
     _textFront.delegate = self;
@@ -62,8 +68,10 @@
         }
 	}
     
+    
 	return NO;
 }
+
 
 @synthesize entryFields;
 
@@ -86,6 +94,11 @@
 		}
 	}
 	return entryFields;
+}
+
+// Returns from this view to sender (pop) when Done is clicked.
+- (IBAction)handleDoneClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

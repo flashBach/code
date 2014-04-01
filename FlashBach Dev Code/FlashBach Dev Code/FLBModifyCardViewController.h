@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
+@property (weak, nonatomic) IBOutlet UIButton *buttonDone;
 
 @property (nonatomic, retain) NSMutableArray *entryFields;
 

@@ -332,6 +332,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1vR-4q-y2x">
+                                        <rect key="frame" x="160" y="421" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title=" Done ">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleDoneClick:" destination="tgg-68-oOB" eventType="touchUpInside" id="4CI-YE-XC9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -339,6 +349,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Card" id="5Kj-gn-a62"/>
                     <connections>
+                        <outlet property="buttonDone" destination="1vR-4q-y2x" id="ejG-X8-OAK"/>
                         <outlet property="textBack" destination="Sqj-pf-rbd" id="GFK-nx-hdv"/>
                         <outlet property="textFront" destination="qhX-KZ-ZmW" id="jn7-wZ-CPO"/>
                         <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
@@ -624,9 +635,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9Vy-MT-X6L"/>
-        <segue reference="dDV-hF-2dc"/>
+        <segue reference="h4d-9o-oYZ"/>
         <segue reference="aiy-Xr-Q6p"/>
+        <segue reference="dDV-hF-2dc"/>
         <segue reference="1M1-j7-0yq"/>
     </inferredMetricsTieBreakers>
 </document>
