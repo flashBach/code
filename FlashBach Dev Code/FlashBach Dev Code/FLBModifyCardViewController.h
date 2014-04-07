@@ -15,10 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDone;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, retain) NSMutableArray *entryFields;
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (BOOL)textFieldShouldReturn:(UITextField *)textField;
+- (BOOL) textFieldShouldReturn:(UITextField *)textField;
 
 @end

@@ -350,6 +350,7 @@
                     <navigationItem key="navigationItem" title="Edit Card" id="5Kj-gn-a62"/>
                     <connections>
                         <outlet property="buttonDone" destination="1vR-4q-y2x" id="ejG-X8-OAK"/>
+                        <outlet property="scrollView" destination="1qj-Ml-VaZ" id="p3S-wf-zs9"/>
                         <outlet property="textBack" destination="Sqj-pf-rbd" id="GFK-nx-hdv"/>
                         <outlet property="textFront" destination="qhX-KZ-ZmW" id="jn7-wZ-CPO"/>
                         <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
@@ -358,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Qn-d2-vzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="429" y="712"/>
+            <point key="canvasLocation" x="429" y="722"/>
         </scene>
         <!--Review Back View Controller - Review - Back-->
         <scene sceneID="nCz-sf-H5m">

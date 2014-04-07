@@ -50,8 +50,9 @@
 // Is called when a background touch occurs, dismisses any open keyboard
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_textNewCategory resignFirstResponder];
+    [_buttonDone resignFirstResponder];
     [_textNewDeck resignFirstResponder];
+    [_textNewCategory resignFirstResponder];
     [_textFront resignFirstResponder];
     [_textBack resignFirstResponder];
 }
@@ -70,6 +71,46 @@
     
     
 	return NO;
+}
+
+
+
+
+// ===================
+// http://iphoneincubator.com/blog/windows-views/how-to-create-a-data-entry-screen
+// ===================
+CGRect keyboardBounds;
+
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	[self scrollViewToCenterOfScreen:textField];
+}
+
+#pragma mark UITextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+	[self scrollViewToCenterOfScreen:textView];
+}
+
+- (void)scrollViewToCenterOfScreen:(UIView *)theView {
+	CGFloat viewCenterY = theView.center.y;
+	CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+    
+	CGFloat availableHeight = applicationFrame.size.height - keyboardBounds.size.height;	// Remove area covered by keyboard
+    
+	CGFloat y = viewCenterY - availableHeight / 2.0;
+	if (y < 0) {
+		y = 0;
+	}
+	_scrollView.contentSize = CGSizeMake(applicationFrame.size.width, applicationFrame.size.height + keyboardBounds.size.height);
+	[_scrollView setContentOffset:CGPointMake(0, y) animated:YES];
+}
+
+- (void)keyboardNotification:(NSNotification*)notification {
+	NSDictionary *userInfo = [notification userInfo];
+	NSValue *keyboardBoundsValue = [userInfo objectForKey:UIKeyboardBoundsUserInfoKey];
+	[keyboardBoundsValue getValue:&keyboardBounds];
 }
 
 
