@@ -13,6 +13,12 @@
 @end
 
 @implementation FLBAddCardViewController
+@synthesize textCardBack;
+@synthesize textCardFront;
+@synthesize textChooseCategory;
+@synthesize textChooseDeck;
+@synthesize currentCategory;
+@synthesize currentDeck;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,16 +51,19 @@
     _buttonCategory.layer.cornerRadius = 7;
     
     // Set textField delegate to let keyboard disappear on hitting Return
-    _textCardFront.delegate = self;
-    _textCardBack.delegate = self;
-    _textChooseCategory.delegate = self;
-    _textChooseDeck.delegate = self;
+    textCardFront.delegate = self;
+    textCardBack.delegate = self;
+    textChooseCategory.delegate = self;
+    textChooseDeck.delegate = self;
     
     // Look for keyboard size
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardNotification:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
+    
+    textChooseDeck.text = currentDeck;
+    textChooseCategory.text = currentCategory;
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,10 +93,10 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_textCardFront resignFirstResponder];
-    [_textCardBack resignFirstResponder];
-    [_textChooseCategory resignFirstResponder];
-    [_textChooseDeck resignFirstResponder];
+    [textCardFront resignFirstResponder];
+    [textCardBack resignFirstResponder];
+    [textChooseCategory resignFirstResponder];
+    [textChooseDeck resignFirstResponder];
 }
 
 // ===================

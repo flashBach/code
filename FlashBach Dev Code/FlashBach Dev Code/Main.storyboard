@@ -242,7 +242,7 @@
                         <barButtonItem key="backBarButtonItem" title="Cards" id="jvc-bM-6gX"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sX4-hG-Sy2">
                             <connections>
-                                <segue destination="wLx-Ia-nYi" kind="push" id="gSS-wj-yWZ"/>
+                                <segue destination="wLx-Ia-nYi" kind="push" identifier="CardToNewCard" id="gSS-wj-yWZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

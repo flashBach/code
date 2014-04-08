@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FLBModifyCardViewController.h"
+#import "FLBAddCardViewController.h"
 
 @interface FLBCardViewController : UITableViewController
 

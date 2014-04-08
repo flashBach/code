@@ -60,6 +60,12 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         detailViewController.cardID = [cardKeys objectAtIndex:indexPath.row];
     }
+    else if([[segue identifier] isEqualToString:@"CardToNewCard"])
+    {
+        FLBAddCardViewController *detailViewController = [segue destinationViewController];
+        detailViewController.currentCategory = currentCategory;
+        detailViewController.currentDeck = currentDeck;
+    }
 }
 
 #pragma mark - Table view data source

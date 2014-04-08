@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *entryFields;
 
+@property (weak, nonatomic) NSString *currentDeck;
+@property (weak, nonatomic) NSString *currentCategory;
+
 - (IBAction) deckButtonTapped:(id)sender;
 - (IBAction) categoryButtonTapped:(id)sender;
 
