@@ -14,8 +14,10 @@
 
 @implementation FLBCardViewController
 @synthesize cardPrompts;
+@synthesize cardKeys;
 @synthesize currentDeck;
 @synthesize currentCategory;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,6 +45,21 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Navigation
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"CardToEdit"])
+    {
+        FLBModifyCardViewController *detailViewController = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        detailViewController.cardID = [cardKeys objectAtIndex:indexPath.row];
+    }
 }
 
 #pragma mark - Table view data source
@@ -98,6 +115,7 @@
     
     // Create view's perception of the decks we have available based on the cards.
     cardPrompts = [NSMutableArray array];
+    cardKeys = [NSMutableArray array];
     for(id key in myDick)
     {
         NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDick objectForKey:key]];
@@ -108,6 +126,7 @@
         if( ![cardPrompts containsObject:categoryAtKey] && [deckAtKey isEqualToString:currentDeck] && [categoryAtKey isEqualToString:currentCategory])
         {
             [cardPrompts addObject:cardPromptAtKey];
+            [cardKeys addObject:key];
         }
     }
 }
@@ -151,16 +170,5 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

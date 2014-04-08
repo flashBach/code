@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLBModifyCardViewController.h"
 
 @interface FLBCardViewController : UITableViewController
 
 @property (nonatomic) NSMutableArray *cardPrompts;
+@property (nonatomic) NSMutableArray *cardKeys;
 @property (nonatomic) NSString *currentDeck;
 @property (nonatomic) NSString *currentCategory;
 

@@ -13,6 +13,12 @@
 @end
 
 @implementation FLBModifyCardViewController
+@synthesize cardID;
+@synthesize currentCardData;
+@synthesize textBack;
+@synthesize textFront;
+@synthesize textNewCategory;
+@synthesize textNewDeck;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,17 +34,24 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // Add border to Add Button
+    // Load in currentCardData;
+    [self loadCardDataFromPlist];
+    
     // Add border to button
     _buttonDone.layer.borderWidth = 0.7f;
     _buttonDone.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonDone.layer.cornerRadius = 7;
     
     // Allow keyboard to disappear upon return press.
-    _textBack.delegate = self;
-    _textFront.delegate = self;
-    _textNewCategory.delegate = self;
-    _textNewDeck.delegate = self;
+    textBack.delegate = self;
+    textFront.delegate = self;
+    textNewCategory.delegate = self;
+    textNewDeck.delegate = self;
+    
+    textNewDeck.text = [currentCardData objectAtIndex:0];
+    textNewCategory.text = [currentCardData objectAtIndex:1];
+    textFront.text = [currentCardData objectAtIndex:2];
+    textBack.text = [currentCardData objectAtIndex:3];
 }
 
 - (void)didReceiveMemoryWarning 
@@ -51,10 +64,10 @@
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [_buttonDone resignFirstResponder];
-    [_textNewDeck resignFirstResponder];
-    [_textNewCategory resignFirstResponder];
-    [_textFront resignFirstResponder];
-    [_textBack resignFirstResponder];
+    [textNewDeck resignFirstResponder];
+    [textNewCategory resignFirstResponder];
+    [textFront resignFirstResponder];
+    [textBack resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -74,6 +87,35 @@
 }
 
 
+- (void) loadCardDataFromPlist
+{
+    // Loads data from Documents or Bundle Directory
+    //     First, try the mutable Documents Directory...
+	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsPath = [paths objectAtIndex:0];
+	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
+    
+	//     Check to see if we found the CardData.plist file...
+	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+	{
+		// If not in documents, get property list from main bundle and load in.
+		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
+	}
+	
+	// Read property list into memory as an NSData object
+	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+	NSString *errorDesc = nil;
+	NSPropertyListFormat format;
+	// Convert static property liost into dictionary object
+	NSDictionary *myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	if (!myDick)
+	{
+		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+	}
+    
+    // Create view's perception of the decks we have available based on the cards.
+    currentCardData = [NSMutableArray arrayWithArray:[myDick objectForKey:cardID]];
+}
 
 
 // ===================
