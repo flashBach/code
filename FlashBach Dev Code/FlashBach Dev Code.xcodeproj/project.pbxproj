@@ -27,6 +27,7 @@
 		93758BB018B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93758BAF18B3EDD5002CB514 /* FlashBach_Dev_CodeTests.m */; };
 		93802F7118C928F4003DC73E /* FLBReviewFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */; };
 		93802F7418C92A61003DC73E /* FLBReviewBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */; };
+		93C2F2CD18F36EF40026B4C1 /* CardData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93C2F2CC18F36EF40026B4C1 /* CardData.plist */; };
 		93F8A29918EA874100899AC1 /* Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29218EA874100899AC1 /* Checkbox.m */; };
 		93F8A29A18EA874100899AC1 /* CustomAccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29418EA874100899AC1 /* CustomAccessoryViewController.m */; };
 		93F8A29B18EA874100899AC1 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29618EA874100899AC1 /* CustomCell.m */; };
@@ -77,6 +78,7 @@
 		93802F7018C928F4003DC73E /* FLBReviewFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBReviewFrontViewController.m; sourceTree = "<group>"; };
 		93802F7218C92A61003DC73E /* FLBReviewBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBReviewBackViewController.h; sourceTree = "<group>"; };
 		93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBReviewBackViewController.m; sourceTree = "<group>"; };
+		93C2F2CC18F36EF40026B4C1 /* CardData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CardData.plist; sourceTree = "<group>"; };
 		93F8A29118EA874100899AC1 /* Checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkbox.h; sourceTree = "<group>"; };
 		93F8A29218EA874100899AC1 /* Checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkbox.m; sourceTree = "<group>"; };
 		93F8A29318EA874100899AC1 /* CustomAccessoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAccessoryViewController.h; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */,
 				93F8A2A718EA8E5B00899AC1 /* TableData.plist */,
+				93C2F2CC18F36EF40026B4C1 /* CardData.plist */,
 				93758B9018B3EDD4002CB514 /* FlashBach Dev Code */,
 				93758BA918B3EDD5002CB514 /* FlashBach Dev CodeTests */,
 				93758B8918B3EDD4002CB514 /* Frameworks */,
@@ -286,6 +289,7 @@
 			files = (
 				5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */,
 				93758B9518B3EDD4002CB514 /* InfoPlist.strings in Resources */,
+				93C2F2CD18F36EF40026B4C1 /* CardData.plist in Resources */,
 				93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */,
 				93758B9D18B3EDD4002CB514 /* Images.xcassets in Resources */,
 				93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */,

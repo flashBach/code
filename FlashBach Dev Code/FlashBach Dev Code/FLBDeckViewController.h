@@ -11,10 +11,12 @@
 @interface FLBDeckViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 
-@property (nonatomic, retain) UITableView *autocompleteTableView;
-@property (nonatomic, retain) NSMutableArray *autocompleteValuesArray;
-@property (nonatomic, retain) NSMutableArray *autocompleteValuesDisplay;
+@property (nonatomic, retain)   UITableView *autocompleteTableView;
+@property (nonatomic, retain)   NSMutableArray *autocompleteValuesArray;
+@property (nonatomic, retain)   NSMutableArray *autocompleteValuesDisplay;
+@property (nonatomic)           NSMutableArray *decks;
 
+- (void)loadCardDataFromPlist;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 - (void) addButtonPressed:(id)sender;
 
