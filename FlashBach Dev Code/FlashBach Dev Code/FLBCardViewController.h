@@ -10,4 +10,8 @@
 
 @interface FLBCardViewController : UITableViewController
 
+@property (nonatomic) NSMutableArray *cardPrompts;
+@property (nonatomic) NSString *currentDeck;
+@property (nonatomic) NSString *currentCategory;
+
 @end

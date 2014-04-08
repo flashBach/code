@@ -2,7 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Card</key>
+	<key>0</key>
+	<array>
+		<string>Star Wars</string>
+		<string>Jar Jar Binks</string>
+		<string>How does he die?</string>
+		<string>HE DIES!?!?</string>
+		<integer>5</integer>
+		<date>2014-04-07T23:44:56Z</date>
+	</array>
+	<key>1</key>
 	<array>
 		<string>Misc.</string>
 		<string>Misc.</string>

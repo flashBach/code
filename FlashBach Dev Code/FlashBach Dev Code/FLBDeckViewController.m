@@ -109,39 +109,6 @@
 //    [autocompleteTableView reloadData];
 //}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    
-    
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return [decks count];
-}
-//
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"ListPrototypeCell";
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
-    cell.textLabel.text = [decks objectAtIndex:indexPath.row];
-
-    return cell;
-}
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,7 +148,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -189,9 +156,48 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"DeckToCategory"])
+    {
+        FLBCategoryViewController *detailViewController = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        detailViewController.currentDeck = [decks objectAtIndex:indexPath.row];
+    }
 }
 
- */
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [decks count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"ListPrototypeCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.textLabel.text = [decks objectAtIndex:indexPath.row];
+    
+    return cell;
+}
 
 - (void) loadCardDataFromPlist
 {
@@ -223,12 +229,12 @@
     decks = [NSMutableArray array];
     for(id key in myDick)
     {
-        NSMutableArray *currentCard = [NSMutableArray arrayWithArray:[myDick objectForKey:key]];
-        NSString *currentDeck = [currentCard objectAtIndex:0];
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDick objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
         // For each new deck, add it to the list of decks
-        if( ![decks containsObject:currentDeck] )
+        if( ![decks containsObject:deckAtKey] )
         {
-            [decks addObject:currentDeck];
+            [decks addObject:deckAtKey];
         }
     }
 }

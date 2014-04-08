@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLBCardViewController.h"
 
 @interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
+@property (nonatomic)       NSMutableArray  *categories;
+@property (nonatomic)       NSString        *currentDeck;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
