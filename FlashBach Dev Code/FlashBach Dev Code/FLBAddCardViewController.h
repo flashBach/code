@@ -30,6 +30,7 @@
 
 - (IBAction) deckButtonTapped:(id)sender;
 - (IBAction) categoryButtonTapped:(id)sender;
+- (IBAction)addButtonTapped:(id)sender;
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (BOOL) textFieldShouldReturn:(UITextField *)textField;

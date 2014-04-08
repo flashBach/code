@@ -88,18 +88,39 @@
 	// Convert static property liost into dictionary object
 	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
     
-    id maxKey = [myDict valueForKeyPath:@"@max.self"];
+    NSArray *dictKeys = [myDict allKeys];
+    NSNumber *newKey = 0;
+    
+    for (NSNumber *key in dictKeys)
+    {
+        if (newKey < key){
+            newKey = @(key.intValue + 1);
+        }
+        
+    }
+    
+    NSNumber *difficulty = @0;
+    NSDate *today = [NSDate date];
+    
+        
 
 	// set the variables to the values in the text fields
-	id key = ;
-	self.phoneNumbers = [[NSMutableArray alloc] initWithCapacity:3];
-	[phoneNumbers addObject:homePhone.text];
-	[phoneNumbers addObject:workPhone.text];
-	[phoneNumbers addObject:cellPhone.text];
-	
+	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
+    
+    // Currently breaks if there is nothing in the field
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    [newArray addObject:currentDeck];
+    [newArray addObject:currentCategory];
+    [newArray addObject:textCardFront.text];
+    [newArray addObject:textCardBack.text];
+    [newArray addObject:difficulty];
+    [newArray addObject:today];
+    
+    
+    [newMyDict setObject:newArray forKey:[newKey stringValue]];
 	
 	// create dictionary with values in UITextFields
-    NSDictionary *plistDict = [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: personName, phoneNumbers, nil] forKeys:[NSArray arrayWithObjects: @"Name", @"Phones", nil]];
+    NSDictionary *plistDict = newMyDict;
 	
 	NSString *error = nil;
 	// create NSData from dictionary
@@ -114,7 +135,6 @@
     else
 	{
         NSLog(@"Error in saveData: %@", error);
-        [error release];
     }
 }
 
@@ -140,6 +160,13 @@
                                                otherButtonTitles:@"Recursion", @"Pointers", @"Linked Lists", @"Trees", @"Hashtables", nil];
     
     [action  showInView:self.view];
+}
+
+- (IBAction)addButtonTapped:(id)sender {
+    [self saveData];
+    
+    textCardBack.text = @"";
+    textCardFront.text = @"";
 }
 
 
