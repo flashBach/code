@@ -33,6 +33,8 @@
     [super viewDidLoad];
     
     [self loadCardDataFromPlist];
+    
+    self.navigationItem.title = currentCategory;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
