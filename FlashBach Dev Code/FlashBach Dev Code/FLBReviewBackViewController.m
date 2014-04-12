@@ -8,11 +8,11 @@
 
 #import "FLBReviewBackViewController.h"
 
-@interface FLBReviewBackViewController ()
 
-@end
 
 @implementation FLBReviewBackViewController
+@synthesize cardKeys;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,6 +21,21 @@
         // Custom initialization
     }
     return self;
+}
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"ReviewToEdit"])
+    {
+        FLBModifyCardViewController *detailViewController = [segue destinationViewController];
+        
+        // TODO update the current cardID whenever entering review.
+        // TODO once there is a cardID member present, uncomment the following line the edit card button should work
+        //detailViewController.cardID = cardID;
+    }
 }
 
 - (void)viewDidLoad

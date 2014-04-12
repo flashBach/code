@@ -366,7 +366,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="tgg-68-oOB" kind="push" id="9Vy-MT-X6L"/>
+                                            <segue destination="tgg-68-oOB" kind="push" identifier="ReviewToEdit" id="9Vy-MT-X6L"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DKq-T0-ZXI">
@@ -600,9 +600,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dDV-hF-2dc"/>
-        <segue reference="aiy-Xr-Q6p"/>
         <segue reference="1M1-j7-0yq"/>
-        <segue reference="h4d-9o-oYZ"/>
+        <segue reference="zXJ-dE-LdV"/>
+        <segue reference="epd-iS-Jjg"/>
+        <segue reference="9Vy-MT-X6L"/>
     </inferredMetricsTieBreakers>
 </document>
