@@ -207,7 +207,8 @@
     [action  showInView:self.view];
 }
 
-- (IBAction)addButtonTapped:(id)sender {
+- (IBAction)addButtonTapped:(id)sender
+{
     [self saveData];
     
     if([self.title isEqualToString:@"Add Card"])
@@ -216,16 +217,13 @@
         textCardFront.text = @"";
     }
     
-    // If you're editing, time to rewind
+    // Time to rewind
     // https://developer.apple.com/library/ios/technotes/tn2298/_index.html
-    if ([self.title isEqualToString:@"Edit Card"])
-    {
-        [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
-    }
+    [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+// Required for auto-refresh. 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     FLBCardViewController *detailViewController = [segue destinationViewController];
     [detailViewController loadCardDataFromPlist];

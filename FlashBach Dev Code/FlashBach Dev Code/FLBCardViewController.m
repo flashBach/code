@@ -73,7 +73,6 @@
         detailViewController.currentCategory = currentCategory;
         detailViewController.currentDeck = currentDeck;
     }
-
 }
 
 - (IBAction)unwindToCards:(UIStoryboardSegue *) segue
@@ -148,6 +147,13 @@
             [cardKeys addObject:key];
         }
     }
+}
+
+// Makes it so that the view always updates to reflect changes before viewing
+// Solves the add/edit card not updating the card view problem
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 /*
