@@ -17,4 +17,6 @@
 @property (nonatomic) NSString *currentCategory;
 @property (nonatomic) NSDictionary *myDick;
 
+- (void) loadCardDataFromPlist;
+
 @end

@@ -155,8 +155,14 @@
     [newArray addObject:difficulty];
     [newArray addObject:today];
     
-    
-    [newMyDict setObject:newArray forKey:[newKey stringValue]];
+    if ([self.title isEqualToString:@"Add Card"])
+    {
+        [newMyDict setObject:newArray forKey:[newKey stringValue]];
+    }
+    if ([self.title isEqualToString:@"Edit Card"])
+    {
+        [newMyDict setObject:newArray forKey:cardID];
+    }
 	
 	// create dictionary with values in UITextFields
     NSDictionary *plistDict = newMyDict;
@@ -210,12 +216,20 @@
         textCardFront.text = @"";
     }
     
+    // If you're editing, time to rewind
+    // https://developer.apple.com/library/ios/technotes/tn2298/_index.html
     if ([self.title isEqualToString:@"Edit Card"])
     {
         [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
     }
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    FLBCardViewController *detailViewController = [segue destinationViewController];
+    [detailViewController loadCardDataFromPlist];
+}
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

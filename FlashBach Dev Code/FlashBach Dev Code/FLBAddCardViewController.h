@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLBCardViewController.h"
 
 @interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>
 
