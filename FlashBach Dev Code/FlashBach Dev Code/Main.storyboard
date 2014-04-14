@@ -85,9 +85,11 @@
                         <outlet property="textCardFront" destination="ZrN-VO-Wh8" id="0aA-Wt-hO3"/>
                         <outlet property="textChooseCategory" destination="Fcg-7L-zDU" id="h2C-XP-jKD"/>
                         <outlet property="textChooseDeck" destination="w7t-iK-L9R" id="bLS-Mb-666"/>
+                        <segue destination="HgT-tY-n3H" kind="unwind" identifier="unwindToCards" unwindAction="unwindToCards:" id="Okm-ge-rDq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wze-Ua-3p4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HgT-tY-n3H" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="429" y="671"/>
         </scene>
@@ -491,8 +493,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OtA-Fl-Dhh"/>
-        <segue reference="epd-iS-Jjg"/>
+        <segue reference="1M1-j7-0yq"/>
         <segue reference="zXJ-dE-LdV"/>
+        <segue reference="epd-iS-Jjg"/>
     </inferredMetricsTieBreakers>
 </document>

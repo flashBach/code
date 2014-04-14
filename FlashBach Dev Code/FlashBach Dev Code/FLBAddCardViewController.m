@@ -209,6 +209,11 @@
         textCardBack.text = @"";
         textCardFront.text = @"";
     }
+    
+    if ([self.title isEqualToString:@"Edit Card"])
+    {
+        [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
+    }
 }
 
 
