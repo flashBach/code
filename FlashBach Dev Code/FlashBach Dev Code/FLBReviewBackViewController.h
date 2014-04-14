@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FLBModifyCardViewController.h"
+#import "FLBAddCardViewController.h"
 
 @interface FLBReviewBackViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *buttonHard;

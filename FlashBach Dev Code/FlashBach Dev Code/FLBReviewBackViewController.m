@@ -30,7 +30,7 @@
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"ReviewToEdit"])
     {
-        FLBModifyCardViewController *detailViewController = [segue destinationViewController];
+        FLBAddCardViewController *detailViewController = [segue destinationViewController];
         
         // TODO update the current cardID whenever entering review.
         // TODO once there is a cardID member present, uncomment the following line the edit card button should work
