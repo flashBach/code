@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Add Card View Controller - Add Card-->
+        <!--Add Card View Controller - Add/Modify Card-->
         <scene sceneID="ZVf-vl-rZ3">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="wLx-Ia-nYi" customClass="FLBAddCardViewController" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Card" id="IGd-2A-YGj"/>
+                    <navigationItem key="navigationItem" title="Add/Modify Card" id="IGd-2A-YGj"/>
                     <connections>
                         <outlet property="buttonAdd" destination="gFh-JH-1UK" id="pBt-VI-llA"/>
                         <outlet property="buttonCategory" destination="few-5d-uC8" id="EbM-WK-RYx"/>
@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wze-Ua-3p4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50" y="-593"/>
+            <point key="canvasLocation" x="429" y="671"/>
         </scene>
         <!--Category View Controller - Categories-->
         <scene sceneID="EMy-Yw-Ehe">
@@ -254,91 +254,6 @@
             </objects>
             <point key="canvasLocation" x="429" y="72"/>
         </scene>
-        <!--Modify Card View Controller - Edit Card-->
-        <scene sceneID="Kcr-0v-yMJ">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="tgg-68-oOB" customClass="FLBModifyCardViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OWH-88-22A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1qj-Ml-VaZ">
-                                <rect key="frame" x="-20" y="0.0" width="340" height="488"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="How do you compare algorithms?" borderStyle="roundedRect" minimumFontSize="17" id="qhX-KZ-ZmW">
-                                        <rect key="frame" x="51" y="111" width="239" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="We can measure time and space." borderStyle="roundedRect" minimumFontSize="17" id="Sqj-pf-rbd">
-                                        <rect key="frame" x="51" y="174" width="239" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HaP-vk-rnr">
-                                        <rect key="frame" x="246" y="284" width="44" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Deck ">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deckButtonTapped:" destination="wLx-Ia-nYi" eventType="touchUpInside" id="zEU-cd-Tu3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9IW-2c-yJ3">
-                                        <rect key="frame" x="218" y="367" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Category ">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="categoryButtonTapped:" destination="wLx-Ia-nYi" eventType="touchUpInside" id="2sz-0R-Khn"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Deck" minimumFontSize="17" id="A9W-ex-SQ3">
-                                        <rect key="frame" x="51" y="284" width="142" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Category" minimumFontSize="17" id="8lr-xA-dAE">
-                                        <rect key="frame" x="51" y="367" width="142" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1vR-4q-y2x">
-                                        <rect key="frame" x="160" y="421" width="48" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Done ">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="handleDoneClick:" destination="tgg-68-oOB" eventType="touchUpInside" id="4CI-YE-XC9"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Edit Card" id="5Kj-gn-a62"/>
-                    <connections>
-                        <outlet property="buttonDone" destination="1vR-4q-y2x" id="ejG-X8-OAK"/>
-                        <outlet property="scrollView" destination="1qj-Ml-VaZ" id="p3S-wf-zs9"/>
-                        <outlet property="textBack" destination="Sqj-pf-rbd" id="GFK-nx-hdv"/>
-                        <outlet property="textFront" destination="qhX-KZ-ZmW" id="jn7-wZ-CPO"/>
-                        <outlet property="textNewCategory" destination="8lr-xA-dAE" id="oeD-jW-NGz"/>
-                        <outlet property="textNewDeck" destination="A9W-ex-SQ3" id="CBf-Ew-PTn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qn-d2-vzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="429" y="722"/>
-        </scene>
         <!--Review Back View Controller - Review - Back-->
         <scene sceneID="nCz-sf-H5m">
             <objects>
@@ -366,7 +281,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="tgg-68-oOB" kind="push" identifier="ReviewToEdit" id="9Vy-MT-X6L"/>
+                                            <segue destination="wLx-Ia-nYi" kind="push" identifier="ReviewToEdit" id="OtA-Fl-Dhh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DKq-T0-ZXI">
@@ -520,7 +435,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomCell" id="9rR-je-8oN" customClass="CustomCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9rR-je-8oN" id="IWQ-7j-rWN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -551,30 +466,6 @@
             </objects>
             <point key="canvasLocation" x="1234" y="-1312"/>
         </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="PkM-af-YIa">
-            <objects>
-                <viewController id="im2-T6-FsS" customClass="DetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jDQ-ya-maW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" id="YYE-Um-1W9">
-                                <rect key="frame" x="0.0" y="26" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="SIV-kC-fe3"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="McM-yR-Mj5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S9p-4P-gqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1845" y="-1312"/>
-        </scene>
         <!--Navigation Controller - FlashBach-->
         <scene sceneID="ZQy-HY-OVt">
             <objects>
@@ -600,8 +491,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JR6-sM-wEC"/>
-        <segue reference="zXJ-dE-LdV"/>
+        <segue reference="OtA-Fl-Dhh"/>
         <segue reference="epd-iS-Jjg"/>
+        <segue reference="zXJ-dE-LdV"/>
     </inferredMetricsTieBreakers>
 </document>
