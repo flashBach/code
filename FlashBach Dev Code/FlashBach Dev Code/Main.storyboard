@@ -61,9 +61,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gFh-JH-1UK">
-                                        <rect key="frame" x="137" y="349" width="37" height="30"/>
+                                        <rect key="frame" x="132" y="349" width="47" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Add ">
+                                        <state key="normal" title="  Save ">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -231,7 +231,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="tgg-68-oOB" kind="push" identifier="CardToEdit" id="h4d-9o-oYZ"/>
+                                    <segue destination="wLx-Ia-nYi" kind="push" identifier="CardToEdit" id="JR6-sM-wEC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -600,9 +600,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1M1-j7-0yq"/>
+        <segue reference="JR6-sM-wEC"/>
         <segue reference="zXJ-dE-LdV"/>
         <segue reference="epd-iS-Jjg"/>
-        <segue reference="9Vy-MT-X6L"/>
     </inferredMetricsTieBreakers>
 </document>

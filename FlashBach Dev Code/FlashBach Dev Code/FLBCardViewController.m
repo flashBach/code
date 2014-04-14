@@ -17,6 +17,7 @@
 @synthesize cardKeys;
 @synthesize currentDeck;
 @synthesize currentCategory;
+@synthesize myDick;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -58,16 +59,21 @@
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"CardToEdit"])
     {
-        FLBModifyCardViewController *detailViewController = [segue destinationViewController];
+        FLBAddCardViewController *detailViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         detailViewController.cardID = [cardKeys objectAtIndex:indexPath.row];
+        detailViewController.title = @"Edit Card";
+        detailViewController.currentCategory = currentCategory;
+        detailViewController.currentDeck = currentDeck;
     }
     else if([[segue identifier] isEqualToString:@"CardToNewCard"])
     {
         FLBAddCardViewController *detailViewController = [segue destinationViewController];
+        detailViewController.title = @"Add Card";
         detailViewController.currentCategory = currentCategory;
         detailViewController.currentDeck = currentDeck;
     }
+
 }
 
 #pragma mark - Table view data source
@@ -115,7 +121,7 @@
 	NSString *errorDesc = nil;
 	NSPropertyListFormat format;
 	// Convert static property liost into dictionary object
-	NSDictionary *myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
 	if (!myDick)
 	{
 		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);

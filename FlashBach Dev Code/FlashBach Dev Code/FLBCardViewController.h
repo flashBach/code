@@ -16,5 +16,6 @@
 @property (nonatomic) NSMutableArray *cardKeys;
 @property (nonatomic) NSString *currentDeck;
 @property (nonatomic) NSString *currentCategory;
+@property (nonatomic) NSDictionary *myDick;
 
 @end

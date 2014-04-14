@@ -9,29 +9,29 @@
 #import <UIKit/UIKit.h>
 
 @interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>
+
+// Interface items (buttons, text fields, etc.)
 @property (weak, nonatomic) IBOutlet UITextField *textCardFront;
 @property (weak, nonatomic) IBOutlet UITextField *textCardBack;
-
-
 @property (nonatomic, strong) IBOutlet UITextField *textChooseDeck;
 @property (nonatomic, strong) IBOutlet UITextField *textChooseCategory;
-@property (nonatomic, strong) NSMutableArray *myDecks;
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonDeck;
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonCategory;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
-
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) NSMutableArray *entryFields;
 
+// Card Data
+@property (retain, nonatomic) NSMutableArray *entryFields;
+@property (strong, nonatomic) NSMutableArray *myDecks;
+@property (weak, nonatomic) id cardID;
 @property (weak, nonatomic) NSString *currentDeck;
 @property (weak, nonatomic) NSString *currentCategory;
+@property (weak, nonatomic) NSMutableArray *currentCardData;
 
+// Methods
 - (IBAction) deckButtonTapped:(id)sender;
 - (IBAction) categoryButtonTapped:(id)sender;
-- (IBAction)addButtonTapped:(id)sender;
-
+- (IBAction) addButtonTapped:(id)sender;
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (BOOL) textFieldShouldReturn:(UITextField *)textField;
 

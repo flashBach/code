@@ -8,17 +8,17 @@
 
 #import "FLBAddCardViewController.h"
 
-@interface FLBAddCardViewController ()
-
-@end
-
 @implementation FLBAddCardViewController
+
 @synthesize textCardBack;
 @synthesize textCardFront;
 @synthesize textChooseCategory;
 @synthesize textChooseDeck;
+
 @synthesize currentCategory;
 @synthesize currentDeck;
+@synthesize currentCardData;
+@synthesize cardID;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +34,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // Load in currentCardData;
+    [self loadCardDataFromPlist];
     
     // Add border to button
     _buttonDeck.layer.borderWidth = 0.7f;
@@ -64,7 +66,44 @@
     
     textChooseDeck.text = currentDeck;
     textChooseCategory.text = currentCategory;
+    
+    if ([self.title  isEqual: @"Edit Card"])
+    {
+        textCardFront.text = [currentCardData objectAtIndex: 2];
+        textCardBack.text = [currentCardData objectAtIndex:3];
+    }
 }
+
+- (void) loadCardDataFromPlist
+{
+    // Loads data from Documents or Bundle Directory
+    //     First, try the mutable Documents Directory...
+	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsPath = [paths objectAtIndex:0];
+	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
+    
+	//     Check to see if we found the CardData.plist file...
+	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+	{
+		// If not in documents, get property list from main bundle and load in.
+		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
+	}
+	
+	// Read property list into memory as an NSData object
+	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+	NSString *errorDesc = nil;
+	NSPropertyListFormat format;
+	// Convert static property liost into dictionary object
+	NSDictionary *myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	if (!myDick)
+	{
+		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+	}
+    
+    // Create view's perception of the decks we have available based on the cards.
+    currentCardData = [NSMutableArray arrayWithArray:[myDick objectForKey:cardID]];
+}
+
 
 - (IBAction) saveData
 {
@@ -165,8 +204,11 @@
 - (IBAction)addButtonTapped:(id)sender {
     [self saveData];
     
-    textCardBack.text = @"";
-    textCardFront.text = @"";
+    if([self.title isEqualToString:@"Add Card"])
+    {
+        textCardBack.text = @"";
+        textCardFront.text = @"";
+    }
 }
 
 

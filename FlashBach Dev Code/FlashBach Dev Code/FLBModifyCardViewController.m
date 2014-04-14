@@ -8,11 +8,8 @@
 
 #import "FLBModifyCardViewController.h"
 
-@interface FLBModifyCardViewController ()
-
-@end
-
 @implementation FLBModifyCardViewController
+
 @synthesize cardID;
 @synthesize currentCardData;
 @synthesize textBack;

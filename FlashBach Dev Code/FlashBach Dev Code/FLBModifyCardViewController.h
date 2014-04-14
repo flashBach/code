@@ -9,18 +9,22 @@
 #import <UIKit/UIKit.h>
 
 @interface FLBModifyCardViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+
+// Interface items (buttons, text fields, etc.)
 @property (weak, nonatomic) IBOutlet UITextField *textFront;
 @property (weak, nonatomic) IBOutlet UITextField *textBack;
-
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDone;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+// Card Data
 @property (weak, nonatomic) id cardID;
 @property (weak, nonatomic) NSMutableArray *currentCardData;
-
 @property (nonatomic, retain) NSMutableArray *entryFields;
 
+
+// Methods
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (BOOL) textFieldShouldReturn:(UITextField *)textField;
 
