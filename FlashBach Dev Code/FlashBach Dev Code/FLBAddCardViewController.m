@@ -128,14 +128,11 @@
 	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
     
     NSArray *dictKeys = [myDict allKeys];
-    NSNumber *newKey = 0;
+    NSNumber *newKey = @0;
     
-    for (NSNumber *key in dictKeys)
+    while ([dictKeys containsObject:[newKey stringValue]])
     {
-        if (newKey < key){
-            newKey = @(key.intValue + 1);
-        }
-        
+        newKey = @(newKey.intValue + 1);
     }
     
     NSNumber *difficulty = @0;
