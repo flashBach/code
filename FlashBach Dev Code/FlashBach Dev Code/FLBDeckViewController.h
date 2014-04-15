@@ -19,6 +19,7 @@
 
 - (void)loadCardDataFromPlist;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
-- (void) addButtonPressed:(id)sender;
+- (IBAction)addDeckButtonPressed:(id)sender;
+
 
 @end

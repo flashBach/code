@@ -181,6 +181,15 @@
     [_textNewCategory resignFirstResponder];
 }
 
+- (IBAction)addCategoryButtonPressed:(id)sender {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Create New Category" message:@"Please enter the name of the new category:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeAlphabet;
+    alertTextField.placeholder = @"Enter new category name";
+    [alert show];
+}
+
 // Is called on textField when Return/Done is pressed to dismiss keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

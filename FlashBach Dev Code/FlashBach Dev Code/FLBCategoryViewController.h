@@ -16,5 +16,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (IBAction)addCategoryButtonPressed:(id)sender;
 
 @end
