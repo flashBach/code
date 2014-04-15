@@ -12,10 +12,13 @@
 @interface FLBDeckViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 
-@property (nonatomic, retain)   UITableView *autocompleteTableView;
+@property (nonatomic, retain)   UITableView    *autocompleteTableView;
 @property (nonatomic, retain)   NSMutableArray *autocompleteValuesArray;
 @property (nonatomic, retain)   NSMutableArray *autocompleteValuesDisplay;
 @property (nonatomic)           NSMutableArray *decks;
+@property (nonatomic)           UITextField    *alertTextField;
+// can't start with "new" or there are struggles
+@property (nonatomic)           NSString       *theNewDeckName;
 
 - (void)loadCardDataFromPlist;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;

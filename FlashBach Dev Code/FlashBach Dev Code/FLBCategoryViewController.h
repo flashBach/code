@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
 @property (nonatomic)       NSMutableArray  *categories;
 @property (nonatomic)       NSString        *currentDeck;
+@property (nonatomic)       UITextField     *alertTextField;
+@property (nonatomic)       NSString        *theNewCategoryName;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
