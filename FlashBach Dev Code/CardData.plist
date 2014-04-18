@@ -2,19 +2,64 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>5</key>
+	<array>
+		<string>CS70</string>
+		<string>Misc.</string>
+		<string>What&apos;s the professor&apos;s name?</string>
+		<string>Stone</string>
+		<integer>0</integer>
+		<date>2014-04-17T22:56:04Z</date>
+	</array>
+	<key>4</key>
+	<array>
+		<string>CS70</string>
+		<string>Data Structures</string>
+		<string>What&apos;s the runtime of get() in a Hashtable?</string>
+		<string>O(1)!  Shit that&apos;s fast!</string>
+		<integer>4</integer>
+		<date>2014-04-17T22:38:27Z</date>
+	</array>
+	<key>6</key>
+	<array>
+		<string>CS5</string>
+		<string>Pointers</string>
+		<string>What is another name for your pointer finger?</string>
+		<string>Index finger</string>
+		<integer>2</integer>
+		<date>2014-04-17T22:36:25Z</date>
+	</array>
+	<key>3</key>
+	<array>
+		<string>CS70</string>
+		<string>Algorithms</string>
+		<string>What&apos;s the runtime of Quicksort?</string>
+		<string>Time for you to get a watch!</string>
+		<integer>3</integer>
+		<date>2014-04-17T22:34:05Z</date>
+	</array>
+	<key>2</key>
+	<array>
+		<string>CS70</string>
+		<string>Algorithms</string>
+		<string>What&apos;s the runtime of Mergesort?</string>
+		<string>O(n log(n))</string>
+		<integer>1</integer>
+		<date>2014-04-17T22:31:25Z</date>
+	</array>
 	<key>0</key>
 	<array>
-		<string>Star Wars</string>
-		<string>Jar Jar Binks</string>
-		<string>How does he die?</string>
+		<string>Misc.</string>
+		<string>Misc.</string>
+		<string>How does Jar Jar Binks die?</string>
 		<string>HE DIES!?!?</string>
 		<integer>5</integer>
 		<date>2014-04-07T23:44:56Z</date>
 	</array>
 	<key>1</key>
 	<array>
-		<string>Misc.</string>
-		<string>Misc.</string>
+		<string>CS70</string>
+		<string>Algorithms</string>
 		<string>How do you compare algorithms?</string>
 		<string>We can compare runtime.</string>
 		<integer>0</integer>
