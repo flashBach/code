@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FLBCardViewController.h"
+#import "FLBDataManagement.h"
 
 @interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>
 
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) NSString *currentDeck;
 @property (weak, nonatomic) NSString *currentCategory;
 @property (weak, nonatomic) NSMutableArray *currentCardData;
+@property (weak, nonatomic) NSDictionary * myDict;
 
 // Methods
 - (IBAction) deckButtonTapped:(id)sender;

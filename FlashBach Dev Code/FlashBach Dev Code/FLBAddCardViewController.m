@@ -19,6 +19,7 @@
 @synthesize currentDeck;
 @synthesize currentCardData;
 @synthesize cardID;
+@synthesize myDict;
 
 @synthesize entryFields;
 
@@ -35,34 +36,14 @@
 {
     [super viewDidLoad];
     
-    [self loadCardDataFromPlist];
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     
-    // Add border to button
-    _buttonDeck.layer.borderWidth = 0.7f;
-    _buttonDeck.layer.borderColor = [[UIColor blueColor]CGColor];
-    _buttonDeck.layer.cornerRadius = 7;
-   
-    // Add border to button
-    _buttonAdd.layer.borderWidth = 0.7f;
-    _buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
-    _buttonAdd.layer.cornerRadius = 7;
+    // Create view's perception of the decks we have available based on the cards.
+    currentCardData = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
     
-    // Add border to button
-    _buttonCategory.layer.borderWidth = 0.7f;
-    _buttonCategory.layer.borderColor = [[UIColor blueColor]CGColor];
-    _buttonCategory.layer.cornerRadius = 7;
+    [self addButtonBorders];
     
-    // Set textField delegate to let keyboard disappear on hitting Return
-    textCardFront.delegate = self;
-    textCardBack.delegate = self;
-    textChooseCategory.delegate = self;
-    textChooseDeck.delegate = self;
-    
-    // Look for keyboard size
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardNotification:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
+    [self setupKeyboard];
     
     textChooseDeck.text = currentDeck;
     textChooseCategory.text = currentCategory;
@@ -74,35 +55,37 @@
     }
 }
 
-- (void) loadCardDataFromPlist
+- (void) addButtonBorders
 {
-    // Loads data from Documents or Bundle Directory
-    //     First, try the mutable Documents Directory...
-	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths objectAtIndex:0];
-	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
+    _buttonDeck.layer.borderWidth = 0.7f;
+    _buttonDeck.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonDeck.layer.cornerRadius = 7;
     
-	//     Check to see if we found the CardData.plist file...
-	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-	{
-		// If not in documents, get property list from main bundle and load in.
-		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
-	}
-	
-	// Read property list into memory as an NSData object
-	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-	NSString *errorDesc = nil;
-	NSPropertyListFormat format;
-	// Convert static property liost into dictionary object
-	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-	if (!myDict)
-	{
-		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
-	}
+    _buttonAdd.layer.borderWidth = 0.7f;
+    _buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonAdd.layer.cornerRadius = 7;
     
-    // Create view's perception of the decks we have available based on the cards.
-    currentCardData = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
+    _buttonCategory.layer.borderWidth = 0.7f;
+    _buttonCategory.layer.borderColor = [[UIColor blueColor]CGColor];
+    _buttonCategory.layer.cornerRadius = 7;
 }
+
+- (void) setupKeyboard
+{
+    // Set textField delegate to let keyboard disappear on hitting Return
+    textCardFront.delegate = self;
+    textCardBack.delegate = self;
+    textChooseCategory.delegate = self;
+    textChooseDeck.delegate = self;
+    
+    // Look for keyboard size
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardNotification:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+}
+
+
 
 
 - (IBAction) saveData
@@ -213,7 +196,8 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     FLBCardViewController *cardViewController = [segue destinationViewController];
-    [cardViewController loadCardDataFromPlist];
+    cardViewController.myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    [cardViewController loadCardDataFromDictionary];
     [cardViewController.tableView reloadData];
 }
 

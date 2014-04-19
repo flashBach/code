@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FLBCardViewController.h"
+#import "FLBDataManagement.h"
 
 @interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;

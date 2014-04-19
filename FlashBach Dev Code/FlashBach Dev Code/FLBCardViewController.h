@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FLBAddCardViewController.h"
+#import "FLBDataManagement.h"
 
 @interface FLBCardViewController : UITableViewController
 
@@ -19,6 +20,6 @@
 @property (nonatomic) NSMutableArray *cardKeys;
 
 // Needed here to allow auto-refresh to work
-- (void) loadCardDataFromPlist;
+- (void) loadCardDataFromDictionary;
 
 @end

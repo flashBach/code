@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FLBCategoryViewController.h"
+#import "FLBDataManagement.h"
 
 @interface FLBDeckViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
@@ -22,7 +23,7 @@
 @property (nonatomic)       NSDictionary    *myDict;
 
 
-- (void)loadCardDataFromPlist;
+- (void)loadCardDataFromDictionary;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 - (IBAction)addDeckButtonPressed:(id)sender;
 
