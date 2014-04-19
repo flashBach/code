@@ -14,9 +14,7 @@
 @synthesize cardKeys;
 @synthesize currentDeck;
 @synthesize currentCategory;
-
 @synthesize myDict;
-
 
 #pragma mark - Initialization
 
@@ -40,29 +38,28 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    FLBAddCardViewController *addOrEditCardViewController = [segue destinationViewController];
+    
+    addOrEditCardViewController.currentCategory = currentCategory;
+    addOrEditCardViewController.currentDeck = currentDeck;
+    
     if([[segue identifier] isEqualToString:@"CardToEdit"])
     {
-        FLBAddCardViewController *editCardViewController = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        editCardViewController.cardID = [cardKeys objectAtIndex:indexPath.row];
-        editCardViewController.title = @"Edit Card";
-        editCardViewController.currentCategory = currentCategory;
-        editCardViewController.currentDeck = currentDeck;
+        NSIndexPath *selectedCard = [self.tableView indexPathForSelectedRow];
+        addOrEditCardViewController.cardID = [cardKeys objectAtIndex:selectedCard.row];
+        addOrEditCardViewController.title = @"Edit Card";
     }
+    
     else if([[segue identifier] isEqualToString:@"CardToNewCard"])
     {
-        FLBAddCardViewController *addCardViewController = [segue destinationViewController];
-        addCardViewController.title = @"Add Card";
-        addCardViewController.currentCategory = currentCategory;
-        addCardViewController.currentDeck = currentDeck;
+        addOrEditCardViewController.title = @"Add Card";
     }
 }
 
 // Need this here to tell the add/edit view where to return to after hitting save
 - (IBAction)unwindToCards:(UIStoryboardSegue *) segue
 {
+    // nothing needed here
 }
 
 
@@ -74,6 +71,7 @@
     return [cardPrompts count];
 }
 
+// Load the cells in the table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ListPrototypeCell";
@@ -87,18 +85,21 @@
 
 #pragma mark - Data Management
 
+// Create view's perception of the decks we have available based on the cards.
 - (void) loadCardDataFromDictionary
 {
-    // Create view's perception of the decks we have available based on the cards.
     cardPrompts = [NSMutableArray array];
     cardKeys = [NSMutableArray array];
+    
     for(id key in myDict)
     {
         NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        
         NSString *deckAtKey = [cardAtKey objectAtIndex:0];
         NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
         NSString *cardPromptAtKey = [cardAtKey objectAtIndex:2];
-        // For each new deck, add it to the list of decks
+        
+        // Get all cards in the current deck and category
         if( ![cardPrompts containsObject:categoryAtKey] && [deckAtKey isEqualToString:currentDeck] && [categoryAtKey isEqualToString:currentCategory])
         {
             [cardPrompts addObject:cardPromptAtKey];
@@ -106,6 +107,5 @@
         }
     }
 }
-
 
 @end

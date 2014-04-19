@@ -12,14 +12,18 @@
 
 @interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>
 
-// Interface items (buttons, text fields, etc.)
+// Text fields
 @property (weak, nonatomic) IBOutlet UITextField *textCardFront;
 @property (weak, nonatomic) IBOutlet UITextField *textCardBack;
 @property (nonatomic, strong) IBOutlet UITextField *textChooseDeck;
 @property (nonatomic, strong) IBOutlet UITextField *textChooseCategory;
+
+// Buttons
 @property (weak, nonatomic) IBOutlet UIButton *buttonDeck;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCategory;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAdd;
+
+// Scroll View
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 // Card Data
