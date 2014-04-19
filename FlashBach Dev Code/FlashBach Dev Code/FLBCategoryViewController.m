@@ -12,9 +12,11 @@
 
 @synthesize categories;
 @synthesize currentDeck;
-@synthesize alertTextField;
+@synthesize createNewCategoryTextField;
 @synthesize theNewCategoryName;
 @synthesize myDict;
+@synthesize textNewCategory;
+@synthesize addNewCategory;
 
 #pragma mark - Initialization
 
@@ -35,15 +37,13 @@
     self.navigationItem.title = currentDeck;
     
     // Allow keyboard to disappear on return press
-    _textNewCategory.delegate = self;
+    textNewCategory.delegate = self;
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"CategoryToCard"])
     {
         FLBCardViewController *cardViewController = [segue destinationViewController];
@@ -52,20 +52,17 @@
         cardViewController.currentDeck = currentDeck;
     }
 }
-
  
 
 #pragma mark - Table-view Management
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [categories count];
 }
 
@@ -84,14 +81,15 @@
 
 - (void) loadCardDataFromDictionary
 {
-    // Create view's perception of the decks we have available based on the cards.
+    // Create view's perception of the categories we have available based on the cards.
     categories = [NSMutableArray array];
     for(id key in myDict)
     {
         NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
         NSString *deckAtKey = [cardAtKey objectAtIndex:0];
         NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
-        // For each new deck, add it to the list of decks
+        
+        // Add each category in the deck
         if( ![categories containsObject:categoryAtKey] && [deckAtKey isEqualToString:currentDeck])
         {
             [categories addObject:categoryAtKey];
@@ -99,40 +97,9 @@
     }
 }
 
-// Is called when a background touch occurs, dismisses any open keyboard
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [_textNewCategory resignFirstResponder];
-}
-
-- (IBAction)addCategoryButtonPressed:(id)sender {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Create New Category" message:@"Please enter the name of the new category:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeAlphabet;
-    alertTextField.placeholder = @"Enter new category name";
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if ([alertTextField.text length] <= 0 )
-    {
-        return; //If cancel or 0 length string the string doesn't matter
-    }
-    
-    theNewCategoryName = alertTextField.text;
-    
-    [self saveCard];
-    
-    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
-    [self loadCardDataFromDictionary];
-    [self.tableView reloadData];
-}
-
 - (void) saveCard
 {
-    NSNumber *difficulty = @0;
+    NSNumber *frequency = @5;
     NSDate *today = [NSDate date];
     
     NSMutableArray *newCard = [[NSMutableArray alloc] init];
@@ -140,12 +107,46 @@
     [newCard addObject:theNewCategoryName];
     [newCard addObject:@"Default"];
     [newCard addObject:@"Default"];
-    [newCard addObject:difficulty];
+    [newCard addObject:frequency];
     [newCard addObject:today];
     
     [FLBDataManagement saveNewCard: newCard];
 }
 
+#pragma mark - Add New Category
+
+- (IBAction)addCategoryButtonPressed:(id)sender {
+    addNewCategory = [[UIAlertView alloc] initWithTitle:@"Create New Category"
+                                                        message:@"Please enter the name of the new category:"
+                                                        delegate:self
+                                                        cancelButtonTitle:@"Save"
+                                                        otherButtonTitles:nil];
+    
+    addNewCategory.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    createNewCategoryTextField = [addNewCategory textFieldAtIndex:0];
+    createNewCategoryTextField.keyboardType = UIKeyboardTypeAlphabet;
+    createNewCategoryTextField.placeholder = @"Enter new category name";
+    
+    [addNewCategory show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if ([createNewCategoryTextField.text length] <= 0 )
+    {
+        return; //If cancel or 0 length string the string doesn't matter
+    }
+    
+    theNewCategoryName = createNewCategoryTextField.text;
+    
+    [self saveCard];
+    
+    // Reload the view to show the new category
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    [self loadCardDataFromDictionary];
+    [self.tableView reloadData];
+}
 
 // Is called on textField when Return/Done is pressed to dismiss keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

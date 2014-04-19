@@ -86,10 +86,6 @@
 }
 
 
-
-
-
-
 # pragma mark - Button Actions
 
 - (IBAction) deckButtonTapped:(id)sender
@@ -110,7 +106,7 @@
     [action  showInView:self.view];
 }
 
-- (IBAction)addButtonTapped:(id)sender
+- (IBAction)saveButtonTapped:(id)sender
 {
     [self saveCard];
     
@@ -119,31 +115,9 @@
     [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
 }
 
-- (void) saveCard
-{
-    NSNumber *difficulty = @0;
-    NSDate *today = [NSDate date];
-    
-    NSMutableArray *newCard = [[NSMutableArray alloc] init];
-    [newCard addObject:currentDeck];
-    [newCard addObject:currentCategory];
-    [newCard addObject:textCardFront.text];
-    [newCard addObject:textCardBack.text];
-    [newCard addObject:difficulty];
-    [newCard addObject:today];
-    
-    if ([self.title isEqualToString:@"Add Card"])
-    {
-        [FLBDataManagement saveNewCard:newCard];
-    }
-    if ([self.title isEqualToString:@"Edit Card"])
-    {
-        [FLBDataManagement SaveCard:newCard WithIndex:cardID];
-    }
+#pragma mark - Navigation
 
-}
-
-// Required for auto-refresh. 
+// Required for auto-refresh.
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     FLBCardViewController *cardViewController = [segue destinationViewController];
@@ -161,18 +135,64 @@
     [textChooseDeck resignFirstResponder];
 }
 
+# pragma mark - Data Management
+
+- (void) saveCard
+{
+    NSNumber *frequency = @5;
+    NSDate *today = [NSDate date];
+    
+    NSMutableArray *newCard = [[NSMutableArray alloc] init];
+    [newCard addObject:currentDeck];
+    [newCard addObject:currentCategory];
+    [newCard addObject:textCardFront.text];
+    [newCard addObject:textCardBack.text];
+    [newCard addObject:frequency];
+    [newCard addObject:today];
+    
+    if ([self.title isEqualToString:@"Add Card"])
+    {
+        [FLBDataManagement saveNewCard:newCard];
+    }
+    else if ([self.title isEqualToString:@"Edit Card"])
+    {
+        [FLBDataManagement SaveCard:newCard WithIndex:cardID];
+    }
+
+}
+
+/*
+ Returns an array of all data entry fields in the view.
+ Fields are ordered by tag, and only fields with tag > 0 are included.
+ Returned fields are guaranteed to be a subclass of UIResponder.
+ Note: The tags are set for priority in the stroyboard view.
+ */
+- (NSMutableArray *)entryFields {
+	if (!entryFields || [entryFields count] == 0) {
+		self.entryFields = [[NSMutableArray alloc] init];
+		NSInteger tag = 1;
+		UIView *aView;
+		while ((aView = [self.view viewWithTag:tag])) {
+			if (aView && [[aView class] isSubclassOfClass:[UIResponder class]]) {
+				[entryFields addObject:aView];
+			}
+			tag++;
+		}
+	}
+	return entryFields;
+}
+
+
+# pragma mark - Keyboard/View
+
 // ===================
 // http://iphoneincubator.com/blog/windows-views/how-to-create-a-data-entry-screen
 // ===================
 CGRect keyboardBounds;
 
-#pragma mark UITextFieldDelegate
-
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[self scrollViewToCenterOfScreen:textField];
 }
-
-#pragma mark UITextViewDelegate
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
 	[self scrollViewToCenterOfScreen:textView];
@@ -214,25 +234,5 @@ CGRect keyboardBounds;
 }
 
 
-/*
- Returns an array of all data entry fields in the view.
- Fields are ordered by tag, and only fields with tag > 0 are included.
- Returned fields are guaranteed to be a subclass of UIResponder.
- Note: The tags are set for priority in the stroyboard view.
- */
-- (NSMutableArray *)entryFields {
-	if (!entryFields || [entryFields count] == 0) {
-		self.entryFields = [[NSMutableArray alloc] init];
-		NSInteger tag = 1;
-		UIView *aView;
-		while ((aView = [self.view viewWithTag:tag])) {
-			if (aView && [[aView class] isSubclassOfClass:[UIResponder class]]) {
-				[entryFields addObject:aView];
-			}
-			tag++;
-		}
-	}
-	return entryFields;
-}
 
 @end

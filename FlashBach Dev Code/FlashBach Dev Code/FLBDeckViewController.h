@@ -11,17 +11,20 @@
 #import "FLBDataManagement.h"
 
 @interface FLBDeckViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 
+// Used in creating a new deck
+@property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
+@property (nonatomic)           UITextField    *alertTextField;
+@property (nonatomic)           NSString       *theNewDeckName; // can't start with "new" or there are struggles
+
+// Data
+@property (nonatomic)           NSMutableArray *decks;
+@property (nonatomic)       NSDictionary    *myDict;
+
+// Autocomplete Stuff
 @property (nonatomic, retain)   UITableView    *autocompleteTableView;
 @property (nonatomic, retain)   NSMutableArray *autocompleteValuesArray;
 @property (nonatomic, retain)   NSMutableArray *autocompleteValuesDisplay;
-@property (nonatomic)           NSMutableArray *decks;
-@property (nonatomic)           UITextField    *alertTextField;
-// can't start with "new" or there are struggles
-@property (nonatomic)           NSString       *theNewDeckName;
-@property (nonatomic)       NSDictionary    *myDict;
-
 
 - (void)loadCardDataFromDictionary;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;

@@ -18,55 +18,13 @@
 @synthesize alertTextField;
 @synthesize myDict;
 
+#pragma mark - Initialization
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
 
     return self;
-}
-
-// Add new deck
-// http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
-- (IBAction)addDeckButtonPressed:(id)sender
-{
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeAlphabet;
-    alertTextField.placeholder = @"Enter new deck name";
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-    if ([alertTextField.text length] <= 0 )
-    {
-        return; //If cancel or 0 length string the string doesn't matter
-    }
-   
-    theNewDeckName = alertTextField.text;
-    
-    [self saveCard];
-    
-    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
-    [self loadCardDataFromDictionary];
-    [self.tableView reloadData];
-}
-
-- (void) saveCard
-{
-    NSNumber *difficulty = @0;
-    NSDate *today = [NSDate date];
-    
-    NSMutableArray *newCard = [[NSMutableArray alloc] init];
-    [newCard addObject:theNewDeckName];
-    [newCard addObject:@"Default"];
-    [newCard addObject:@"Default"];
-    [newCard addObject:@"Default"];
-    [newCard addObject:difficulty];
-    [newCard addObject:today];
-    
-    [FLBDataManagement saveNewCard:newCard];
 }
 
 - (void)viewDidLoad
@@ -97,7 +55,7 @@
 }
 
 
-#pragma mark - Table view data source
+#pragma mark - Table-View Management
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -122,7 +80,6 @@
     return cell;
 }
 
-
 - (void) loadCardDataFromDictionary
 {
     // Create view's perception of the decks we have available based on the cards.
@@ -131,12 +88,60 @@
     {
         NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
         NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        
         // For each new deck, add it to the list of decks
         if( ![decks containsObject:deckAtKey] )
         {
             [decks addObject:deckAtKey];
         }
     }
+}
+
+#pragma mark - Data Management
+
+- (void) saveCard
+{
+    NSNumber *frequency = @5;
+    NSDate *today = [NSDate date];
+    
+    NSMutableArray *newCard = [[NSMutableArray alloc] init];
+    [newCard addObject:theNewDeckName];
+    [newCard addObject:@"Default"];
+    [newCard addObject:@"Default"];
+    [newCard addObject:@"Default"];
+    [newCard addObject:frequency];
+    [newCard addObject:today];
+    
+    [FLBDataManagement saveNewCard:newCard];
+}
+
+#pragma mark - Add New Deck
+// Add new deck
+// http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
+- (IBAction)addDeckButtonPressed:(id)sender
+{
+    UIAlertView * addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
+    addNewDeck.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertTextField = [addNewDeck textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeAlphabet;
+    alertTextField.placeholder = @"Enter new deck name";
+    [addNewDeck show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if ([alertTextField.text length] <= 0 )
+    {
+        return; //If cancel or 0 length string the string doesn't matter
+    }
+   
+    theNewDeckName = alertTextField.text;
+    
+    [self saveCard];
+    
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    [self loadCardDataFromDictionary];
+    [self.tableView reloadData];
 }
 
 // Is called when a background touch occurs, dismisses any open keyboard
