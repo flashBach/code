@@ -8,26 +8,17 @@
 
 #import "FLBCardViewController.h"
 
-@interface FLBCardViewController ()
-
-@end
-
 @implementation FLBCardViewController
+
 @synthesize cardPrompts;
 @synthesize cardKeys;
 @synthesize currentDeck;
 @synthesize currentCategory;
+
 @synthesize myDict;
 
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - Initialization
 
 - (void)viewDidLoad
 {
@@ -36,58 +27,45 @@
     [self loadCardDataFromPlist];
     
     self.navigationItem.title = currentCategory;
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self = [super initWithStyle:style];
+    return self;
 }
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"CardToEdit"])
     {
-        FLBAddCardViewController *detailViewController = [segue destinationViewController];
+        FLBAddCardViewController *editCardViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        detailViewController.cardID = [cardKeys objectAtIndex:indexPath.row];
-        detailViewController.title = @"Edit Card";
-        detailViewController.currentCategory = currentCategory;
-        detailViewController.currentDeck = currentDeck;
+        editCardViewController.cardID = [cardKeys objectAtIndex:indexPath.row];
+        editCardViewController.title = @"Edit Card";
+        editCardViewController.currentCategory = currentCategory;
+        editCardViewController.currentDeck = currentDeck;
     }
     else if([[segue identifier] isEqualToString:@"CardToNewCard"])
     {
-        FLBAddCardViewController *detailViewController = [segue destinationViewController];
-        detailViewController.title = @"Add Card";
-        detailViewController.currentCategory = currentCategory;
-        detailViewController.currentDeck = currentDeck;
+        FLBAddCardViewController *addCardViewController = [segue destinationViewController];
+        addCardViewController.title = @"Add Card";
+        addCardViewController.currentCategory = currentCategory;
+        addCardViewController.currentDeck = currentDeck;
     }
 }
 
 // Need this here to tell the add/edit view where to return to after hitting save
 - (IBAction)unwindToCards:(UIStoryboardSegue *) segue
 {
-    // return to card view
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
+#pragma mark - Table-View Management
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -105,6 +83,8 @@
     
     return cell;
 }
+
+#pragma mark - Data Management
 
 - (void) loadCardDataFromPlist
 {
@@ -149,52 +129,6 @@
         }
     }
 }
-
-// Makes it so that the view always updates to reflect changes before viewing
-// Solves the add/edit card not updating the card view problem
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 @end

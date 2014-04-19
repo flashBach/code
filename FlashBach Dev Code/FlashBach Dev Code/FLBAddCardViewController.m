@@ -20,21 +20,21 @@
 @synthesize currentCardData;
 @synthesize cardID;
 
+@synthesize entryFields;
+
+#pragma mark - Initialization
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    // Load in currentCardData;
     [self loadCardDataFromPlist];
     
     // Add border to button
@@ -137,8 +137,6 @@
     
     NSNumber *difficulty = @0;
     NSDate *today = [NSDate date];
-    
-        
 
 	// set the variables to the values in the text fields
 	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
@@ -180,19 +178,15 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+# pragma mark - Button Actions
 
 - (IBAction) deckButtonTapped:(id)sender
 {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose Deck"                                                        delegate:self
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose Deck"                                                                              delegate:self
                                            cancelButtonTitle:@"Cancel"                                              destructiveButtonTitle:@"Dismiss"
                                            otherButtonTitles:@"CS 5", @"CS 70", @"CS 81",@"CS 105", nil];
 
-[action  showInView:self.view];
+    [action  showInView:self.view];
 }
 
 - (IBAction) categoryButtonTapped:(id)sender
@@ -208,24 +202,22 @@
 {
     [self saveData];
     
-    if([self.title isEqualToString:@"Add Card"])
-    {
-        textCardBack.text = @"";
-        textCardFront.text = @"";
-    }
-    
     // Time to rewind
     // https://developer.apple.com/library/ios/technotes/tn2298/_index.html
     [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
 }
 
+
+
 // Required for auto-refresh. 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FLBCardViewController *detailViewController = [segue destinationViewController];
-    [detailViewController loadCardDataFromPlist];
+    FLBCardViewController *cardViewController = [segue destinationViewController];
+    [cardViewController loadCardDataFromPlist];
+    [cardViewController.tableView reloadData];
 }
 
+// Is called when a background touch occurs, dismisses any open keyboard
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [textCardFront resignFirstResponder];
@@ -286,7 +278,6 @@ CGRect keyboardBounds;
 	return NO;
 }
 
-@synthesize entryFields;
 
 /*
  Returns an array of all data entry fields in the view.
