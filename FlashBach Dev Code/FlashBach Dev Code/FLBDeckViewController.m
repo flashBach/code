@@ -20,9 +20,7 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
+
     return self;
 }
 
@@ -121,119 +119,11 @@
 {
     [super viewDidLoad];
     
-    // Load in the Card Data for the current view
     [self loadCardDataFromPlist];
-
-    ///////////////////// Modify add card button //////////////////////////////////////////////////////
-//    
-//    // Attempt to add border to add button on deck view
-//    UIButton* buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-//    
-//    // Add "+" label to button
-//    [buttonAdd.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
-//    [buttonAdd setTitle:@"New Card" forState:UIControlStateNormal];
-//    [buttonAdd setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//    
-//    // Add frame to button
-//    buttonAdd.frame = CGRectMake(0, 0, 80.0, 30.0); // make frame
-//    buttonAdd.layer.borderWidth = 1.2f;
-//    buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
-//    buttonAdd.layer.cornerRadius = 7;
-//    
-//    // Add action to button
-//    [buttonAdd addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    // Make bar button out of this button
-//    UIBarButtonItem* barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
-//    self.navigationItem.rightBarButtonItem = barButtonAdd;
-    
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // Allow dismissing keyboard
     _textNewDeck.delegate = self;
-    
-    // Auto complete custom values
-//    autocompleteTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,80,320,120) style:UITableViewStylePlain];
-//    autocompleteTableView.delegate = self;
-//    autocompleteTableView.dataSource = self;
-//    autocompleteTableView.scrollEnabled = YES;
-//    autocompleteTableView.hidden = YES;
-//    [self.view addSubview:autocompleteTableView];
 }
-
-/*
-//- (BOOL)textField:(UITextField*)textField
-//    shouldChangeCharactersInRange:(NSRange)range
-//    replacementString:(NSString*)string{
-//    autocompleteTableView.hidden = NO;
-//    
-//    NSString *substring = [NSString stringWithString:textField.text];
-//    substring = [substring stringByReplacingCharactersInRange:range withString:string];
-//    [self searchAutocompleteEntriesWithSubstring:substring];
-//    return YES;
-//}
-//
-//- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
-//    // Put anything that starts with this substring into the autocmplete array
-//    // The items in this array is what will show up in the table view
-//    [autocompleteValuesDisplay removeAllObjects];
-//    for (NSString *curString in autocompleteValuesArray) {
-//        NSRange substringRange = [curString rangeOfString:substring];
-//        if (substringRange.location == 0) {
-//            [autocompleteValuesDisplay addObject:curString];
-//        }
-//    }
-//    [autocompleteTableView reloadData];
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 
 #pragma mark - Navigation
 
@@ -250,15 +140,6 @@
     }
 }
 
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    
-    
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 

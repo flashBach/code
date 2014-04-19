@@ -31,7 +31,6 @@
 		93F8A29A18EA874100899AC1 /* CustomAccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29418EA874100899AC1 /* CustomAccessoryViewController.m */; };
 		93F8A29B18EA874100899AC1 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29618EA874100899AC1 /* CustomCell.m */; };
 		93F8A29C18EA874100899AC1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29818EA874100899AC1 /* DetailViewController.m */; };
-		93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93F8A2A718EA8E5B00899AC1 /* TableData.plist */; };
 		93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 		93F8A29618EA874100899AC1 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		93F8A29718EA874100899AC1 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		93F8A29818EA874100899AC1 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		93F8A2A718EA8E5B00899AC1 /* TableData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TableData.plist; sourceTree = "<group>"; };
 		93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Accessory-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */,
-				93F8A2A718EA8E5B00899AC1 /* TableData.plist */,
 				93C2F2CC18F36EF40026B4C1 /* CardData.plist */,
 				93758B9018B3EDD4002CB514 /* FlashBach Dev Code */,
 				93758BA918B3EDD5002CB514 /* FlashBach Dev CodeTests */,
@@ -287,7 +284,6 @@
 				93C2F2CD18F36EF40026B4C1 /* CardData.plist in Resources */,
 				93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */,
 				93758B9D18B3EDD4002CB514 /* Images.xcassets in Resources */,
-				93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

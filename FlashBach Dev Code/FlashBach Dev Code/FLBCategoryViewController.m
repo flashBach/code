@@ -8,11 +8,8 @@
 
 #import "FLBCategoryViewController.h"
 
-@interface FLBCategoryViewController ()
-
-@end
-
 @implementation FLBCategoryViewController
+
 @synthesize categories;
 @synthesize currentDeck;
 @synthesize alertTextField;
