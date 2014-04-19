@@ -32,7 +32,7 @@
     return myDict;
 }
 
-+ (IBAction) saveNewCard: (NSArray *) newCard
++ (void) saveNewCard: (NSArray *) newCard
 {
     // Get the dictionary and keys
     NSDictionary *myDict = [self loadCardDataDictionaryFromPlist];
@@ -45,6 +45,7 @@
         newKey = @(newKey.intValue + 1);
     }
     
+    // Doesn't work without the stringValue there... probably type mismatch somewhere
     [self SaveCard:newCard WithIndex:[newKey stringValue]];
 }
 
@@ -84,14 +85,16 @@
     // Loads data from Documents or Bundle Directory
     //     First, try the mutable Documents Directory...
 	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths objectAtIndex:0];
+	NSString *documentsPath = [paths firstObject];
+    NSLog(@"Documents Path > %@", documentsPath);
 	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
     
 	//     Check to see if we found the CardData.plist file...
 	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
 	{
-		// If not in documents, get property list from main bundle and load in.
-		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
+		//Copy the file from the app bundle.
+        NSString * defaultPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
+        [[NSFileManager defaultManager] copyItemAtPath:defaultPath toPath:plistPath error:NULL];
 	}
     
     return plistPath;

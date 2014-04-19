@@ -126,15 +126,6 @@
     [cardViewController.tableView reloadData];
 }
 
-// Is called when a background touch occurs, dismisses any open keyboard
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [textCardFront resignFirstResponder];
-    [textCardBack resignFirstResponder];
-    [textChooseCategory resignFirstResponder];
-    [textChooseDeck resignFirstResponder];
-}
-
 # pragma mark - Data Management
 
 - (void) saveCard
@@ -194,10 +185,6 @@ CGRect keyboardBounds;
 	[self scrollViewToCenterOfScreen:textField];
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-	[self scrollViewToCenterOfScreen:textView];
-}
-
 - (void)scrollViewToCenterOfScreen:(UIView *)theView {
 	CGFloat viewCenterY = theView.center.y;
 	CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
@@ -233,6 +220,14 @@ CGRect keyboardBounds;
 	return NO;
 }
 
+// Is called when a background touch occurs, dismisses any open keyboard
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [textCardFront resignFirstResponder];
+    [textCardBack resignFirstResponder];
+    [textChooseCategory resignFirstResponder];
+    [textChooseDeck resignFirstResponder];
+}
 
 
 @end
