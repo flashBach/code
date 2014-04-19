@@ -19,6 +19,8 @@
 @property (nonatomic)           UITextField    *alertTextField;
 // can't start with "new" or there are struggles
 @property (nonatomic)           NSString       *theNewDeckName;
+@property (nonatomic)       NSDictionary    *myDict;
+
 
 - (void)loadCardDataFromPlist;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;

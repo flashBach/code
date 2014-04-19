@@ -14,6 +14,7 @@
 @synthesize currentDeck;
 @synthesize alertTextField;
 @synthesize theNewCategoryName;
+@synthesize myDict;
 
 #pragma mark - Initialization
 
@@ -99,12 +100,17 @@
 	NSString *errorDesc = nil;
 	NSPropertyListFormat format;
 	// Convert static property list into dictionary object
-	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
 	if (!myDict)
 	{
 		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
 	}
     
+    [self loadCardDataFromDictionary];
+}
+
+- (void) loadCardDataFromDictionary
+{
     // Create view's perception of the decks we have available based on the cards.
     categories = [NSMutableArray array];
     for(id key in myDict)
@@ -119,8 +125,6 @@
         }
     }
 }
-
-
 
 // Is called when a background touch occurs, dismisses any open keyboard
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -15,6 +15,7 @@
 @property (nonatomic)       NSString        *currentDeck;
 @property (nonatomic)       UITextField     *alertTextField;
 @property (nonatomic)       NSString        *theNewCategoryName;
+@property (nonatomic)       NSDictionary    *myDict;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;

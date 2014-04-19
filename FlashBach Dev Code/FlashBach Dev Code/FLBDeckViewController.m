@@ -16,6 +16,7 @@
 @synthesize decks;
 @synthesize theNewDeckName;
 @synthesize alertTextField;
+@synthesize myDict;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -186,12 +187,17 @@
 	NSString *errorDesc = nil;
 	NSPropertyListFormat format;
 	// Convert static property liost into dictionary object
-	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
 	if (!myDict)
 	{
 		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
 	}
     
+    [self loadCardDataFromDictionary];
+}
+
+- (void) loadCardDataFromDictionary
+{
     // Create view's perception of the decks we have available based on the cards.
     decks = [NSMutableArray array];
     for(id key in myDict)

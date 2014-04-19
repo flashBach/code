@@ -18,6 +18,7 @@
 @property (nonatomic) NSMutableArray *cardPrompts;
 @property (nonatomic) NSMutableArray *cardKeys;
 
+// Needed here to allow auto-refresh to work
 - (void) loadCardDataFromPlist;
 
 @end

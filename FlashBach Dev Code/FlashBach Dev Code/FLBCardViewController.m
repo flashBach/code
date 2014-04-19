@@ -112,6 +112,11 @@
 		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
 	}
     
+    [self loadCardDataFromDictionary];
+}
+
+- (void) loadCardDataFromDictionary
+{
     // Create view's perception of the decks we have available based on the cards.
     cardPrompts = [NSMutableArray array];
     cardKeys = [NSMutableArray array];
