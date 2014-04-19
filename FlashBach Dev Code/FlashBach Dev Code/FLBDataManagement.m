@@ -10,7 +10,76 @@
 
 @implementation FLBDataManagement
 
+
 + (NSDictionary *) loadCardDataDictionaryFromPlist
+{
+    NSString *plistPath = [self getPlistPath];
+	
+	// Read property list into memory as an NSData object
+	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+	NSString *errorDesc = nil;
+	NSPropertyListFormat format;
+    
+	// Convert static property list into dictionary object
+	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	
+    // Error Checking
+    if (!myDict)
+	{
+		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
+	}
+    
+    return myDict;
+}
+
++ (IBAction) saveNewCard: (NSArray *) newCard
+{
+    // Get the dictionary and keys
+    NSDictionary *myDict = [self loadCardDataDictionaryFromPlist];
+    NSArray *dictKeys = [myDict allKeys];
+    
+    // Generate a new key
+    NSNumber *newKey = @0;
+    while ([dictKeys containsObject:[newKey stringValue]])
+    {
+        newKey = @(newKey.intValue + 1);
+    }
+    
+    [self SaveCard:newCard WithIndex:[newKey stringValue]];
+}
+
++ (void) SaveCard:(NSArray *)card WithIndex:(NSNumber *)cardIndex
+{
+    NSString *plistPath = [self getPlistPath];
+    
+    // Get the dictionary and keys
+    NSDictionary *myDict = [self loadCardDataDictionaryFromPlist];
+    
+	// Put the new card into a new dictionary
+	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
+    [newMyDict setObject:card forKey:cardIndex];
+	
+	// Create a non-mutable dictionary from this
+    NSDictionary *plistDict = newMyDict;
+	
+    // Use to collect any error message from creating the Plist
+	NSString *error = nil;
+    
+	// Create the Plist from the non-mutable dictionary
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+	
+    // Check if plistData exists
+	if(plistData)
+	{
+        [plistData writeToFile:plistPath atomically:YES];
+    }
+    else
+	{
+        NSLog(@"Error in saveData: %@", error);
+    }
+}
+
++ (NSString *) getPlistPath
 {
     // Loads data from Documents or Bundle Directory
     //     First, try the mutable Documents Directory...
@@ -24,19 +93,8 @@
 		// If not in documents, get property list from main bundle and load in.
 		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
 	}
-	
-	// Read property list into memory as an NSData object
-	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-	NSString *errorDesc = nil;
-	NSPropertyListFormat format;
-	// Convert static property liost into dictionary object
-	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-	if (!myDict)
-	{
-		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
-	}
     
-    return myDict;
+    return plistPath;
 }
 
 

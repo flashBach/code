@@ -11,7 +11,9 @@
 #import "FLBDataManagement.h"
 
 @interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
+
 @property (nonatomic)       NSMutableArray  *categories;
 @property (nonatomic)       NSString        *currentDeck;
 @property (nonatomic)       UITextField     *alertTextField;

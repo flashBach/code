@@ -88,78 +88,7 @@
 
 
 
-- (IBAction) saveData
-{
-    // Loads data from Documents or Bundle Directory
-    //     First, try the mutable Documents Directory...
-	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths objectAtIndex:0];
-	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
-    
-	//     Check to see if we found the CardData.plist file...
-	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-	{
-		// If not in documents, get property list from main bundle and load in.
-		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
-	}
-	
-	// Read property list into memory as an NSData object
-	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-	NSString *errorDesc = nil;
-	NSPropertyListFormat format;
-	// Convert static property liost into dictionary object
-	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-    
-    NSArray *dictKeys = [myDict allKeys];
-    NSNumber *newKey = @0;
-    
-    while ([dictKeys containsObject:[newKey stringValue]])
-    {
-        newKey = @(newKey.intValue + 1);
-    }
-    
-    NSNumber *difficulty = @0;
-    NSDate *today = [NSDate date];
 
-	// set the variables to the values in the text fields
-	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
-    
-    // Currently breaks if there is nothing in the field
-    NSMutableArray *newArray = [[NSMutableArray alloc] init];
-    [newArray addObject:currentDeck];
-    [newArray addObject:currentCategory];
-    [newArray addObject:textCardFront.text];
-    [newArray addObject:textCardBack.text];
-    [newArray addObject:difficulty];
-    [newArray addObject:today];
-    
-    if ([self.title isEqualToString:@"Add Card"])
-    {
-        [newMyDict setObject:newArray forKey:[newKey stringValue]];
-    }
-    if ([self.title isEqualToString:@"Edit Card"])
-    {
-        [newMyDict setObject:newArray forKey:cardID];
-    }
-	
-	// create dictionary with values in UITextFields
-    NSDictionary *plistDict = newMyDict;
-	
-	NSString *error = nil;
-	// create NSData from dictionary
-    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
-	
-    // check is plistData exists
-	if(plistData)
-	{
-		// write plistData to our Data.plist file
-        [plistData writeToFile:plistPath atomically:YES];
-    }
-    else
-	{
-        NSLog(@"Error in saveData: %@", error);
-    }
-}
 
 # pragma mark - Button Actions
 
@@ -183,14 +112,36 @@
 
 - (IBAction)addButtonTapped:(id)sender
 {
-    [self saveData];
+    [self saveCard];
     
     // Time to rewind
     // https://developer.apple.com/library/ios/technotes/tn2298/_index.html
     [self performSegueWithIdentifier:@"unwindToCards" sender:self ];
 }
 
+- (void) saveCard
+{
+    NSNumber *difficulty = @0;
+    NSDate *today = [NSDate date];
+    
+    NSMutableArray *newCard = [[NSMutableArray alloc] init];
+    [newCard addObject:currentDeck];
+    [newCard addObject:currentCategory];
+    [newCard addObject:textCardFront.text];
+    [newCard addObject:textCardBack.text];
+    [newCard addObject:difficulty];
+    [newCard addObject:today];
+    
+    if ([self.title isEqualToString:@"Add Card"])
+    {
+        [FLBDataManagement saveNewCard:newCard];
+    }
+    if ([self.title isEqualToString:@"Edit Card"])
+    {
+        [FLBDataManagement SaveCard:newCard WithIndex:cardID];
+    }
 
+}
 
 // Required for auto-refresh. 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

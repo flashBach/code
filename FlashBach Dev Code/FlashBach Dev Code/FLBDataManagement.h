@@ -11,5 +11,7 @@
 @interface FLBDataManagement : NSObject
 
 + (NSDictionary *) loadCardDataDictionaryFromPlist;
++ (void) saveNewCard:(NSArray *)newCard;
++ (void) SaveCard:(NSArray *)card WithIndex:(NSNumber *)cardIndex;
 
 @end

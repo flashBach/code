@@ -13,9 +13,9 @@
 @interface FLBCardViewController : UITableViewController
 
 // Data
-@property (nonatomic) NSDictionary *myDict;        
-@property (nonatomic) NSString *currentDeck;
-@property (nonatomic) NSString *currentCategory;
+@property (nonatomic) NSDictionary   *myDict;
+@property (nonatomic) NSString       *currentDeck;
+@property (nonatomic) NSString       *currentCategory;
 @property (nonatomic) NSMutableArray *cardPrompts;
 @property (nonatomic) NSMutableArray *cardKeys;
 

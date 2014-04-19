@@ -29,7 +29,7 @@
 // Card Data
 @property (retain, nonatomic) NSMutableArray *entryFields;
 @property (strong, nonatomic) NSMutableArray *myDecks;
-@property (weak, nonatomic) id cardID;
+@property (weak, nonatomic) NSNumber *cardID;
 @property (weak, nonatomic) NSString *currentDeck;
 @property (weak, nonatomic) NSString *currentCategory;
 @property (weak, nonatomic) NSMutableArray *currentCardData;
