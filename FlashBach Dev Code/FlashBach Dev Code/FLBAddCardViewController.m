@@ -53,6 +53,10 @@
         textCardFront.text = [currentCardData objectAtIndex: 2];
         textCardBack.text = [currentCardData objectAtIndex:3];
     }
+    
+    // Detects background button presses (used to dismiss keyboard)
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
+    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void) addButtonBorders
@@ -220,14 +224,15 @@ CGRect keyboardBounds;
 	return NO;
 }
 
-// Is called when a background touch occurs, dismisses any open keyboard
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
 {
     [textCardFront resignFirstResponder];
     [textCardBack resignFirstResponder];
     [textChooseCategory resignFirstResponder];
     [textChooseDeck resignFirstResponder];
 }
+
+
 
 
 @end

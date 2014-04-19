@@ -17,6 +17,7 @@
 @synthesize theNewDeckName;
 @synthesize alertTextField;
 @synthesize myDict;
+@synthesize addNewDeck;
 
 #pragma mark - Initialization
 
@@ -120,7 +121,7 @@
 // http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
 - (IBAction)addDeckButtonPressed:(id)sender
 {
-    UIAlertView * addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
+    addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
     addNewDeck.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertTextField = [addNewDeck textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeAlphabet;
@@ -128,7 +129,8 @@
     [addNewDeck show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
 
     if ([alertTextField.text length] <= 0 )
     {
@@ -142,12 +144,6 @@
     myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     [self loadCardDataFromDictionary];
     [self.tableView reloadData];
-}
-
-// Is called when a background touch occurs, dismisses any open keyboard
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [_textNewDeck resignFirstResponder];
 }
 
 // Is called on textField when Return/Done is pressed to dismiss keyboard

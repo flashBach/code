@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textNewDeck;
 @property (nonatomic)           UITextField    *alertTextField;
 @property (nonatomic)           NSString       *theNewDeckName; // can't start with "new" or there are struggles
+@property (nonatomic)           UIAlertView    *addNewDeck;
 
 // Data
 @property (nonatomic)           NSMutableArray *decks;
@@ -29,6 +30,6 @@
 - (void)loadCardDataFromDictionary;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 - (IBAction)addDeckButtonPressed:(id)sender;
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
