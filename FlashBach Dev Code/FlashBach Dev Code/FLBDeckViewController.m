@@ -138,9 +138,9 @@
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"DeckToCategory"])
     {
-        FLBCategoryViewController *categorylViewController = [segue destinationViewController];
+        FLBCategoryViewController *categoryViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        categorylViewController.currentDeck = [decks objectAtIndex:indexPath.row];
+        categoryViewController.currentDeck = [decks objectAtIndex:indexPath.row];
     }
 }
 

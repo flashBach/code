@@ -10,29 +10,15 @@
 
 @implementation FLBReviewBackViewController
 
-@synthesize cardKeys;
+@synthesize cardID;
 
+#pragma mark - Initialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 
     return self;
-}
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"ReviewToEdit"])
-    {
-        FLBAddCardViewController *detailViewController = [segue destinationViewController];
-        
-        // TODO update the current cardID whenever entering review.
-        // TODO once there is a cardID member present, uncomment the following line the edit card button should work
-        //detailViewController.cardID = cardID;
-    }
 }
 
 - (void)viewDidLoad
@@ -59,6 +45,20 @@
     _buttonEditCard.layer.borderWidth = 0.7f;
     _buttonEditCard.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonEditCard.layer.cornerRadius = 7;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"ReviewToEdit"])
+    {
+        FLBAddCardViewController *addCardViewController = [segue destinationViewController];
+        
+        // TODO update the current cardID whenever entering review.
+        // TODO once there is a cardID member present, uncomment the following line and the edit card button should work
+        // addCardViewController.cardID = cardID;
+    }
 }
 
 @end

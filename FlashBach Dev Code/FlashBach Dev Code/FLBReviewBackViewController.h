@@ -10,11 +10,15 @@
 #import "FLBAddCardViewController.h"
 
 @interface FLBReviewBackViewController : UIViewController
+
+// Buttons
 @property (weak, nonatomic) IBOutlet UIButton *buttonHard;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNormal;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEasy;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEditCard;
-@property (nonatomic) NSMutableArray *cardKeys;
+
+// Data
+@property (weak, nonatomic) NSString * cardID;
 
 
 @end
