@@ -94,14 +94,14 @@
 	NSString *errorDesc = nil;
 	NSPropertyListFormat format;
 	// Convert static property liost into dictionary object
-	NSDictionary *myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-	if (!myDick)
+	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	if (!myDict)
 	{
 		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
 	}
     
     // Create view's perception of the decks we have available based on the cards.
-    currentCardData = [NSMutableArray arrayWithArray:[myDick objectForKey:cardID]];
+    currentCardData = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
 }
 
 

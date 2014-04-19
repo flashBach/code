@@ -15,7 +15,7 @@
 @property (nonatomic) NSMutableArray *cardKeys;
 @property (nonatomic) NSString *currentDeck;
 @property (nonatomic) NSString *currentCategory;
-@property (nonatomic) NSDictionary *myDick;
+@property (nonatomic) NSDictionary *myDict;
 
 - (void) loadCardDataFromPlist;
 

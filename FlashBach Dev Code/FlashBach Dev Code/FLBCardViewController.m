@@ -17,7 +17,7 @@
 @synthesize cardKeys;
 @synthesize currentDeck;
 @synthesize currentCategory;
-@synthesize myDick;
+@synthesize myDict;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -126,8 +126,8 @@
 	NSString *errorDesc = nil;
 	NSPropertyListFormat format;
 	// Convert static property liost into dictionary object
-	myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-	if (!myDick)
+	myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
+	if (!myDict)
 	{
 		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
 	}
@@ -135,9 +135,9 @@
     // Create view's perception of the decks we have available based on the cards.
     cardPrompts = [NSMutableArray array];
     cardKeys = [NSMutableArray array];
-    for(id key in myDick)
+    for(id key in myDict)
     {
-        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDick objectForKey:key]];
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
         NSString *deckAtKey = [cardAtKey objectAtIndex:0];
         NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
         NSString *cardPromptAtKey = [cardAtKey objectAtIndex:2];
