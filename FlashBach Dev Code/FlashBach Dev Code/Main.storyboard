@@ -176,7 +176,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="rC6-1C-KCN" kind="push" id="069-St-mJ4"/>
+                                            <segue destination="rC6-1C-KCN" kind="push" identifier="FrontToBack" id="069-St-mJ4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IGq-dp-Nri">
@@ -405,7 +405,7 @@
                         <barButtonItem key="backBarButtonItem" title="Decks" id="lN6-Ar-x7H"/>
                         <barButtonItem key="leftBarButtonItem" title="Review" id="X7O-Mz-7DB">
                             <connections>
-                                <segue destination="hWF-xk-chh" kind="push" id="dDV-hF-2dc"/>
+                                <segue destination="hWF-xk-chh" kind="push" identifier="DecktoReviewFront" id="dDV-hF-2dc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
@@ -444,8 +444,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gSS-wj-yWZ"/>
-        <segue reference="RHT-kT-hrr"/>
         <segue reference="dDV-hF-2dc"/>
+        <segue reference="zXJ-dE-LdV"/>
+        <segue reference="gSS-wj-yWZ"/>
     </inferredMetricsTieBreakers>
 </document>
