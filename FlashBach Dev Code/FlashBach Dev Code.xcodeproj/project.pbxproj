@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5101A80F18C0F79700C7B01A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5101A80E18C0F79700C7B01A /* Main.storyboard */; };
 		519C142118C58EBA00A85273 /* FLBAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 519C142018C58EBA00A85273 /* FLBAddCardViewController.m */; };
+		932434361902D69B00E4B8AE /* FLBDataManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 932434351902D69B00E4B8AE /* FLBDataManagement.m */; };
 		9353155F18C935EF00AA45A1 /* FLBDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9353155E18C935EF00AA45A1 /* FLBDeckViewController.m */; };
 		9353156218C9361300AA45A1 /* FLBCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9353156118C9361300AA45A1 /* FLBCategoryViewController.m */; };
 		9353157118C9393000AA45A1 /* FLBCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9353157018C9393000AA45A1 /* FLBCardViewController.m */; };
@@ -31,7 +32,6 @@
 		93F8A29A18EA874100899AC1 /* CustomAccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29418EA874100899AC1 /* CustomAccessoryViewController.m */; };
 		93F8A29B18EA874100899AC1 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29618EA874100899AC1 /* CustomCell.m */; };
 		93F8A29C18EA874100899AC1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8A29818EA874100899AC1 /* DetailViewController.m */; };
-		93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93F8A2A718EA8E5B00899AC1 /* TableData.plist */; };
 		93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +49,8 @@
 		5101A80E18C0F79700C7B01A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		519C141F18C58EBA00A85273 /* FLBAddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBAddCardViewController.h; sourceTree = "<group>"; };
 		519C142018C58EBA00A85273 /* FLBAddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBAddCardViewController.m; sourceTree = "<group>"; };
+		932434341902D69B00E4B8AE /* FLBDataManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBDataManagement.h; sourceTree = "<group>"; };
+		932434351902D69B00E4B8AE /* FLBDataManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBDataManagement.m; sourceTree = "<group>"; };
 		9353155D18C935EF00AA45A1 /* FLBDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBDeckViewController.h; sourceTree = "<group>"; };
 		9353155E18C935EF00AA45A1 /* FLBDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBDeckViewController.m; sourceTree = "<group>"; };
 		9353156018C9361300AA45A1 /* FLBCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBCategoryViewController.h; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 		93F8A29618EA874100899AC1 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		93F8A29718EA874100899AC1 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		93F8A29818EA874100899AC1 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		93F8A2A718EA8E5B00899AC1 /* TableData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TableData.plist; sourceTree = "<group>"; };
 		93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Accessory-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				93F8A2A918EA8E6200899AC1 /* Accessory-Info.plist */,
-				93F8A2A718EA8E5B00899AC1 /* TableData.plist */,
 				93C2F2CC18F36EF40026B4C1 /* CardData.plist */,
 				93758B9018B3EDD4002CB514 /* FlashBach Dev Code */,
 				93758BA918B3EDD5002CB514 /* FlashBach Dev CodeTests */,
@@ -167,6 +167,8 @@
 				9353156118C9361300AA45A1 /* FLBCategoryViewController.m */,
 				9353155D18C935EF00AA45A1 /* FLBDeckViewController.h */,
 				9353155E18C935EF00AA45A1 /* FLBDeckViewController.m */,
+				932434341902D69B00E4B8AE /* FLBDataManagement.h */,
+				932434351902D69B00E4B8AE /* FLBDataManagement.m */,
 				93802F7218C92A61003DC73E /* FLBReviewBackViewController.h */,
 				93802F7318C92A61003DC73E /* FLBReviewBackViewController.m */,
 				93802F6F18C928F4003DC73E /* FLBReviewFrontViewController.h */,
@@ -287,7 +289,6 @@
 				93C2F2CD18F36EF40026B4C1 /* CardData.plist in Resources */,
 				93F8A2AA18EA8E6200899AC1 /* Accessory-Info.plist in Resources */,
 				93758B9D18B3EDD4002CB514 /* Images.xcassets in Resources */,
-				93F8A2A818EA8E5B00899AC1 /* TableData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +315,7 @@
 				9353157118C9393000AA45A1 /* FLBCardViewController.m in Sources */,
 				93758B9718B3EDD4002CB514 /* main.m in Sources */,
 				93758B9B18B3EDD4002CB514 /* FLBAppDelegate.m in Sources */,
+				932434361902D69B00E4B8AE /* FLBDataManagement.m in Sources */,
 				93F8A29C18EA874100899AC1 /* DetailViewController.m in Sources */,
 				93F8A29918EA874100899AC1 /* Checkbox.m in Sources */,
 				93F8A29A18EA874100899AC1 /* CustomAccessoryViewController.m in Sources */,

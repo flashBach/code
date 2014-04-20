@@ -16,224 +16,29 @@
 @synthesize decks;
 @synthesize theNewDeckName;
 @synthesize alertTextField;
+@synthesize myDict;
+@synthesize addNewDeck;
+
+#pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
+
     return self;
-}
-
-// Add new deck
-// http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
-- (IBAction)addDeckButtonPressed:(id)sender
-{
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeAlphabet;
-    alertTextField.placeholder = @"Enter new deck name";
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-    if ([alertTextField.text length] <= 0 )
-    {
-        return; //If cancel or 0 length string the string doesn't matter
-    }
-   
-    theNewDeckName = alertTextField.text;
-    [self saveData];
-    [self loadCardDataFromPlist];
-    [self.tableView reloadData];
-}
-
-- (IBAction) saveData
-{
-    // Loads data from Documents or Bundle Directory
-    //     First, try the mutable Documents Directory...
-	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths objectAtIndex:0];
-	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
-    
-	//     Check to see if we found the CardData.plist file...
-	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-	{
-		// If not in documents, get property list from main bundle and load in.
-		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
-	}
-	
-	// Read property list into memory as an NSData object
-	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-	NSString *errorDesc = nil;
-	NSPropertyListFormat format;
-	// Convert static property liost into dictionary object
-	NSDictionary *myDict = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-    
-    NSArray *dictKeys = [myDict allKeys];
-    NSNumber *newKey = @0;
-    
-    while ([dictKeys containsObject:[newKey stringValue]])
-    {
-        newKey = @(newKey.intValue + 1);
-    }
-    
-    NSNumber *difficulty = @0;
-    NSDate *today = [NSDate date];
-    
-	// set the variables to the values in the text fields
-	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
-    
-    // Currently breaks if there is nothing in the field
-    NSMutableArray *newArray = [[NSMutableArray alloc] init];
-    [newArray addObject:theNewDeckName];
-    [newArray addObject:@"Default"];
-    [newArray addObject:@"Default"];
-    [newArray addObject:@"Default"];
-    [newArray addObject:difficulty];
-    [newArray addObject:today];
-    
-    [newMyDict setObject:newArray forKey:[newKey stringValue]];
-	
-	// create dictionary with values in UITextFields
-    NSDictionary *plistDict = newMyDict;
-	
-	NSString *error = nil;
-	// create NSData from dictionary
-    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
-	
-    // check is plistData exists
-	if(plistData)
-	{
-		// write plistData to our Data.plist file
-        [plistData writeToFile:plistPath atomically:YES];
-    }
-    else
-	{
-        NSLog(@"Error in saveData: %@", error);
-    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Load in the Card Data for the current view
-    [self loadCardDataFromPlist];
-
-    ///////////////////// Modify add card button //////////////////////////////////////////////////////
-//    
-//    // Attempt to add border to add button on deck view
-//    UIButton* buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-//    
-//    // Add "+" label to button
-//    [buttonAdd.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
-//    [buttonAdd setTitle:@"New Card" forState:UIControlStateNormal];
-//    [buttonAdd setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//    
-//    // Add frame to button
-//    buttonAdd.frame = CGRectMake(0, 0, 80.0, 30.0); // make frame
-//    buttonAdd.layer.borderWidth = 1.2f;
-//    buttonAdd.layer.borderColor = [[UIColor blueColor]CGColor];
-//    buttonAdd.layer.cornerRadius = 7;
-//    
-//    // Add action to button
-//    [buttonAdd addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    // Make bar button out of this button
-//    UIBarButtonItem* barButtonAdd = [[UIBarButtonItem alloc] initWithCustomView:buttonAdd];
-//    self.navigationItem.rightBarButtonItem = barButtonAdd;
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self loadCardDataFromDictionary];
     
     // Allow dismissing keyboard
     _textNewDeck.delegate = self;
-    
-    // Auto complete custom values
-//    autocompleteTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,80,320,120) style:UITableViewStylePlain];
-//    autocompleteTableView.delegate = self;
-//    autocompleteTableView.dataSource = self;
-//    autocompleteTableView.scrollEnabled = YES;
-//    autocompleteTableView.hidden = YES;
-//    [self.view addSubview:autocompleteTableView];
 }
-
-/*
-//- (BOOL)textField:(UITextField*)textField
-//    shouldChangeCharactersInRange:(NSRange)range
-//    replacementString:(NSString*)string{
-//    autocompleteTableView.hidden = NO;
-//    
-//    NSString *substring = [NSString stringWithString:textField.text];
-//    substring = [substring stringByReplacingCharactersInRange:range withString:string];
-//    [self searchAutocompleteEntriesWithSubstring:substring];
-//    return YES;
-//}
-//
-//- (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
-//    // Put anything that starts with this substring into the autocmplete array
-//    // The items in this array is what will show up in the table view
-//    [autocompleteValuesDisplay removeAllObjects];
-//    for (NSString *curString in autocompleteValuesArray) {
-//        NSRange substringRange = [curString rangeOfString:substring];
-//        if (substringRange.location == 0) {
-//            [autocompleteValuesDisplay addObject:curString];
-//        }
-//    }
-//    [autocompleteTableView reloadData];
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 
 #pragma mark - Navigation
 
@@ -244,23 +49,14 @@
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"DeckToCategory"])
     {
-        FLBCategoryViewController *detailViewController = [segue destinationViewController];
+        FLBCategoryViewController *categoryViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        detailViewController.currentDeck = [decks objectAtIndex:indexPath.row];
+        categoryViewController.currentDeck = [decks objectAtIndex:indexPath.row];
     }
 }
 
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    
-    
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+#pragma mark - Table-View Management
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -285,38 +81,15 @@
     return cell;
 }
 
-- (void) loadCardDataFromPlist
+- (void) loadCardDataFromDictionary
 {
-    // Loads data from Documents or Bundle Directory
-    //     First, try the mutable Documents Directory...
-	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths objectAtIndex:0];
-	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
-    
-	//     Check to see if we found the CardData.plist file...
-	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-	{
-		// If not in documents, get property list from main bundle and load in.
-		plistPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
-	}
-	
-	// Read property list into memory as an NSData object
-	NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-	NSString *errorDesc = nil;
-	NSPropertyListFormat format;
-	// Convert static property liost into dictionary object
-	NSDictionary *myDick = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-	if (!myDick)
-	{
-		NSLog(@"Error reading plist: %@, format: %d", errorDesc, format);
-	}
-    
     // Create view's perception of the decks we have available based on the cards.
     decks = [NSMutableArray array];
-    for(id key in myDick)
+    for(id key in myDict)
     {
-        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDick objectForKey:key]];
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
         NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        
         // For each new deck, add it to the list of decks
         if( ![decks containsObject:deckAtKey] )
         {
@@ -325,10 +98,52 @@
     }
 }
 
-// Is called when a background touch occurs, dismisses any open keyboard
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+#pragma mark - Data Management
+
+- (void) saveCard
 {
-    [_textNewDeck resignFirstResponder];
+    NSNumber *frequency = @5;
+    NSDate *today = [NSDate date];
+    
+    NSMutableArray *newCard = [[NSMutableArray alloc] init];
+    [newCard addObject:theNewDeckName];
+    [newCard addObject:@"Default"];
+    [newCard addObject:@"Default"];
+    [newCard addObject:@"Default"];
+    [newCard addObject:frequency];
+    [newCard addObject:today];
+    
+    [FLBDataManagement saveNewCard:newCard];
+}
+
+#pragma mark - Add New Deck
+// Add new deck
+// http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
+- (IBAction)addDeckButtonPressed:(id)sender
+{
+    addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
+    addNewDeck.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertTextField = [addNewDeck textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeAlphabet;
+    alertTextField.placeholder = @"Enter new deck name";
+    [addNewDeck show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+    if ([alertTextField.text length] <= 0 )
+    {
+        return; //If cancel or 0 length string the string doesn't matter
+    }
+   
+    theNewDeckName = alertTextField.text;
+    
+    [self saveCard];
+    
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    [self loadCardDataFromDictionary];
+    [self.tableView reloadData];
 }
 
 // Is called on textField when Return/Done is pressed to dismiss keyboard

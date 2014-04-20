@@ -8,16 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "FLBCardViewController.h"
+#import "FLBDataManagement.h"
 
 @interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
+
+// Used in created a new category
+@property (nonatomic)       UIAlertView          * addNewCategory;
+@property (nonatomic)       UITextField          *createNewCategoryTextField;
+@property (nonatomic)       NSString             *theNewCategoryName;
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
+
+// Data
 @property (nonatomic)       NSMutableArray  *categories;
 @property (nonatomic)       NSString        *currentDeck;
-@property (nonatomic)       UITextField     *alertTextField;
-@property (nonatomic)       NSString        *theNewCategoryName;
+@property (nonatomic)       NSDictionary    *myDict;
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField;
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+// Handle button press
 - (IBAction)addCategoryButtonPressed:(id)sender;
 
 @end

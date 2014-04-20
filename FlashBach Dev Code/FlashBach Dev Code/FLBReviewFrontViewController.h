@@ -10,6 +10,7 @@
 
 @interface FLBReviewFrontViewController : UIViewController
 
+// Buttons
 @property (weak, nonatomic) IBOutlet UIButton *buttonFlip;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSkip;
 
