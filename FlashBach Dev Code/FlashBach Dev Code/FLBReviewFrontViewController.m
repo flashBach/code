@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     [self addButtonBorders];
+
 }
 
 - (void) addButtonBorders
@@ -36,5 +37,13 @@
     _buttonSkip.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonSkip.layer.cornerRadius = 7;
 }
+
+- (void) updateUI
+{
+    
+}
+
+
+
 
 @end
