@@ -55,7 +55,7 @@
     
     // Add border to button
     _buttonHard.layer.borderWidth = 0.7f;
-    _buttonHard.layer.borderColor = [[UIColor redColor]CGColor];
+    _buttonHard.layer.borderColor = [[UIColor purpleColor]CGColor];
     _buttonHard.layer.cornerRadius = 7;
     
     // Add border to button
