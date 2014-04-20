@@ -116,6 +116,26 @@
     [FLBDataManagement saveNewCard:newCard];
 }
 
+- (NSMutableArray *) generateDueCards
+{
+    NSMutableArray * dueCards = [[NSMutableArray alloc]init];
+    
+    for (id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSDate *dateAtKey = [cardAtKey objectAtIndex:5];
+        
+        NSDate * today = [NSDate date];
+        if ([dateAtKey compare:today] == NSOrderedAscending)
+        {
+            [dueCards addObject:key];
+        }
+    }
+    
+    return dueCards;
+}
+
+
 #pragma mark - Add New Deck
 // Add new deck
 // http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
