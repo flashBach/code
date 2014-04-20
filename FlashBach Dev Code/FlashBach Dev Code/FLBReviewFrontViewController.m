@@ -7,8 +7,15 @@
 //
 
 #import "FLBReviewFrontViewController.h"
+#import "FLBDataManagement.h"
+#import "FLBReviewBackViewController.h"
 
 @implementation FLBReviewFrontViewController
+
+@synthesize dueCardsID;
+@synthesize cardID;
+@synthesize myDict;
+@synthesize cardFrontTextView;
 
 #pragma mark - Initialization
 
@@ -22,10 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     [self addButtonBorders];
-
+    
+    [self updateUI];
 }
+
 
 - (void) addButtonBorders
 {
@@ -40,9 +49,33 @@
 
 - (void) updateUI
 {
-    
+    NSLog(@"dueCardsID count: %d",[dueCardsID count]);
+    if ([dueCardsID count])
+    {
+        cardID = dueCardsID[0];
+        
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
+        NSString * cardFront = [cardAtKey objectAtIndex:2];
+        cardFrontTextView.text = cardFront;
+    }
 }
 
+#pragma mark - Navigation
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"FrontToBack"])
+    {
+        FLBReviewBackViewController *reviewBackViewController = [segue destinationViewController];
+        [dueCardsID removeObjectAtIndex:0];
+        reviewBackViewController.dueCardsID = dueCardsID;
+        reviewBackViewController.cardID = cardID;
+        
+    }
+    
+}
 
 
 

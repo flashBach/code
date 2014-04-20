@@ -17,8 +17,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonEasy;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEditCard;
 
+// View
+@property (weak, nonatomic) IBOutlet UITextView *cardFrontTextView;
+@property (weak, nonatomic) IBOutlet UITextView *cardBackTextView;
+
 // Data
-@property (weak, nonatomic) NSString * cardID;
+@property (strong, nonatomic) NSMutableArray * dueCardsID;
+@property (weak, nonatomic) NSNumber * cardID;
+@property (weak, nonatomic) NSDictionary * myDict;
+
 
 
 @end
