@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonFlip;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSkip;
 
+@property (weak, nonatomic) NSMutableArray *cardsToReview;
+
 @end

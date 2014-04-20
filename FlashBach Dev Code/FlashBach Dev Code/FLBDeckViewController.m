@@ -53,6 +53,11 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         categoryViewController.currentDeck = [decks objectAtIndex:indexPath.row];
     }
+    if([[segue identifier] isEqualToString:@"DeckToReview"])
+    {
+        FLBCategoryViewController *categoryViewController = [segue destinationViewController];
+        //categoryViewController.cardsToReview = ;
+    }
 }
 
 

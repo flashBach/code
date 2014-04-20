@@ -10,6 +10,9 @@
 
 @implementation FLBReviewFrontViewController
 
+@synthesize cardsToReview;
+
+
 #pragma mark - Initialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,6 +38,18 @@
     _buttonSkip.layer.borderWidth = 0.7f;
     _buttonSkip.layer.borderColor = [[UIColor blueColor]CGColor];
     _buttonSkip.layer.cornerRadius = 7;
+}
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"FronttoBack"])
+    {
+        FLBCategoryViewController *categoryViewController = [segue destinationViewController];
+        
+    }
 }
 
 @end
