@@ -36,6 +36,7 @@
     
     
     [self addButtonBorders];
+
 }
 
 - (void) addButtonBorders
