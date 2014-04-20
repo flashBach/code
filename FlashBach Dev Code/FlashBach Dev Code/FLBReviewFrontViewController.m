@@ -19,7 +19,6 @@
 @synthesize dueTotal;
 @synthesize dueCountsLabel;
 
-
 #pragma mark - Initialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
