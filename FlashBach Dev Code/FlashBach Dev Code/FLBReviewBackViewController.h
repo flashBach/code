@@ -1,5 +1,5 @@
 //
-//  FLBCardResultViewController.h
+//  FLBReviewBackViewController.h
 //  FlashBach Dev Code
 //
 //  Created by CS121 on 3/6/14.
@@ -20,9 +20,11 @@
 // View
 @property (weak, nonatomic) IBOutlet UITextView *cardFrontTextView;
 @property (weak, nonatomic) IBOutlet UITextView *cardBackTextView;
+@property (weak, nonatomic) IBOutlet UILabel *dueCountsLabel;
 
 // Data
 @property (strong, nonatomic) NSMutableArray * dueCardsID;
+@property (nonatomic) NSUInteger dueTotal;
 @property (weak, nonatomic) NSNumber * cardID;
 @property (weak, nonatomic) NSDictionary * myDict;
 

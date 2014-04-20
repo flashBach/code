@@ -16,6 +16,8 @@
 @synthesize cardID;
 @synthesize myDict;
 @synthesize cardFrontTextView;
+@synthesize dueTotal;
+@synthesize dueCountsLabel;
 
 
 #pragma mark - Initialization
@@ -60,6 +62,7 @@
         NSString * cardFront = [cardAtKey objectAtIndex:2];
         cardFrontTextView.text = cardFront;
     }
+    dueCountsLabel.text = [NSString stringWithFormat:@"%d Left/ %d Total", [dueCardsID count], dueTotal];
 }
 
 #pragma mark - Navigation
@@ -76,7 +79,7 @@
         [dueCardsID removeObjectAtIndex:0];
         reviewBackViewController.dueCardsID = dueCardsID;
         reviewBackViewController.cardID = cardID;
-        
+        reviewBackViewController.dueTotal = dueTotal;
     }
     
 }

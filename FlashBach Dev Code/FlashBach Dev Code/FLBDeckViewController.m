@@ -58,7 +58,9 @@
     if([[segue identifier] isEqualToString:@"DeckToFront"])
     {
         FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
-        reviewFrontViewController.dueCardsID = [self generateDueCards];
+        NSMutableArray * dueCardsID = [self generateDueCards];
+        reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = [dueCardsID count];
     }
 }
 

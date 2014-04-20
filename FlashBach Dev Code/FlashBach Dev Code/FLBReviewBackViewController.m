@@ -17,6 +17,8 @@
 @synthesize myDict;
 @synthesize cardFrontTextView;
 @synthesize cardBackTextView;
+@synthesize dueTotal;
+@synthesize dueCountsLabel;
 
 #pragma mark - Initialization
 
@@ -45,6 +47,7 @@
     NSString * cardBack = [cardAtKey objectAtIndex:3];
     cardFrontTextView.text = cardFront;
     cardBackTextView.text = cardBack;
+    dueCountsLabel.text = [NSString stringWithFormat:@"%d Left/ %d Total", [dueCardsID count], dueTotal];
 }
 
 
@@ -84,18 +87,21 @@
     {
         FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
         reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = dueTotal;
     }
 
     if([[segue identifier] isEqualToString:@"NormalToFront"])
     {
         FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
         reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = dueTotal;
     }
     
     if([[segue identifier] isEqualToString:@"HardToFront"])
     {
         FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
         reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = dueTotal;
     }
 
 }

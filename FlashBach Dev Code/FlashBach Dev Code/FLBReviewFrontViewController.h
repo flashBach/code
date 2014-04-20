@@ -17,6 +17,7 @@
 
 // Data
 @property (strong, nonatomic) NSMutableArray * dueCardsID;
+@property (nonatomic) NSUInteger dueTotal;
 @property (strong, nonatomic) NSNumber * cardID;
 @property (weak, nonatomic) NSDictionary * myDict;
 
