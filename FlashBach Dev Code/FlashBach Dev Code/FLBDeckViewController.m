@@ -60,7 +60,6 @@
         FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
         reviewFrontViewController.dueCardsID = [self generateDueCards];
     }
-
 }
 
 
