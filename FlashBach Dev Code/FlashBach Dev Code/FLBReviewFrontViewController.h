@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLBDataManagement.h"
 
 @interface FLBReviewFrontViewController : UIViewController
 
@@ -15,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonSkip;
 
 @property (weak, nonatomic) NSMutableArray *cardsToReview;
+@property (nonatomic)       NSDictionary    *myDict;
+
 
 @end

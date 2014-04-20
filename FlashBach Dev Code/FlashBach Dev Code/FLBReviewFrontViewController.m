@@ -11,6 +11,7 @@
 @implementation FLBReviewFrontViewController
 
 @synthesize cardsToReview;
+@synthesize myDict;
 
 
 #pragma mark - Initialization
@@ -25,6 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    
+    
+    [self updateText];
+    
+    
+    
     
     [self addButtonBorders];
 }
@@ -50,6 +59,13 @@
         FLBCategoryViewController *categoryViewController = [segue destinationViewController];
         
     }
+}
+
+- (void)updateText
+{
+    NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardsToReview[0]]];
+    NSString *cardPromptAtKey = [cardAtKey objectAtIndex:2];
+    
 }
 
 @end

@@ -56,7 +56,7 @@
     if([[segue identifier] isEqualToString:@"DeckToReview"])
     {
         FLBCategoryViewController *categoryViewController = [segue destinationViewController];
-        //categoryViewController.cardsToReview = ;
+        categoryViewController.cardsToReview = [self generateDueCards];
     }
 }
 
