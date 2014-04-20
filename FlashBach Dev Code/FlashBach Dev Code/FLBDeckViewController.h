@@ -21,12 +21,14 @@
 // Data
 @property (nonatomic)           NSMutableArray *decks;
 @property (nonatomic)       NSDictionary    *myDict;
+@property (strong, nonatomic) NSMutableArray * dueCards;
 
 // Autocomplete Stuff
 @property (nonatomic, retain)   UITableView    *autocompleteTableView;
 @property (nonatomic, retain)   NSMutableArray *autocompleteValuesArray;
 @property (nonatomic, retain)   NSMutableArray *autocompleteValuesDisplay;
 
+- (NSMutableArray *) generateDueCards;
 - (void)loadCardDataFromDictionary;
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring;
 - (IBAction)addDeckButtonPressed:(id)sender;
