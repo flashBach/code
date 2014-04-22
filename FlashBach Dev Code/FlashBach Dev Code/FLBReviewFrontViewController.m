@@ -50,20 +50,6 @@
     _buttonSkip.layer.cornerRadius = 7;
 }
 
-- (void) updateUI
-{
-    NSLog(@"dueCardsID count: %d",[dueCardsID count]);
-    if ([dueCardsID count])
-    {
-        cardID = dueCardsID[0];
-        
-        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
-        NSString * cardFront = [cardAtKey objectAtIndex:2];
-        cardFrontTextView.text = cardFront;
-    }
-    dueCountsLabel.text = [NSString stringWithFormat:@"%d Left/ %d Total", [dueCardsID count], dueTotal];
-}
-
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -81,6 +67,29 @@
         reviewBackViewController.dueTotal = dueTotal;
     }
     
+}
+
+- (void) updateUI
+{
+    if ([dueCardsID count])
+    {
+        cardID = dueCardsID[0];
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
+        NSLog(@"Card has %d entries.", [cardAtKey count]);
+        NSString * cardFront = [cardAtKey objectAtIndex:2];
+        cardFrontTextView.text = cardFront;
+    }
+    dueCountsLabel.text = [NSString stringWithFormat:@"%d Left/ %d Total", [dueCardsID count], dueTotal];
+}
+
+- (IBAction)skipButtonPressed:(id)sender
+{
+    if ([dueCardsID count])
+    {
+        [dueCardsID removeObjectAtIndex:0];
+        myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+        [self updateUI];
+    }
 }
 
 @end

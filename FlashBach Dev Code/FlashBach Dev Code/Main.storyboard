@@ -177,6 +177,9 @@
                                         <state key="normal" title=" Skip ">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="skipButtonPressed:" destination="hWF-xk-chh" eventType="touchUpInside" id="Zsu-pP-C8A"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# left/ # total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IVj-eM-Cwy">
                                         <rect key="frame" x="143" y="12" width="142" height="21"/>
