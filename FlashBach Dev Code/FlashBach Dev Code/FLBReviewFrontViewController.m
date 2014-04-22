@@ -7,12 +7,17 @@
 //
 
 #import "FLBReviewFrontViewController.h"
+#import "FLBDataManagement.h"
+#import "FLBReviewBackViewController.h"
 
 @implementation FLBReviewFrontViewController
 
-@synthesize cardsToReview;
+@synthesize dueCardsID;
+@synthesize cardID;
 @synthesize myDict;
-
+@synthesize cardFrontTextView;
+@synthesize dueTotal;
+@synthesize dueCountsLabel;
 
 #pragma mark - Initialization
 
@@ -26,18 +31,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
-    
-    
-    [self updateText];
-    
-    
-    
-    
-    [self addButtonBorders];
 
+    [self addButtonBorders];
+    
+    [self updateUI];
 }
+
 
 - (void) addButtonBorders
 {
@@ -50,22 +50,35 @@
     _buttonSkip.layer.cornerRadius = 7;
 }
 
+- (void) updateUI
+{
+    NSLog(@"dueCardsID count: %d",[dueCardsID count]);
+    if ([dueCardsID count])
+    {
+        cardID = dueCardsID[0];
+        
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
+        NSString * cardFront = [cardAtKey objectAtIndex:2];
+        cardFrontTextView.text = cardFront;
+    }
+    dueCountsLabel.text = [NSString stringWithFormat:@"%d Left/ %d Total", [dueCardsID count], dueTotal];
+}
+
+#pragma mark - Navigation
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"FronttoBack"])
-    {
-        FLBCategoryViewController *categoryViewController = [segue destinationViewController];
-        
-    }
-}
 
-- (void)updateText
-{
-    NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardsToReview[0]]];
-    NSString *cardPromptAtKey = [cardAtKey objectAtIndex:2];
+    if([[segue identifier] isEqualToString:@"FrontToBack"])
+    {
+        FLBReviewBackViewController *reviewBackViewController = [segue destinationViewController];
+        [dueCardsID removeObjectAtIndex:0];
+        reviewBackViewController.dueCardsID = dueCardsID;
+        reviewBackViewController.cardID = cardID;
+        reviewBackViewController.dueTotal = dueTotal;
+    }
     
 }
 

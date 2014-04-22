@@ -21,7 +21,7 @@
 // Data
 @property (nonatomic)           NSMutableArray *decks;
 @property (nonatomic)       NSDictionary    *myDict;
-@property (strong, nonatomic) NSMutableArray * dueCards;
+@property (strong, nonatomic) NSMutableArray * dueCardsID;
 
 // Autocomplete Stuff
 @property (nonatomic, retain)   UITableView    *autocompleteTableView;

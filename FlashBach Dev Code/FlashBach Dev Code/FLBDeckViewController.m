@@ -7,6 +7,7 @@
 //
 
 #import "FLBDeckViewController.h"
+#import "FLBReviewFrontViewController.h"
 
 @implementation FLBDeckViewController
 
@@ -53,10 +54,13 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         categoryViewController.currentDeck = [decks objectAtIndex:indexPath.row];
     }
-    if([[segue identifier] isEqualToString:@"DeckToReview"])
+
+    if([[segue identifier] isEqualToString:@"DeckToFront"])
     {
-        FLBCategoryViewController *categoryViewController = [segue destinationViewController];
-        categoryViewController.cardsToReview = [self generateDueCards];
+        FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
+        NSMutableArray * dueCardsID = [self generateDueCards];
+        reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = [dueCardsID count];
     }
 }
 
@@ -123,21 +127,22 @@
 
 - (NSMutableArray *) generateDueCards
 {
-    NSMutableArray * dueCards = [[NSMutableArray alloc]init];
+    NSMutableArray * dueCardsID = [[NSMutableArray alloc]init];
     
     for (id key in myDict)
     {
         NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSLog(@"Key: %d, Deck: %@", (int)key, [cardAtKey objectAtIndex:1]);
         NSDate *dateAtKey = [cardAtKey objectAtIndex:5];
         
         NSDate * today = [NSDate date];
-        if ([dateAtKey compare:today] == NSOrderedAscending)
+        if (1) //([dateAtKey compare:today] == NSOrderedAscending)
         {
-            [dueCards addObject:key];
+            [dueCardsID addObject:key];
         }
     }
     
-    return dueCards;
+    return dueCardsID;
 }
 
 

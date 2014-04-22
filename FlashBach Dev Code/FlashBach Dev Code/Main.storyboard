@@ -154,7 +154,7 @@
                                 <rect key="frame" x="0.0" y="63" width="320" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="How do you compare algorithms?" id="b6A-pN-2qq">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You've reviewed all your due cards! Don't click Flip!" id="b6A-pN-2qq">
                                         <rect key="frame" x="41" y="81" width="239" height="131"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -181,8 +181,8 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# left/ # total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IVj-eM-Cwy">
                                         <rect key="frame" x="143" y="12" width="142" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -200,7 +200,7 @@
                     <connections>
                         <outlet property="buttonFlip" destination="TU0-sf-RpF" id="NSl-KR-XOI"/>
                         <outlet property="buttonSkip" destination="IGq-dp-Nri" id="N8z-5N-CSb"/>
-                        <outlet property="cardFrontScrollView" destination="Iae-TI-QMI" id="swl-sg-dUz"/>
+                        <outlet property="cardFrontTextView" destination="b6A-pN-2qq" id="fFU-mS-LES"/>
                         <outlet property="dueCountsLabel" destination="IVj-eM-Cwy" id="pC1-9u-XWY"/>
                     </connections>
                 </viewController>
@@ -295,7 +295,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="hWF-xk-chh" kind="push" id="epd-iS-Jjg"/>
+                                            <segue destination="hWF-xk-chh" kind="push" identifier="HardToFront" id="epd-iS-Jjg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Baj-ry-sYD">
@@ -305,7 +305,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="hWF-xk-chh" kind="push" id="Bk6-71-aQb"/>
+                                            <segue destination="hWF-xk-chh" kind="push" identifier="NormalToFront" id="Bk6-71-aQb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bqM-jN-mad">
@@ -316,7 +316,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="hWF-xk-chh" kind="push" id="cjB-NK-dJP"/>
+                                            <segue destination="hWF-xk-chh" kind="push" identifier="EasyToFront" id="cjB-NK-dJP"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We can measure time and space in various situations (best case/worst case/average case/amortized)." id="ytO-Q8-9IV">
@@ -336,8 +336,8 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# left/ # total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ln-4Y-pKb">
                                         <rect key="frame" x="100" y="20" width="200" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -358,6 +358,9 @@
                         <outlet property="buttonEditCard" destination="I5b-Ru-SFw" id="0KH-qF-68D"/>
                         <outlet property="buttonHard" destination="DKq-T0-ZXI" id="41w-4b-jEU"/>
                         <outlet property="buttonNormal" destination="Baj-ry-sYD" id="W5f-s9-vOC"/>
+                        <outlet property="cardBackTextView" destination="ytO-Q8-9IV" id="w01-3V-HIt"/>
+                        <outlet property="cardFrontTextView" destination="lIx-Hh-Ds6" id="lbC-sG-b31"/>
+                        <outlet property="dueCountsLabel" destination="5Ln-4Y-pKb" id="RzM-GX-0iM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaT-o8-3N2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,7 +408,7 @@
                         <barButtonItem key="backBarButtonItem" title="Decks" id="lN6-Ar-x7H"/>
                         <barButtonItem key="leftBarButtonItem" title="Review" id="X7O-Mz-7DB">
                             <connections>
-                                <segue destination="hWF-xk-chh" kind="push" identifier="DecktoReviewFront" id="dDV-hF-2dc"/>
+                                <segue destination="hWF-xk-chh" kind="push" identifier="DeckToFront" id="dDV-hF-2dc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Egr-Ap-Xd7">
@@ -444,8 +447,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dDV-hF-2dc"/>
-        <segue reference="zXJ-dE-LdV"/>
-        <segue reference="gSS-wj-yWZ"/>
+        <segue reference="RHT-kT-hrr"/>
+        <segue reference="cjB-NK-dJP"/>
+        <segue reference="OtA-Fl-Dhh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,10 +7,18 @@
 //
 
 #import "FLBReviewBackViewController.h"
+#import "FLBDataManagement.h"
+#import "FLBReviewFrontViewController.h"
 
 @implementation FLBReviewBackViewController
 
 @synthesize cardID;
+@synthesize dueCardsID;
+@synthesize myDict;
+@synthesize cardFrontTextView;
+@synthesize cardBackTextView;
+@synthesize dueTotal;
+@synthesize dueCountsLabel;
 
 #pragma mark - Initialization
 
@@ -24,9 +32,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
 
     [self addButtonBorders];
+    
+    [self updateUI];
 }
+
+- (void) updateUI
+{
+    
+    NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
+    NSString * cardFront = [cardAtKey objectAtIndex:2];
+    NSString * cardBack = [cardAtKey objectAtIndex:3];
+    cardFrontTextView.text = cardFront;
+    cardBackTextView.text = cardBack;
+    dueCountsLabel.text = [NSString stringWithFormat:@"%d Left/ %d Total", [dueCardsID count], dueTotal];
+}
+
 
 - (void) addButtonBorders
 {
@@ -59,6 +82,28 @@
         // TODO once there is a cardID member present, uncomment the following line and the edit card button should work
         // addCardViewController.cardID = cardID;
     }
+    
+    if([[segue identifier] isEqualToString:@"EasyToFront"])
+    {
+        FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
+        reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = dueTotal;
+    }
+
+    if([[segue identifier] isEqualToString:@"NormalToFront"])
+    {
+        FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
+        reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = dueTotal;
+    }
+    
+    if([[segue identifier] isEqualToString:@"HardToFront"])
+    {
+        FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
+        reviewFrontViewController.dueCardsID = dueCardsID;
+        reviewFrontViewController.dueTotal = dueTotal;
+    }
+
 }
 
 @end
