@@ -41,6 +41,13 @@
     _textNewDeck.delegate = self;
 }
 
+// Ensures that the view updates each time it is seen
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self viewDidLoad];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation

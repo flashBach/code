@@ -38,21 +38,35 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FLBAddCardViewController *addOrEditCardViewController = [segue destinationViewController];
-    
-    addOrEditCardViewController.currentCategory = currentCategory;
-    addOrEditCardViewController.currentDeck = currentDeck;
-    
-    if([[segue identifier] isEqualToString:@"CardToEdit"])
+    if ([[segue identifier] isEqualToString:@"CardToEdit"] || [[segue identifier] isEqualToString:@"CardToNewCard"])
     {
-        NSIndexPath *selectedCard = [self.tableView indexPathForSelectedRow];
-        addOrEditCardViewController.cardID = [cardKeys objectAtIndex:selectedCard.row];
-        addOrEditCardViewController.title = @"Edit Card";
+        FLBAddCardViewController *addOrEditCardViewController = [segue destinationViewController];
+    
+        addOrEditCardViewController.currentCategory = currentCategory;
+        addOrEditCardViewController.currentDeck = currentDeck;
+        
+        if([[segue identifier] isEqualToString:@"CardToEdit"])
+        {
+            NSIndexPath *selectedCard = [self.tableView indexPathForSelectedRow];
+            addOrEditCardViewController.cardID = [cardKeys objectAtIndex:selectedCard.row];
+            addOrEditCardViewController.title = @"Edit Card";
+        }
+        
+        else if([[segue identifier] isEqualToString:@"CardToNewCard"])
+        {
+            addOrEditCardViewController.title = @"Add Card";
+        }
     }
+}
+
+// Called when the leaving the controller
+// Triggers an update of the category view
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
-    else if([[segue identifier] isEqualToString:@"CardToNewCard"])
-    {
-        addOrEditCardViewController.title = @"Add Card";
+    if (self.isMovingFromParentViewController || self.isBeingDismissed) {
+        [self.delegate newDeckIs:currentDeck];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

@@ -127,8 +127,11 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     FLBCardViewController *cardViewController = [segue destinationViewController];
-    cardViewController.myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
-    [cardViewController loadCardDataFromDictionary];
+    
+    cardViewController.currentCategory = currentCategory;
+    cardViewController.currentDeck = currentDeck;
+    
+    [cardViewController viewDidLoad];
     [cardViewController.tableView reloadData];
 }
 
@@ -140,12 +143,15 @@
     NSDate *today = [NSDate date];
     
     NSMutableArray *newCard = [[NSMutableArray alloc] init];
-    [newCard addObject:currentDeck];
-    [newCard addObject:currentCategory];
+    [newCard addObject:textChooseDeck.text];
+    [newCard addObject:textChooseCategory.text];
     [newCard addObject:textCardFront.text];
     [newCard addObject:textCardBack.text];
     [newCard addObject:frequency];
     [newCard addObject:today];
+    
+    currentDeck = textChooseDeck.text;
+    currentCategory = textChooseCategory.text;
     
     if ([self.title isEqualToString:@"Add Card"])
     {

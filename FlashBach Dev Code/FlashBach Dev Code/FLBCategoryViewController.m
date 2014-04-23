@@ -40,6 +40,14 @@
     textNewCategory.delegate = self;
 }
 
+// The method called by the delegate to update the category view
+- (void) newDeckIs: (NSString*) newDeck
+{
+    currentDeck = newDeck;
+    [self viewDidLoad];
+    [[self tableView] reloadData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -50,6 +58,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         cardViewController.currentCategory = [categories objectAtIndex:indexPath.row];
         cardViewController.currentDeck = currentDeck;
+        cardViewController.delegate = self;
     }
 }
  
