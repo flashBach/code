@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbS-Z5-8s0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbS-Z5-8s0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -293,32 +293,35 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DKq-T0-ZXI">
                                         <rect key="frame" x="243" y="367" width="42" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Hard ">
+                                        <state key="normal" title="Hard">
                                             <color key="titleColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="updateCard:" destination="rC6-1C-KCN" eventType="touchUpInside" id="PnD-X2-QD2"/>
                                             <segue destination="hWF-xk-chh" kind="push" identifier="HardToFront" id="epd-iS-Jjg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Baj-ry-sYD">
                                         <rect key="frame" x="131" y="367" width="59" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Normal ">
+                                        <state key="normal" title="Normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="updateCard:" destination="rC6-1C-KCN" eventType="touchUpInside" id="iNf-rc-3iF"/>
                                             <segue destination="hWF-xk-chh" kind="push" identifier="NormalToFront" id="Bk6-71-aQb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bqM-jN-mad">
                                         <rect key="frame" x="46" y="367" width="42" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title=" Easy ">
+                                        <state key="normal" title="Easy">
                                             <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="updateCard:" destination="rC6-1C-KCN" eventType="touchUpInside" id="l4m-KB-zzl"/>
                                             <segue destination="hWF-xk-chh" kind="push" identifier="EasyToFront" id="cjB-NK-dJP"/>
                                         </connections>
                                     </button>
@@ -450,7 +453,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RHT-kT-hrr"/>
+        <segue reference="zXJ-dE-LdV"/>
         <segue reference="cjB-NK-dJP"/>
         <segue reference="OtA-Fl-Dhh"/>
     </inferredMetricsTieBreakers>

@@ -106,4 +106,31 @@
 
 }
 
+#pragma mark - Data
+- (IBAction)updateCard:(UIButton *)sender
+{
+    // Somehow we need to load myDict again!
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
+    
+    if ([sender.currentTitle isEqualToString:@"Hard"])
+    {
+        NSNumber * frequency = [cardAtKey objectAtIndex:4];
+        int value = [frequency intValue];
+        NSNumber * newFrequency = [NSNumber numberWithInt:value + 1];
+        [cardAtKey replaceObjectAtIndex:4 withObject:newFrequency];
+    }
+
+    if ([sender.currentTitle isEqualToString:@"Easy"])
+    {
+        NSNumber * frequency = [cardAtKey objectAtIndex:4];
+        int value = [frequency intValue];
+        NSNumber * newFrequency = [NSNumber numberWithInt:value - 1];
+        [cardAtKey replaceObjectAtIndex:4 withObject:newFrequency];
+    }
+    
+    [FLBDataManagement SaveCard:cardAtKey WithIndex:cardID];
+}
+
+
 @end
