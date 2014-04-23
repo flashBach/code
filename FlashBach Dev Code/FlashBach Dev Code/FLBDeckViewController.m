@@ -136,7 +136,7 @@
         NSDate *dateAtKey = [cardAtKey objectAtIndex:5];
         
         NSDate * today = [NSDate date];
-        if (1) //([dateAtKey compare:today] == NSOrderedAscending)
+        if ([dateAtKey compare:today] == NSOrderedAscending)
         {
             [dueCardsID addObject:key];
         }
