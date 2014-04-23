@@ -52,6 +52,8 @@
     {
         textCardFront.text = [currentCardData objectAtIndex: 2];
         textCardBack.text = [currentCardData objectAtIndex:3];
+        //textChooseDeck.text = [currentCardData objectAtIndex:0];
+        //textChooseCategory.text = [currentCardData objectAtIndex:1];
     }
     
     // Detects background button presses (used to dismiss keyboard)

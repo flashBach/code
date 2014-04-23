@@ -77,10 +77,8 @@
     if([[segue identifier] isEqualToString:@"ReviewToEdit"])
     {
         FLBAddCardViewController *addCardViewController = [segue destinationViewController];
-        
-        // TODO update the current cardID whenever entering review.
-        // TODO once there is a cardID member present, uncomment the following line and the edit card button should work
-        // addCardViewController.cardID = cardID;
+        addCardViewController.cardID = cardID;
+        addCardViewController.title = @"Edit Card";
     }
     
     if([[segue identifier] isEqualToString:@"EasyToFront"])
