@@ -40,6 +40,9 @@
     textNewCategory.delegate = self;
     
     [self setupDeleteSwipe];
+    
+    // Make sure new data appears
+    [[self tableView] reloadData];
 }
 
 // The method called by the delegate to update the category view
@@ -47,12 +50,11 @@
 {
     currentDeck = newDeck;
     [self viewDidLoad];
-    [[self tableView] reloadData];
 }
 
 #pragma mark - Delete Deck
-// Swiping reference: // http://stackoverflow.com/questions/7144592/getting-cell-indexpath-on-swipe-gesture-uitableview
 
+// Swiping reference: // http://stackoverflow.com/questions/7144592/getting-cell-indexpath-on-swipe-gesture-uitableview
 - (void) setupDeleteSwipe
 {
     UISwipeGestureRecognizer *showExtrasSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellSwipe:)];
@@ -68,7 +70,22 @@
     
     NSString * categoryToDelete = swipedCell.textLabel.text;
     
-    [FLBDataManagement deleteCategory:categoryToDelete inDeck:currentDeck];
+    NSMutableArray *cardsToDelete = [NSMutableArray new];
+    
+    for(id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
+        
+        // Add each category in the deck
+        if( [categoryAtKey isEqualToString:categoryToDelete] && [deckAtKey isEqualToString:currentDeck])
+        {
+            [cardsToDelete addObject:key];
+        }
+    }
+    
+    [FLBDataManagement deleteCards:cardsToDelete];
     
     [self viewDidLoad];
     [[self tableView] reloadData];
@@ -84,6 +101,9 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         cardViewController.currentCategory = [categories objectAtIndex:indexPath.row];
         cardViewController.currentDeck = currentDeck;
+        
+        // warning can't be resolved by changing the type of the delgate
+        // because the delegate's type cannot be set to the same type as self
         cardViewController.delegate = self;
     }
 }

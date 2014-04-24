@@ -45,15 +45,13 @@
     
     [self setupKeyboard];
     
+    // Fill text fields
     textChooseDeck.text = currentDeck;
     textChooseCategory.text = currentCategory;
-    
     if ([self.title  isEqual: @"Edit Card"])
     {
         textCardFront.text = [currentCardData objectAtIndex: 2];
         textCardBack.text = [currentCardData objectAtIndex:3];
-        //textChooseDeck.text = [currentCardData objectAtIndex:0];
-        //textChooseCategory.text = [currentCardData objectAtIndex:1];
     }
     
     // Detects background button presses (used to dismiss keyboard)
@@ -132,7 +130,6 @@
     cardViewController.currentDeck = currentDeck;
     
     [cardViewController viewDidLoad];
-    [cardViewController.tableView reloadData];
 }
 
 # pragma mark - Data Management

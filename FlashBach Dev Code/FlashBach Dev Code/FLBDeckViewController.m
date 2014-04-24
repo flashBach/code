@@ -41,13 +41,14 @@
     _textNewDeck.delegate = self;
     
     [self setupDeleteSwipe];
+    
+    [self.tableView reloadData];
 }
 
 // Ensures that the view updates each time it is seen
 - (void) viewWillAppear:(BOOL)animated
 {
     [self viewDidLoad];
-    [self.tableView reloadData];
 }
 
 #pragma mark - Delete Deck
@@ -66,7 +67,23 @@
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
     UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
     
-    [FLBDataManagement deleteDeck:swipedCell.textLabel.text];
+    NSString *deckToDelete = swipedCell.textLabel.text;
+    
+    NSMutableArray *cardsToDelete = [NSMutableArray new];
+    
+    for(id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        
+        // Add each category in the deck
+        if( [deckAtKey isEqualToString:deckToDelete])
+        {
+            [cardsToDelete addObject:key];
+        }
+    }
+    
+    [FLBDataManagement deleteCards:cardsToDelete];
     NSLog(@"Deleted cell with text %@\n", swipedCell.textLabel.text);
     [self viewWillAppear:true];
 }
@@ -76,8 +93,6 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"DeckToCategory"])
     {
         FLBCategoryViewController *categoryViewController = [segue destinationViewController];
@@ -99,13 +114,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [decks count];
 }
 

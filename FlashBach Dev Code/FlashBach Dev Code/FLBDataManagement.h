@@ -18,8 +18,6 @@
 + (void) SaveCard:(NSArray *)card WithIndex:(NSNumber *)cardIndex;
 
 // Deletion
-+ (void) deleteCard:(NSNumber *) cardIDToDelete;
-+ (void) deleteCategory:(NSString *)categoryToDelete inDeck:(NSString *)deckSelected;
-+ (void) deleteDeck:(NSString *)deckToDelete;
++ (void) deleteCards:(NSArray *) cardIDsToDelete;
 
 @end

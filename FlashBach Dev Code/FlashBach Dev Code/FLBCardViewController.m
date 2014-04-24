@@ -28,6 +28,9 @@
     self.navigationItem.title = currentCategory;
     
     [self setupDeleteSwipe];
+    
+    // Make sure new data is displayed
+    [self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -37,23 +40,28 @@
 }
 
 #pragma mark - Delete Deck
-// Swiping reference: // http://stackoverflow.com/questions/7144592/getting-cell-indexpath-on-swipe-gesture-uitableview
 
+// Adds a gesture recognizer for recognizing right-swipes
+//  Swiping reference:  http://stackoverflow.com/questions/7144592/getting-cell-indexpath-on-swipe-gesture-uitableview
 - (void) setupDeleteSwipe
 {
-    UISwipeGestureRecognizer *showExtrasSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellSwipe:)];
-    showExtrasSwipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.tableView addGestureRecognizer:showExtrasSwipe];
+    UISwipeGestureRecognizer *deleteSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteSwipedCell:)];
+    deleteSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:deleteSwipe];
 }
 
--(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+-(void)deleteSwipedCell:(UISwipeGestureRecognizer *)gesture
 {
     CGPoint location = [gesture locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
     
     NSNumber *cardIDToDelete = [cardKeys objectAtIndex:swipedIndexPath.row];
     
-    [FLBDataManagement deleteCard:cardIDToDelete];
+    NSMutableArray *cardIDsToDelete = [NSMutableArray new];
+    
+    [cardIDsToDelete addObject:cardIDToDelete];
+    
+    [FLBDataManagement deleteCards:cardIDsToDelete];
 
     [self viewDidLoad];
     [[self tableView] reloadData];
@@ -106,7 +114,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [cardPrompts count];
 }
 
