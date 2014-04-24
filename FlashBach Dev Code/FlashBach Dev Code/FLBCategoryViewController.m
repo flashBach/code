@@ -66,7 +66,12 @@
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
     UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
     
-    NSLog(@"Swiped Category!\n");
+    NSString * categoryToDelete = swipedCell.textLabel.text;
+    
+    [FLBDataManagement deleteCategory:categoryToDelete inDeck:currentDeck];
+    
+    [self viewDidLoad];
+    [[self tableView] reloadData];
 }
 
 #pragma mark - Navigation

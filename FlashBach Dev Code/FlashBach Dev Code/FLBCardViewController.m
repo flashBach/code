@@ -50,9 +50,13 @@
 {
     CGPoint location = [gesture locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
-    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
     
-    NSLog(@"Swiped Card!\n");
+    NSNumber *cardIDToDelete = [cardKeys objectAtIndex:swipedIndexPath.row];
+    
+    [FLBDataManagement deleteCard:cardIDToDelete];
+
+    [self viewDidLoad];
+    [[self tableView] reloadData];
 }
 
 #pragma mark - Navigation

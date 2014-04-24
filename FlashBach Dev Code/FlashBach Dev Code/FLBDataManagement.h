@@ -10,8 +10,16 @@
 
 @interface FLBDataManagement : NSObject
 
+// Accessing Data
 + (NSDictionary *) loadCardDataDictionaryFromPlist;
+
+// Saving
 + (void) saveNewCard:(NSArray *)newCard;
 + (void) SaveCard:(NSArray *)card WithIndex:(NSNumber *)cardIndex;
+
+// Deletion
++ (void) deleteCard:(NSNumber *) cardIDToDelete;
++ (void) deleteCategory:(NSString *)categoryToDelete inDeck:(NSString *)deckSelected;
++ (void) deleteDeck:(NSString *)deckToDelete;
 
 @end

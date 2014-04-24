@@ -66,7 +66,9 @@
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
     UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
     
-    NSLog(@"Swiped Deck!\n");
+    [FLBDataManagement deleteDeck:swipedCell.textLabel.text];
+    NSLog(@"Deleted cell with text %@\n", swipedCell.textLabel.text);
+    [self viewWillAppear:true];
 }
 
 #pragma mark - Navigation

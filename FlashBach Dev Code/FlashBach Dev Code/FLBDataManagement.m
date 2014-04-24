@@ -10,6 +10,27 @@
 
 @implementation FLBDataManagement
 
+#pragma mark - Accessing Plist
+
++ (NSString *) getPlistPath
+{
+    // Loads data from Documents or Bundle Directory
+    //     First, try the mutable Documents Directory...
+	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsPath = [paths firstObject];
+    NSLog(@"Documents Path > %@", documentsPath);
+	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
+    
+	//     Check to see if we found the CardData.plist file...
+	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+	{
+		//Copy the file from the app bundle.
+        NSString * defaultPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
+        [[NSFileManager defaultManager] copyItemAtPath:defaultPath toPath:plistPath error:NULL];
+	}
+    
+    return plistPath;
+}
 
 + (NSDictionary *) loadCardDataDictionaryFromPlist
 {
@@ -31,6 +52,8 @@
     
     return myDict;
 }
+
+#pragma mark - Saving
 
 + (void) saveNewCard: (NSArray *) newCard
 {
@@ -80,25 +103,136 @@
     }
 }
 
-+ (NSString *) getPlistPath
+#pragma mark - Deleting
+
++ (void) deleteCard:(NSNumber *) cardID
 {
-    // Loads data from Documents or Bundle Directory
-    //     First, try the mutable Documents Directory...
-	NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsPath = [paths firstObject];
-    NSLog(@"Documents Path > %@", documentsPath);
-	NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"CardData.plist"];
+    NSString *plistPath = [self getPlistPath];
     
-	//     Check to see if we found the CardData.plist file...
-	if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
+    // Get the dictionary and keys
+    NSDictionary *myDict = [self loadCardDataDictionaryFromPlist];
+    
+	// Put the new card into a new dictionary
+	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
+    
+    [newMyDict removeObjectForKey:cardID];
+    
+    // Create a non-mutable dictionary from this
+    NSDictionary *plistDict = newMyDict;
+	
+    // Use to collect any error message from creating the Plist
+	NSString *error = nil;
+    
+	// Create the Plist from the non-mutable dictionary
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+	
+    // Check if plistData exists
+	if(plistData)
 	{
-		//Copy the file from the app bundle.
-        NSString * defaultPath = [[NSBundle mainBundle] pathForResource:@"CardData" ofType:@"plist"];
-        [[NSFileManager defaultManager] copyItemAtPath:defaultPath toPath:plistPath error:NULL];
-	}
-    
-    return plistPath;
+        [plistData writeToFile:plistPath atomically:YES];
+    }
+    else
+	{
+        NSLog(@"Error in saveData: %@", error);
+    }
 }
+
++ (void) deleteCategory:(NSString *)categoryToDelete inDeck:(NSString *)deckSelected
+{
+    NSString *plistPath = [self getPlistPath];
+    
+    // Get the dictionary and keys
+    NSDictionary *myDict = [self loadCardDataDictionaryFromPlist];
+    
+	// Put the new card into a new dictionary
+	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
+    
+    NSMutableArray *cardsToDelete = [NSMutableArray new];
+
+    for(id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
+        
+        // Add each category in the deck
+        if( [categoryAtKey isEqualToString:categoryToDelete] && [deckAtKey isEqualToString:deckSelected])
+        {
+            [cardsToDelete addObject:key];
+        }
+    }
+    
+    
+    [newMyDict removeObjectsForKeys:cardsToDelete];
+    
+    // Create a non-mutable dictionary from this
+    NSDictionary *plistDict = newMyDict;
+	
+    // Use to collect any error message from creating the Plist
+	NSString *error = nil;
+    
+	// Create the Plist from the non-mutable dictionary
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+	
+    // Check if plistData exists
+	if(plistData)
+	{
+        [plistData writeToFile:plistPath atomically:YES];
+    }
+    else
+	{
+        NSLog(@"Error in saveData: %@", error);
+    }
+}
+
++ (void) deleteDeck:(NSString *)deckToDelete
+{
+    NSString *plistPath = [self getPlistPath];
+    
+    // Get the dictionary and keys
+    NSDictionary *myDict = [self loadCardDataDictionaryFromPlist];
+    
+	// Get a mutable dictionary to remove cards from
+	NSMutableDictionary *newMyDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
+    
+    NSMutableArray *cardsToDelete = [NSMutableArray new];
+    
+    for(id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        
+        // Add each category in the deck
+        if( [deckAtKey isEqualToString:deckToDelete])
+        {
+            [cardsToDelete addObject:key];
+        }
+    }
+    
+    
+    [newMyDict removeObjectsForKeys:cardsToDelete];
+    
+    // Create a non-mutable dictionary from this
+    NSDictionary *plistDict = newMyDict;
+	
+    // Use to collect any error message from creating the Plist
+	NSString *error = nil;
+    
+	// Create the Plist from the non-mutable dictionary
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+	
+    // Check if plistData exists
+	if(plistData)
+	{
+        [plistData writeToFile:plistPath atomically:YES];
+    }
+    else
+	{
+        NSLog(@"Error in saveData: %@", error);
+    }
+}
+
+
 
 
 @end
