@@ -38,6 +38,8 @@
     
     // Allow keyboard to disappear on return press
     textNewCategory.delegate = self;
+    
+    [self setupDeleteSwipe];
 }
 
 // The method called by the delegate to update the category view
@@ -46,6 +48,25 @@
     currentDeck = newDeck;
     [self viewDidLoad];
     [[self tableView] reloadData];
+}
+
+#pragma mark - Delete Deck
+// Swiping reference: // http://stackoverflow.com/questions/7144592/getting-cell-indexpath-on-swipe-gesture-uitableview
+
+- (void) setupDeleteSwipe
+{
+    UISwipeGestureRecognizer *showExtrasSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellSwipe:)];
+    showExtrasSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:showExtrasSwipe];
+}
+
+-(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self.tableView];
+    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
+    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+    
+    NSLog(@"Swiped Category!\n");
 }
 
 #pragma mark - Navigation

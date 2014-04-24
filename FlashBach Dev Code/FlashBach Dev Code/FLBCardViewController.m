@@ -26,12 +26,33 @@
     [self loadCardDataFromDictionary];
     
     self.navigationItem.title = currentCategory;
+    
+    [self setupDeleteSwipe];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     return self;
+}
+
+#pragma mark - Delete Deck
+// Swiping reference: // http://stackoverflow.com/questions/7144592/getting-cell-indexpath-on-swipe-gesture-uitableview
+
+- (void) setupDeleteSwipe
+{
+    UISwipeGestureRecognizer *showExtrasSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellSwipe:)];
+    showExtrasSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:showExtrasSwipe];
+}
+
+-(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self.tableView];
+    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
+    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+    
+    NSLog(@"Swiped Card!\n");
 }
 
 #pragma mark - Navigation
