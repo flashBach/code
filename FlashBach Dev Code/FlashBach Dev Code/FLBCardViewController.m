@@ -74,9 +74,6 @@
     if ([[segue identifier] isEqualToString:@"CardToEdit"] || [[segue identifier] isEqualToString:@"CardToNewCard"])
     {
         FLBAddCardViewController *addOrEditCardViewController = [segue destinationViewController];
-    
-        addOrEditCardViewController.currentCategory = currentCategory;
-        addOrEditCardViewController.currentDeck = currentDeck;
         
         if([[segue identifier] isEqualToString:@"CardToEdit"])
         {
@@ -88,6 +85,8 @@
         else if([[segue identifier] isEqualToString:@"CardToNewCard"])
         {
             addOrEditCardViewController.title = @"Add Card";
+            addOrEditCardViewController.currentCategory = currentCategory;
+            addOrEditCardViewController.currentDeck = currentDeck;
         }
     }
 }

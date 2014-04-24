@@ -46,13 +46,17 @@
     [self setupKeyboard];
     
     // Fill text fields
-    textChooseDeck.text = currentDeck;
-    textChooseCategory.text = currentCategory;
+
     if ([self.title  isEqual: @"Edit Card"])
     {
+        currentDeck = [currentCardData objectAtIndex:0];
+        currentCategory = [currentCardData objectAtIndex:1];
         textCardFront.text = [currentCardData objectAtIndex: 2];
         textCardBack.text = [currentCardData objectAtIndex:3];
     }
+    
+    textChooseDeck.text = currentDeck;
+    textChooseCategory.text = currentCategory;
     
     // Detects background button presses (used to dismiss keyboard)
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
