@@ -155,7 +155,7 @@
                                                         message:@"Please enter the name of the new category:"
                                                         delegate:self
                                                         cancelButtonTitle:@"Save"
-                                                        otherButtonTitles:nil];
+                                                        otherButtonTitles:@"Cancel",nil];
     
     addNewCategory.alertViewStyle = UIAlertViewStylePlainTextInput;
     
@@ -168,7 +168,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    if ([createNewCategoryTextField.text length] <= 0 )
+    if ([createNewCategoryTextField.text length] <= 0 || buttonIndex == 1)
     {
         return; //If cancel or 0 length string the string doesn't matter
     }

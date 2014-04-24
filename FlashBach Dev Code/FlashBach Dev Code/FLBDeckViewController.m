@@ -181,7 +181,7 @@
 // http://stackoverflow.com/questions/6319417/whats-a-simple-way-to-get-a-text-input-popup-dialog-box-on-an-iphone
 - (IBAction)addDeckButtonPressed:(id)sender
 {
-    addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:nil];
+    addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:@"Cancel", nil];
     addNewDeck.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertTextField = [addNewDeck textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeAlphabet;
@@ -192,7 +192,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 
-    if ([alertTextField.text length] <= 0 )
+    if ([alertTextField.text length] <= 0 || buttonIndex == 1 )
     {
         return; //If cancel or 0 length string the string doesn't matter
     }
