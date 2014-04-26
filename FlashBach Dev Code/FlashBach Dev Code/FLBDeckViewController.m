@@ -9,6 +9,9 @@
 #import "FLBDeckViewController.h"
 #import "FLBReviewFrontViewController.h"
 
+#define addNewDeckAlertTag 0
+#define deleteDeckAlertTag 1
+
 @implementation FLBDeckViewController
 
 @synthesize autocompleteValuesDisplay;
@@ -19,6 +22,8 @@
 @synthesize alertTextField;
 @synthesize myDict;
 @synthesize addNewDeck;
+@synthesize deleteDeckAlert;
+@synthesize deleteThisDeck;
 
 #pragma mark - Initialization
 
@@ -61,16 +66,11 @@
     [self.tableView addGestureRecognizer:showExtrasSwipe];
 }
 
--(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+-(void)deleteCell:(NSString *) deckToDelete
 {
-    CGPoint location = [gesture locationInView:self.tableView];
-    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
-    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
-    
-    NSString *deckToDelete = swipedCell.textLabel.text;
-    
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     NSMutableArray *cardsToDelete = [NSMutableArray new];
-    
+
     for(id key in myDict)
     {
         NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
@@ -82,10 +82,29 @@
             [cardsToDelete addObject:key];
         }
     }
-    
+
     [FLBDataManagement deleteCards:cardsToDelete];
-    NSLog(@"Deleted cell with text %@\n", swipedCell.textLabel.text);
+    NSLog(@"Deleted cell with text %@\n", deckToDelete);
     [self viewWillAppear:true];
+}
+
+-(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self.tableView];
+    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
+    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+    
+    deleteThisDeck = swipedCell.textLabel.text;
+    
+    // Initialize and display alert
+    deleteDeckAlert =
+    [[UIAlertView alloc] initWithTitle:@"Delete Deck"
+                               message:@"You will delete all categories and all cards in this Deck. Are you sure?"
+                              delegate:self
+                     cancelButtonTitle:@"Cancel"
+                     otherButtonTitles:@"Delete", nil];
+    deleteDeckAlert.tag = deleteDeckAlertTag;
+    [deleteDeckAlert show];
 }
 
 #pragma mark - Navigation
@@ -195,6 +214,7 @@
 - (IBAction)addDeckButtonPressed:(id)sender
 {
     addNewDeck = [[UIAlertView alloc] initWithTitle:@"Create New Deck" message:@"Please enter the name of the new deck:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:@"Cancel", nil];
+    addNewDeck.tag = addNewDeckAlertTag;
     addNewDeck.alertViewStyle = UIAlertViewStylePlainTextInput;
     alertTextField = [addNewDeck textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeAlphabet;
@@ -204,19 +224,38 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-
-    if ([alertTextField.text length] <= 0 || buttonIndex == 1 )
+    // We use tags to differentiate alerts in this viewController.
+    if (alertView.tag == addNewDeckAlertTag)
     {
-        return; //If cancel or 0 length string the string doesn't matter
+        if ([alertTextField.text length] <= 0 || buttonIndex == 1 )
+        {
+            return; //If cancel or 0 length string the string doesn't matter
+        }
+       
+        theNewDeckName = alertTextField.text;
+        
+        [self saveCard];
+        
+        myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+        [self loadCardDataFromDictionary];
+        [self.tableView reloadData];
     }
-   
-    theNewDeckName = alertTextField.text;
     
-    [self saveCard];
-    
-    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
-    [self loadCardDataFromDictionary];
-    [self.tableView reloadData];
+    else if (alertView.tag == deleteDeckAlertTag)
+    {
+        NSLog(@"CALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLED!!");
+        NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+        
+        if([title isEqualToString:@"Cancel"])
+        {
+            NSLog(@"Cancel was selected.");
+        }
+        else if([title isEqualToString:@"Delete"])
+        {
+            NSLog(@"Delete was selected.");
+            [self deleteCell:deleteThisDeck];
+        }
+    }
 }
 
 // Is called on textField when Return/Done is pressed to dismiss keyboard
