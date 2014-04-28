@@ -84,7 +84,8 @@
     }
 
     [FLBDataManagement deleteCards:cardsToDelete];
-    NSLog(@"Deleted cell with text %@\n", deckToDelete);
+    NSLog(@"Deleted cell with Deck: %@\n", deckToDelete);
+    
     [self viewWillAppear:true];
 }
 
@@ -98,8 +99,8 @@
     
     // Initialize and display alert
     deleteDeckAlert =
-    [[UIAlertView alloc] initWithTitle:@"Delete Deck"
-                               message:@"You will delete all categories and all cards in this Deck. Are you sure?"
+    [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Delete %@",  deleteThisDeck]
+                               message:[NSString stringWithFormat:@"You will delete all categories and all cards in %@. Are you sure?", deleteThisDeck]
                               delegate:self
                      cancelButtonTitle:@"Cancel"
                      otherButtonTitles:@"Delete", nil];
@@ -224,7 +225,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // We use tags to differentiate alerts in this viewController.
+    // We use tags to differentiate all the
+    // alerts in current viewController.
     if (alertView.tag == addNewDeckAlertTag)
     {
         if ([alertTextField.text length] <= 0 || buttonIndex == 1 )
@@ -243,7 +245,6 @@
     
     else if (alertView.tag == deleteDeckAlertTag)
     {
-        NSLog(@"CALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLED!!");
         NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
         
         if([title isEqualToString:@"Cancel"])

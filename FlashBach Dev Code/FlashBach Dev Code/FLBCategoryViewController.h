@@ -10,13 +10,17 @@
 #import "FLBCardViewController.h"
 #import "FLBDataManagement.h"
 
-@interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate>
+@interface FLBCategoryViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 // Used in created a new category
 @property (nonatomic)       UIAlertView          * addNewCategory;
 @property (nonatomic)       UITextField          *createNewCategoryTextField;
 @property (nonatomic)       NSString             *theNewCategoryName;
 @property (weak, nonatomic) IBOutlet UITextField *textNewCategory;
+
+// Used in deleting a category
+@property (nonatomic)           UIAlertView    *deleteCategoryAlert;
+@property (weak, nonatomic) NSString * deleteThisCategory;
 
 // Data
 @property (nonatomic)       NSMutableArray  *categories;

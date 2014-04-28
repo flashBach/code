@@ -8,6 +8,9 @@
 
 #import "FLBCategoryViewController.h"
 
+#define addNewCategoryAlertTag 0
+#define deleteCategoryAlertTag 1
+
 @implementation FLBCategoryViewController
 
 @synthesize categories;
@@ -17,6 +20,8 @@
 @synthesize myDict;
 @synthesize textNewCategory;
 @synthesize addNewCategory;
+@synthesize deleteThisCategory;
+@synthesize deleteCategoryAlert;
 
 #pragma mark - Initialization
 
@@ -62,14 +67,11 @@
     [self.tableView addGestureRecognizer:showExtrasSwipe];
 }
 
--(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+
+
+- (void) deleteCell:(NSString *) categoryToDelete
 {
-    CGPoint location = [gesture locationInView:self.tableView];
-    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
-    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
-    
-    NSString * categoryToDelete = swipedCell.textLabel.text;
-    
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     NSMutableArray *cardsToDelete = [NSMutableArray new];
     
     for(id key in myDict)
@@ -79,16 +81,37 @@
         NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
         
         // Add each category in the deck
-        if( [categoryAtKey isEqualToString:categoryToDelete] && [deckAtKey isEqualToString:currentDeck])
+        if( [deckAtKey isEqualToString:currentDeck] &&
+            [categoryAtKey isEqualToString:categoryToDelete])
         {
             [cardsToDelete addObject:key];
         }
     }
     
     [FLBDataManagement deleteCards:cardsToDelete];
+    NSLog(@"Deleted cell with Deck: %@ and Category: %@ \n",currentDeck, categoryToDelete);
     
     [self viewDidLoad];
     [[self tableView] reloadData];
+}
+
+-(void)cellSwipe:(UISwipeGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self.tableView];
+    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:location];
+    UITableViewCell *swipedCell  = [self.tableView cellForRowAtIndexPath:swipedIndexPath];
+    
+    deleteThisCategory = swipedCell.textLabel.text;
+    
+    // Initialize and display alert
+    deleteCategoryAlert =
+    [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Delete %@",  deleteThisCategory]
+                               message:[NSString stringWithFormat:@"You will delete all cards in %@. Are you sure?", deleteThisCategory]
+                              delegate:self
+                     cancelButtonTitle:@"Cancel"
+                     otherButtonTitles:@"Delete", nil];
+    deleteCategoryAlert.tag = deleteCategoryAlertTag;
+    [deleteCategoryAlert show];
 }
 
 #pragma mark - Navigation
@@ -178,7 +201,7 @@
                                                         otherButtonTitles:@"Cancel",nil];
     
     addNewCategory.alertViewStyle = UIAlertViewStylePlainTextInput;
-    
+    addNewCategory.tag = addNewCategoryAlertTag;
     createNewCategoryTextField = [addNewCategory textFieldAtIndex:0];
     createNewCategoryTextField.keyboardType = UIKeyboardTypeAlphabet;
     createNewCategoryTextField.placeholder = @"Enter new category name";
@@ -186,21 +209,40 @@
     [addNewCategory show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if ([createNewCategoryTextField.text length] <= 0 || buttonIndex == 1)
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == addNewCategoryAlertTag)
     {
-        return; //If cancel or 0 length string the string doesn't matter
+        if ([createNewCategoryTextField.text length] <= 0 || buttonIndex == 1)
+        {
+            return; //If cancel or 0 length string the string doesn't matter
+        }
+        
+        theNewCategoryName = createNewCategoryTextField.text;
+        
+        [self saveCard];
+        
+        // Reload the view to show the new category
+        myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+        [self loadCardDataFromDictionary];
+        [self.tableView reloadData];
+    }
+
+    else if (alertView.tag == deleteCategoryAlertTag)
+    {
+        NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+        
+        if([title isEqualToString:@"Cancel"])
+        {
+            NSLog(@"Cancel was selected.");
+        }
+        else if([title isEqualToString:@"Delete"])
+        {
+            NSLog(@"Delete was selected.");
+            [self deleteCell:deleteThisCategory];
+        }
     }
     
-    theNewCategoryName = createNewCategoryTextField.text;
-    
-    [self saveCard];
-    
-    // Reload the view to show the new category
-    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
-    [self loadCardDataFromDictionary];
-    [self.tableView reloadData];
 }
 
 // Is called on textField when Return/Done is pressed to dismiss keyboard
