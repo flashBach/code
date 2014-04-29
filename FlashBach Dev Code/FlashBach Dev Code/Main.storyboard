@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbS-Z5-8s0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sbS-Z5-8s0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Add Card View Controller - Add/Modify Card-->
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hcl-mQ-Aya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="-613"/>
+            <point key="canvasLocation" x="905" y="-469"/>
         </scene>
         <!--Card View Controller - Cards-->
         <scene sceneID="Vkr-Fr-yLx">
@@ -221,7 +221,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListPrototypeCell" textLabel="dof-oK-bQE" style="IBUITableViewCellStyleDefault" id="sHC-n1-bul">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHC-n1-bul" id="zEj-4X-ulc">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -298,8 +298,8 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="loadDestinationVC:" destination="rC6-1C-KCN" eventType="touchUpInside" id="Rco-hI-ymh"/>
                                             <action selector="updateCard:" destination="rC6-1C-KCN" eventType="touchUpInside" id="PnD-X2-QD2"/>
-                                            <segue destination="hWF-xk-chh" kind="push" identifier="HardToFront" id="epd-iS-Jjg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Baj-ry-sYD">
@@ -309,8 +309,8 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="loadDestinationVC:" destination="rC6-1C-KCN" eventType="touchUpInside" id="Cet-jL-srI"/>
                                             <action selector="updateCard:" destination="rC6-1C-KCN" eventType="touchUpInside" id="iNf-rc-3iF"/>
-                                            <segue destination="hWF-xk-chh" kind="push" identifier="NormalToFront" id="Bk6-71-aQb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bqM-jN-mad">
@@ -321,8 +321,8 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="loadDestinationVC:" destination="rC6-1C-KCN" eventType="touchUpInside" id="Ng4-cV-Gvg"/>
                                             <action selector="updateCard:" destination="rC6-1C-KCN" eventType="touchUpInside" id="l4m-KB-zzl"/>
-                                            <segue destination="hWF-xk-chh" kind="push" identifier="EasyToFront" id="cjB-NK-dJP"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We can measure time and space in various situations (best case/worst case/average case/amortized)." id="ytO-Q8-9IV">
@@ -367,11 +367,13 @@
                         <outlet property="cardBackTextView" destination="ytO-Q8-9IV" id="w01-3V-HIt"/>
                         <outlet property="cardFrontTextView" destination="lIx-Hh-Ds6" id="lbC-sG-b31"/>
                         <outlet property="dueCountsLabel" destination="5Ln-4Y-pKb" id="RzM-GX-0iM"/>
+                        <segue destination="hWF-xk-chh" kind="push" identifier="BackToFront" id="QOb-Et-1zL"/>
+                        <segue destination="dc5-54-X1D" kind="push" identifier="BackToDecks" id="9zb-cQ-aL4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaT-o8-3N2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="72"/>
+            <point key="canvasLocation" x="885" y="98"/>
         </scene>
         <!--Deck View Controller - Decks-->
         <scene sceneID="VsL-Ex-TMU">
@@ -453,8 +455,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aiy-Xr-Q6p"/>
-        <segue reference="gSS-wj-yWZ"/>
-        <segue reference="cjB-NK-dJP"/>
+        <segue reference="QOb-Et-1zL"/>
+        <segue reference="OtA-Fl-Dhh"/>
+        <segue reference="zXJ-dE-LdV"/>
     </inferredMetricsTieBreakers>
 </document>

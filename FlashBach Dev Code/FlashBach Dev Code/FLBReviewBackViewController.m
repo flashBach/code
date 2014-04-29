@@ -74,6 +74,16 @@
     _buttonEditCard.layer.cornerRadius = 7;
 }
 
+- (IBAction)loadDestinationVC:(id)sender {
+    if([dueCardsID count] == 0){
+        
+        [self performSegueWithIdentifier:@"BackToDecks" sender:nil];
+    } else {
+        [self performSegueWithIdentifier:@"BackToFront" sender:nil];
+    }
+
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -85,7 +95,7 @@
         addCardViewController.title = @"Edit Card";
     }
     
-    if([[segue identifier] isEqualToString:@"EasyToFront"])
+    if([[segue identifier] isEqualToString:@"BackToFront"])
     {
         FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
         reviewFrontViewController.dueCardsID = dueCardsID;
