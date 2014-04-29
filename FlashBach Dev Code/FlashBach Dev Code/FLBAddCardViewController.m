@@ -43,9 +43,8 @@
     
     myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     
-    // Load in all decks and categories
+    // Load in all decks
     myDecks = [[NSMutableArray alloc]init];
-    myCategories = [[NSMutableArray alloc]init];
     
     for(id key in myDict)
     {
@@ -57,12 +56,7 @@
         {
             [myDecks addObject:deckAtKey];
         }
-        if( ![myCategories containsObject:categoryAtKey])
-        {
-            [myCategories addObject:categoryAtKey];
-        }
     }
-
     
     // Create view's perception of the decks we have available based on the cards.
     currentCardData = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
@@ -152,6 +146,21 @@
                   destructiveButtonTitle:nil
                        otherButtonTitles:nil];
     categoryActionSheet.tag = categoryActionSheetTag;
+    
+    // Load in all categories under chosen deck
+    myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    myCategories = [[NSMutableArray alloc]init];
+    for(id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
+        // Add each category in the deck
+        if( [deckAtKey isEqualToString:textChooseDeck.text] && ![myCategories containsObject:categoryAtKey])
+        {
+            [myCategories addObject:categoryAtKey];
+        }
+    }
     
     for (NSString *title in myCategories)
     {
