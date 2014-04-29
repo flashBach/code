@@ -205,11 +205,12 @@
                         <outlet property="buttonSkip" destination="IGq-dp-Nri" id="N8z-5N-CSb"/>
                         <outlet property="cardFrontTextView" destination="b6A-pN-2qq" id="fFU-mS-LES"/>
                         <outlet property="dueCountsLabel" destination="IVj-eM-Cwy" id="pC1-9u-XWY"/>
+                        <segue destination="dc5-54-X1D" kind="push" identifier="FrontToDecks" id="HKt-XF-c34"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hcl-mQ-Aya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="-469"/>
+            <point key="canvasLocation" x="927" y="-533"/>
         </scene>
         <!--Card View Controller - Cards-->
         <scene sceneID="Vkr-Fr-yLx">
@@ -456,7 +457,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="QOb-Et-1zL"/>
+        <segue reference="HKt-XF-c34"/>
         <segue reference="OtA-Fl-Dhh"/>
-        <segue reference="zXJ-dE-LdV"/>
     </inferredMetricsTieBreakers>
 </document>

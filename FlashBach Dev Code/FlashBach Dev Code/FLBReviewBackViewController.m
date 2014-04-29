@@ -101,21 +101,6 @@
         reviewFrontViewController.dueCardsID = dueCardsID;
         reviewFrontViewController.dueTotal = dueTotal;
     }
-
-    if([[segue identifier] isEqualToString:@"NormalToFront"])
-    {
-        FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
-        reviewFrontViewController.dueCardsID = dueCardsID;
-        reviewFrontViewController.dueTotal = dueTotal;
-    }
-    
-    if([[segue identifier] isEqualToString:@"HardToFront"])
-    {
-        FLBReviewFrontViewController *reviewFrontViewController = [segue destinationViewController];
-        reviewFrontViewController.dueCardsID = dueCardsID;
-        reviewFrontViewController.dueTotal = dueTotal;
-    }
-
 }
 
 #pragma mark - Data

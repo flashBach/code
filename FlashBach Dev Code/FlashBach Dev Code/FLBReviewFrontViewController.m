@@ -83,11 +83,14 @@
 
 - (IBAction)skipButtonPressed:(id)sender
 {
-    if ([dueCardsID count])
+    if ([dueCardsID count] > 1)
     {
         [dueCardsID removeObjectAtIndex:0];
         myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
         [self updateUI];
+    }
+    else if ([dueCardsID count]){
+        [self performSegueWithIdentifier:@"FrontToDecks" sender:nil];
     }
 }
 
