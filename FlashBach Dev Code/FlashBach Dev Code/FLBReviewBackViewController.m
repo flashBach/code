@@ -9,6 +9,10 @@
 #import "FLBReviewBackViewController.h"
 #import "FLBDataManagement.h"
 #import "FLBReviewFrontViewController.h"
+#include <math.h>
+
+#define maxFrequency 5
+#define minFrequency 0
 
 @implementation FLBReviewBackViewController
 
@@ -111,21 +115,33 @@
     myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
     NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
     
-    if ([sender.currentTitle isEqualToString:@"Hard"])
+    // Update frequency level
+    NSNumber * frequency = [cardAtKey objectAtIndex:4];
+    int value = [frequency intValue];
+    
+    if ([sender.currentTitle isEqualToString:@"Hard"] && value < maxFrequency)
     {
-        NSNumber * frequency = [cardAtKey objectAtIndex:4];
-        int value = [frequency intValue];
         NSNumber * newFrequency = [NSNumber numberWithInt:value + 1];
         [cardAtKey replaceObjectAtIndex:4 withObject:newFrequency];
     }
 
-    if ([sender.currentTitle isEqualToString:@"Easy"])
+    if ([sender.currentTitle isEqualToString:@"Easy"] && value > minFrequency)
     {
-        NSNumber * frequency = [cardAtKey objectAtIndex:4];
-        int value = [frequency intValue];
         NSNumber * newFrequency = [NSNumber numberWithInt:value - 1];
         [cardAtKey replaceObjectAtIndex:4 withObject:newFrequency];
+
     }
+    
+    // Update due date
+    frequency = [cardAtKey objectAtIndex:4];
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    int daysFromToday = (int)pow(2, maxFrequency - [frequency intValue]);
+    dayComponent.day = daysFromToday;
+    
+    NSCalendar * calendar = [NSCalendar currentCalendar];
+    NSDate * today = [NSDate date];
+    NSDate * dueDate = [calendar dateByAddingComponents:dayComponent toDate:today options:0];
+    [cardAtKey replaceObjectAtIndex:5 withObject:dueDate];
     
     [FLBDataManagement SaveCard:cardAtKey WithIndex:cardID];
 }
