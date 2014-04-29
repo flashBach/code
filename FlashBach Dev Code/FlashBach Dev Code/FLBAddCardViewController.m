@@ -8,6 +8,9 @@
 
 #import "FLBAddCardViewController.h"
 
+#define deckActionSheetTag 0
+#define categoryActionSheetTag 1
+
 @implementation FLBAddCardViewController
 
 @synthesize textCardBack;
@@ -20,6 +23,8 @@
 @synthesize currentCardData;
 @synthesize cardID;
 @synthesize myDict;
+@synthesize myDecks;
+@synthesize myCategories;
 
 @synthesize entryFields;
 
@@ -37,6 +42,27 @@
     [super viewDidLoad];
     
     myDict = [FLBDataManagement loadCardDataDictionaryFromPlist];
+    
+    // Load in all decks and categories
+    myDecks = [[NSMutableArray alloc]init];
+    myCategories = [[NSMutableArray alloc]init];
+    
+    for(id key in myDict)
+    {
+        NSMutableArray *cardAtKey = [NSMutableArray arrayWithArray:[myDict objectForKey:key]];
+        NSString *deckAtKey = [cardAtKey objectAtIndex:0];
+        NSString *categoryAtKey = [cardAtKey objectAtIndex:1];
+        // Add each category in the deck
+        if( ![myDecks containsObject:deckAtKey])
+        {
+            [myDecks addObject:deckAtKey];
+        }
+        if( ![myCategories containsObject:categoryAtKey])
+        {
+            [myCategories addObject:categoryAtKey];
+        }
+    }
+
     
     // Create view's perception of the decks we have available based on the cards.
     currentCardData = [NSMutableArray arrayWithArray:[myDict objectForKey:cardID]];
@@ -98,20 +124,65 @@
 
 - (IBAction) deckButtonTapped:(id)sender
 {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose Deck"                                                                              delegate:self
-                                           cancelButtonTitle:@"Cancel"                                              destructiveButtonTitle:@"Dismiss"
-                                           otherButtonTitles:@"CS 5", @"CS 70", @"CS 81",@"CS 105", nil];
+    UIActionSheet * deckActionSheet =
+    [[UIActionSheet alloc] initWithTitle:@"Choose Deck"
+                                delegate:self
+                       cancelButtonTitle:nil
+                  destructiveButtonTitle:nil
+                       otherButtonTitles:nil];
+    deckActionSheet.tag = deckActionSheetTag;
 
-    [action  showInView:self.view];
+    for (NSString *title in myDecks)
+    {
+        [deckActionSheet addButtonWithTitle:title];
+    }
+    
+    [deckActionSheet addButtonWithTitle:@"Cancel"];
+    deckActionSheet.cancelButtonIndex = [myDecks count];
+    
+    [deckActionSheet  showInView:self.view];
 }
 
 - (IBAction) categoryButtonTapped:(id)sender
 {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Choose Category"                                                        delegate:self
-                                               cancelButtonTitle:@"Cancel"                                              destructiveButtonTitle:@"Dismiss"
-                                               otherButtonTitles:@"Recursion", @"Pointers", @"Linked Lists", @"Trees", @"Hashtables", nil];
+    UIActionSheet * categoryActionSheet =
+    [[UIActionSheet alloc] initWithTitle:@"Choose Category"
+                                delegate:self
+                       cancelButtonTitle:nil
+                  destructiveButtonTitle:nil
+                       otherButtonTitles:nil];
+    categoryActionSheet.tag = categoryActionSheetTag;
     
-    [action  showInView:self.view];
+    for (NSString *title in myCategories)
+    {
+        [categoryActionSheet addButtonWithTitle:title];
+    }
+    
+    [categoryActionSheet addButtonWithTitle:@"Cancel"];
+    categoryActionSheet.cancelButtonIndex = [myCategories count];
+    
+    [categoryActionSheet  showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == deckActionSheetTag)
+    {
+        if (buttonIndex != actionSheet.cancelButtonIndex)
+        {
+            NSString * selectedDeck = [actionSheet buttonTitleAtIndex:buttonIndex];
+            textChooseDeck.text = selectedDeck;
+        }
+    }
+    
+    if (actionSheet.tag == categoryActionSheetTag)
+    {
+        if (buttonIndex != actionSheet.cancelButtonIndex)
+        {
+            NSString * selectedCategory = [actionSheet buttonTitleAtIndex:buttonIndex];
+            textChooseCategory.text = selectedCategory;
+        }
+    }
 }
 
 - (IBAction)saveButtonTapped:(id)sender

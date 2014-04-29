@@ -10,7 +10,7 @@
 #import "FLBCardViewController.h"
 #import "FLBDataManagement.h"
 
-@interface FLBAddCardViewController : UIViewController <UITextFieldDelegate>
+@interface FLBAddCardViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate>
 
 // Text fields
 @property (weak, nonatomic) IBOutlet UITextField *textCardFront;
@@ -29,6 +29,7 @@
 // Card Data
 @property (retain, nonatomic) NSMutableArray *entryFields;
 @property (strong, nonatomic) NSMutableArray *myDecks;
+@property (strong, nonatomic) NSMutableArray *myCategories;
 @property (weak, nonatomic) NSNumber *cardID;
 @property (weak, nonatomic) NSString *currentDeck;
 @property (weak, nonatomic) NSString *currentCategory;
